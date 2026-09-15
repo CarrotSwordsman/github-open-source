@@ -1,28 +1,30 @@
 # 开源贡献 H20 验证任务交接清单
 
-> 生成时间：2026-09-10
+> 生成时间：2026-09-10（最近更新：2026-09-15）
 > 执行环境：NVIDIA H20 GPU 机器（临时计算资源）
-> 账号：GitHub `CarrotSwordsman`（fork owner，需要 push 权限的凭据：`gh auth login` 或已配置的 ssh key）
+> 账号：GitHub `CarrotSwordsman`（fork owner；GPU 容器侧已配长期 PAT，git push 自动认证）
 > 本文档原始地址：https://github.com/CarrotSwordsman/github-open-source
 > RAW 直链（可直接 curl）：https://raw.githubusercontent.com/CarrotSwordsman/github-open-source/main/HANDOFF.md
 
-**所有 PR 分支以 GitHub 远端为准**，无需从其他机器拷贝文件，按各任务的 clone 命令获取代码。
+**本仓库是任务中转站，双向工作流见 [README.md](README.md)**：owner 在此布置任务 → GPU 容器侧
+AI 助手拉取执行 → 结果回写 RESULTS.md + results/ 并 push 回来。所有 PR 分支以 GitHub 远端为准，
+无需从其他机器拷贝文件，按各任务的 clone 命令获取代码。
 
 ## 全局背景（必读）
 
-当前有 3 个进行中的开源 PR，均在等 GPU 相关验证：
+当前有 3 个进行中的开源 PR：
 
-| PR | 仓库 | 状态 | 卡点 |
+| PR | 仓库 | 状态 | GPU 侧任务状态 |
 |---|---|---|---|
-| Dynamo #9819 | ai-dynamo/dynamo | review 进行中（维护者 tanmayv25） | 断言修复后需 GPU 环境本地验证 |
-| vLLM #43764 | vllm-project/vllm | open 3.5 个月，等 `ready` 标签 | 测试从未在最新 main + GPU 上复验 |
+| Dynamo #9819 | ai-dynamo/dynamo | review 进行中（维护者 tanmayv25） | ✅ **已完成（2026-09-15）**：50/50 全过，见 RESULTS.md；是否 PR 留言待 owner |
+| vLLM #43764 | vllm-project/vllm | open 3.5 个月，等 `ready` 标签 | ✅ **已完成（2026-09-10）**：6/8 通过（2 失败为已知 bug 的有效捕获）；guard 补丁未推送，有竞品 PR #48062，如何措辞留言待 owner，见 RESULTS.md |
 | vLLM-Omni #7006 | vllm-project/vllm-omni | CI 全绿，P1 跟踪 | 无 GPU 任务，本文档不涉及 |
 
-所有代码以 **GitHub 远端分支为准**（本地均有副本，见文末）。修改后**禁止 force push**，只用普通 push。
+以下两个任务的原始内容保留作历史参考（验收标准、命令、教训仍然有效，复跑时按此执行）。
 
 ---
 
-## 任务 1（最高优先级）：Dynamo #9819 GPU 测试验证
+## 任务 1（最高优先级）：Dynamo #9819 GPU 测试验证 ✅ 已完成（2026-09-15，50/50 通过，详见 RESULTS.md）
 
 ### 背景
 
@@ -69,7 +71,7 @@ pytest components/src/dynamo/trtllm/tests/test_trtllm_unit.py -v
 
 ---
 
-## 任务 2：vLLM #43764 H20 复测 + 补丁推送
+## 任务 2：vLLM #43764 H20 复测 + 补丁推送 ⚠️ 已完成复测（2026-09-10，6/8，详见 RESULTS.md）；补丁推送/留言待 owner 决策
 
 ### 背景
 
