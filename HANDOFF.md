@@ -1,160 +1,180 @@
-# 开源贡献 H20 验证任务交接清单
+# H20 GPU 任务清单 v2（2026-09-15）
 
-> 生成时间：2026-09-10（最近更新：2026-09-15）
-> 执行环境：NVIDIA H20 GPU 机器（临时计算资源）
-> 账号：GitHub `CarrotSwordsman`（fork owner；GPU 容器侧已配长期 PAT，git push 自动认证）
-> 本文档原始地址：https://github.com/CarrotSwordsman/github-open-source
-> RAW 直链（可直接 curl）：https://raw.githubusercontent.com/CarrotSwordsman/github-open-source/main/HANDOFF.md
+> 执行环境：NVIDIA H20 96GB (sm_90) / driver 535.247.01 / glibc 2.28
+> 账号：GitHub `CarrotSwordsman`
+> **分工约定（沿用 v1）**：GPU 侧只执行实验并把结果推回本仓库（`results/` 目录）；所有上游动作（PR 评论、push、开 issue）由 owner 执行。
+> 本清单取代 v1（v1 两个任务已完成，结果见 `RESULTS.md`）。
 
-**本仓库是任务中转站，双向工作流见 [README.md](README.md)**：owner 在此布置任务 → GPU 容器侧
-AI 助手拉取执行 → 结果回写 RESULTS.md + results/ 并 push 回来。所有 PR 分支以 GitHub 远端为准，
-无需从其他机器拷贝文件，按各任务的 clone 命令获取代码。
+## 环境关键发现（v1 的硬墙已绕过）
 
-## 全局背景（必读）
+v1 结论"只能跑 vllm 0.11.0"的墙是 **PyPI 默认 wheel 用 cu130（需 driver 580+）**。
+vLLM GitHub release 提供官方 **cu129** wheel：CUDA 12.9 属于 12.x minor compatibility，**driver 535 应可运行**（与 Dynamo 环境跑 cu128 同理）。
 
-当前有 3 个进行中的开源 PR：
-
-| PR | 仓库 | 状态 | GPU 侧任务状态 |
-|---|---|---|---|
-| Dynamo #9819 | ai-dynamo/dynamo | review 进行中（维护者 tanmayv25） | ✅ **已完成（2026-09-15）**：50/50 全过，见 RESULTS.md；是否 PR 留言待 owner |
-| vLLM #43764 | vllm-project/vllm | open 3.5 个月，等 `ready` 标签 | ✅ **已完成（2026-09-10）**：6/8 通过（2 失败为已知 bug 的有效捕获）；guard 补丁未推送，有竞品 PR #48062，如何措辞留言待 owner，见 RESULTS.md |
-| vLLM-Omni #7006 | vllm-project/vllm-omni | CI 全绿，P1 跟踪 | 无 GPU 任务，本文档不涉及 |
-
-以下两个任务的原始内容保留作历史参考（验收标准、命令、教训仍然有效，复跑时按此执行）。
+```
+vllm 0.28.0 release assets 里有: vllm-0.28.0+cu129-cp38-abi3-manylinux_2_28_x86_64.whl
+```
 
 ---
 
-## 任务 1（最高优先级）：Dynamo #9819 GPU 测试验证 ✅ 已完成（2026-09-15，50/50 通过，详见 RESULTS.md）
-
-### 背景
-
-PR 分支：`CarrotSwordsman/dynamo:fix/trtllm-user-config-preservation`（最新提交 `362859393`，已推送）
-
-历史教训：上一轮维护者用 `/ok to test` 触发 NVIDIA 内部 GPU CI，暴露了一个**断言插错测试**的 bug（本地无 CUDA 时测试模块整体 skip，无法发现）。现已修复，需要 GPU 环境本地验证后确认不会再烧一轮失败 CI。
-
-### 环境搭建
+## 任务 0（前置，必须先做）：cu129 环境验证
 
 ```bash
-git clone -b fix/trtllm-user-config-preservation https://github.com/CarrotSwordsman/dynamo.git dynamo-9819
-cd dynamo-9819
-git log -1 --oneline   # 应显示 362859393
+conda create -n vllm029 python=3.12 -y && conda activate vllm029
+pip install https://github.com/vllm-project/vllm/releases/download/v0.28.0/vllm-0.28.0+cu129-cp38-abi3-manylinux_2_28_x86_64.whl
 
-# 依赖安装（H20 = sm90，TRT-LLM 官方支持）
-pip install tensorrt_llm
-pip install -e components/src/dynamo
+# 验证 1：import + CUDA
+python -c "import torch, vllm; print(torch.__version__, vllm.__version__, torch.cuda.is_available(), torch.cuda.get_device_name(0))"
+
+# 验证 2：smoke test（首次会下载 opt-125m，~250MB）
+python -c "
+from vllm import LLM
+llm = LLM('facebook/opt-125m')
+print(repr(llm.generate(['Hello, my name is'])[0].outputs[0].text))
+"
 ```
 
-若 `pip install tensorrt_llm` 失败，改用 Docker 方式（仓库 `deploy/docker/` 下有 Dockerfile.template），或从 https://github.com/NVIDIA/TensorRT-LLM/releases 找对应 CUDA 版本的 wheel。
-
-### 验证命令（按顺序）
-
-```bash
-# 1. 重点测试：断言错位修复的两个测试
-pytest components/src/dynamo/trtllm/tests/test_trtllm_unit.py -v \
-  -k "extra_engine_args or strip or postprocess"
-
-# 2. 通过后全文件回归
-pytest components/src/dynamo/trtllm/tests/test_trtllm_unit.py -v
-```
-
-### 预期与验收
-
-- 步骤 1 重点测试**必须全过**，尤其是：
-  - `test_extra_engine_args_overwrite_is_warned`
-  - `test_init_llm_worker_strips_num_postprocess_workers_from_extra_engine_args`
-- 步骤 2 全文件若有个别预存失败（非本 PR 引入），记录哪些失败即可
-
-### 结果处理
-
-- **全过** → 什么都不用改，回复用户"GPU 验证通过"，由用户决定是否在 PR 留言
-- **有失败** → 保存完整 pytest 输出到 `/data/workspace/github_open_source/dynamo-9819-test-failure.log`，不要自行修改代码推送，等这边分析
+**判定**：
+- 两个验证都过 → 记录 torch/vllm 版本组合到 results/env-029.txt，继续任务 1/2/3
+- 失败（driver 报错等）→ 完整 traceback 存 `results/env-029-failure.log`，**不要自行编译源码**，任务 1/2 改为跳过，仅尝试任务 3 的替代方案（见任务 3 备注）
 
 ---
 
-## 任务 2：vLLM #43764 H20 复测 + 补丁推送 ⚠️ 已完成复测（2026-09-10，6/8，详见 RESULTS.md）；补丁推送/留言待 owner 决策
+## 任务 1：vLLM #43764 复测（用 0.28.0 重跑，取代 v1 的 0.11.0 结果）
 
-### 背景
-
-PR 分支：`CarrotSwordsman/vllm:test/parallel-sampling-output-kinds`
-
-该 PR 于 2026-05 创建，当时在 H20 验证通过。但 vLLM main 三个月来大改（8 月删除了 InputPreprocessor 等），需要确认测试与当前代码兼容。另外已知一处待补：测试文件缺少 CUDA 模块级保护（当前 main 的同类文件 `test_async_llm.py` 有）。
-
-已验证（无 GPU 侧）：四个核心 import 在当前 main 均有效、`AsyncLLM.shutdown()` 存在、ruff 0.14.0 check/format 通过。
-
-### 环境搭建
+背景：v1 用 0.11.0 复测 6/8（2 个失败恰好是 #21948 bug 的实证）。0.28.0 是 2026-08 的 release，与当前 main 接近，证据力强得多。若 8/8 全过，则证明测试与 current 兼容，owner 可在 PR 里补充这个数据。
 
 ```bash
-cd /data/workspace/github_open_source
-git clone -b test/parallel-sampling-output-kinds https://github.com/CarrotSwordsman/vllm.git vllm-43764
-cd vllm-43764
-pip install -e .   # 或直接用 vllm/vllm-openai 官方镜像挂载此目录
+git clone -b test/parallel-sampling-output-kinds https://github.com/CarrotSwordsman/vllm.git vllm-43764-v2
+cd vllm-43764-v2
+# 测试文件与 wheel 版本可能有小 API 漂移：先把测试文件复制出来跑（v1 的经验：避免源码目录 sys.path 污染）
+mkdir -p /tmp/t43764 && cp tests/v1/engine/test_parallel_sampling_output_kinds.py /tmp/t43764/
+cd /tmp/t43764
+
+# v1 教训：共享进程会让首个失败的 EngineCore 泄漏连带后续失败。每测试独立进程。
+for t in 1 2 3 4 5 6 7 8; do :; done  # 占位，实际按下面逐个跑
+CUDA_VISIBLE_DEVICES=0 python -m pytest test_parallel_sampling_output_kinds.py -v -x --forked 2>&1 | tee ~/t43764-run.log
+# 若 --forked 不可用（缺 pytest-forked），则逐 test 独立进程：
+#   pytest --collect-only -q 拿到 test id 列表后循环: pytest "test_parallel_sampling_output_kinds.py::TEST_ID" -v
 ```
 
-### 验证命令
+**判定**：
+- 8/8 过 → 日志存 `results/vllm-43764-v2-028.log`，结论"0.28.0 全过"
+- 有失败 → 日志存 `results/vllm-43764-v2-028-fail.log`，区分 API 漂移（ImportError/参数错误）vs 行为失败（断言失败）
 
-```bash
-CUDA_VISIBLE_DEVICES=0 pytest tests/v1/engine/test_parallel_sampling_output_kinds.py -v
-```
+---
 
-模型用 `facebook/opt-125m`（代码内置），单卡 H20 几分钟跑完。
+## 任务 2（主任务）：vLLM #54035 复现 — FA3 Hopper FP8 decode/prefill 不一致
 
-### 通过后的动作（按序执行）
+Issue：https://github.com/vllm-project/vllm/issues/54035（FP8 KV cache 下 decode 与 prefill rescore 的 logprobs 系统性不一致，根因在 vllm-project/flash-attention 的 `hopper/tile_size.h`：decode kBlockN=96 vs prefill kBlockN=192）。
+H20 = sm_90，与报告者 H100 同架构，预期完全复现。
 
-1. **加 CUDA 模块级保护**：编辑 `tests/v1/engine/test_parallel_sampling_output_kinds.py`，在 import 块结束后（`MODEL = ...` 之前）插入：
+### 步骤 A：kernel 级复现（最重要，先做这个，5 分钟）
 
 ```python
-from vllm.platforms import current_platform
+# /tmp/fa3_repro.py — 来自 issue 报告者的最小复现
+import torch
+from vllm.vllm_flash_attn import flash_attn_varlen_func
 
-if not current_platform.is_cuda():
-    pytest.skip(reason="V1 currently only supported on CUDA.", allow_module_level=True)
+device = "cuda"
+nheads_q, nheads_kv, head_dim = 12, 2, 128
+
+def run(seqlen):
+    torch.manual_seed(42)
+    k = torch.randn(seqlen, nheads_kv, head_dim, device=device).to(torch.float8_e4m3fn)
+    v = torch.randn(seqlen, nheads_kv, head_dim, device=device).to(torch.float8_e4m3fn)
+    q = torch.randn(seqlen, nheads_q, head_dim, device=device).to(torch.float8_e4m3fn)
+    descale = torch.ones(1, nheads_kv, device=device)
+
+    def call(query):
+        q_len = query.shape[0]
+        return flash_attn_varlen_func(
+            q=query, k=k, v=v,
+            cu_seqlens_q=torch.tensor([0, q_len], dtype=torch.int32, device=device),
+            cu_seqlens_k=torch.tensor([0, seqlen], dtype=torch.int32, device=device),
+            max_seqlen_q=q_len, max_seqlen_k=seqlen,
+            softmax_scale=head_dim**-0.5, causal=True,
+            k_descale=descale, v_descale=descale, q_descale=descale,
+            block_table=None, fa_version=3,
+        )
+
+    prefill = call(q)[-1].float()
+    decode = call(q[-1:])[0].float()
+    return torch.equal(prefill, decode), (prefill - decode).abs().max().item()
+
+for length in list(range(88, 112)) + [128, 160, 192, 256]:
+    print(length, run(length))
 ```
 
-（注意 `import pytest` 已存在，无需重复。`from vllm.platforms import current_platform` 放到其他 vllm import 旁边按字母序排好。）
+**预期（H100 实测）**：FP8 首个 mismatch 在 seqlen=97；28 个测试长度中 19 个不同；97 处 diff≈3.9e-3，最大≈9.8e-3。
+**H20 判定**：输出存 `results/fa3-fp8-kernel-repro.log`。若同样 97 边界 + 接近的比例 → 复现成功（这确认了与具体卡无关，纯 sm_90 kernel 问题）。
 
-2. **格式检查**（vLLM 锁定 ruff 0.14.0）：
+### 步骤 B（A 成功后）：E2E 复现（Qwen3-4B，约 8GB 权重）
 
 ```bash
-pip install ruff==0.14.0
-ruff check tests/v1/engine/test_parallel_sampling_output_kinds.py
-ruff format --check tests/v1/engine/test_parallel_sampling_output_kinds.py
+export VLLM_BATCH_INVARIANT=1   # 必须在 import vllm 前设置
 ```
 
-3. **提交推送**：
+```python
+# /tmp/e2e_repro.py — 按 issue 的 E2E 步骤
+import os
+assert os.environ.get("VLLM_BATCH_INVARIANT") == "1"
+from vllm import LLM, SamplingParams
 
-```bash
-git add tests/v1/engine/test_parallel_sampling_output_kinds.py
-git commit -s -m "[Test] Add CUDA platform guard to parallel sampling tests"
-git push origin test/parallel-sampling-output-kinds
+llm = LLM("Qwen/Qwen3-4B", kv_cache_dtype="fp8", enable_prefix_caching=False,
+          enforce_eager=True)  # FA3 默认后端；若日志显示非 FA3，显式指定 --async-scheduling off
+prompt = "tell me a story"
+sp = SamplingParams(temperature=0.0, max_tokens=224, logprobs=1)
+out = llm.generate([prompt], sp)[0]
+gen_texts = [o.text for o in out.outputs]
+gen_lps = [o.logprobs for o in out.outputs]
+
+# full-prefill rescore：prompt+output 一起送回去拿 prompt_logprobs
+full = prompt + "".join(gen_texts)
+sp2 = SamplingParams(temperature=0.0, max_tokens=1, prompt_logprobs=0)
+out2 = llm.generate([full], sp2)[0]
+# 对比每个生成位置的 decode logprob vs rescore logprob，记录首个 mismatch 位置、
+# mismatch 总数、max |Δ|
+# 预期：首个 mismatch 在绝对位置 97 附近，约 115/224 mismatch，max |Δ|≈0.5
 ```
 
-（`-s` 生成 DCO sign-off，必须；commit message 遵循 vLLM 前缀规范。）
+BF16 对照：同脚本去掉 `kv_cache_dtype="fp8"`（预期仅少量噪声差异）。
+日志存 `results/fa3-fp8-e2e-{fp8,bf16}.log`。
 
-4. **在 PR 留言**（`gh pr comment 43764 -R vllm-project/vllm`）：
+### 步骤 C（可选，A+B 成功且时间充裕）：patch 验证
 
-> Follow-up: re-validated the full test matrix on an H20 against the current code (8 tests, all passing), and added the CUDA module-level guard that sibling tests (e.g. `test_async_llm.py`) use, so collection on non-GPU runners skips cleanly. Ready for the `ready` label whenever a maintainer can trigger CI.
-
-### 结果处理
-
-- **测试失败** → 保存输出到 `/data/workspace/github_open_source/vllm-43764-test-failure.log`，**不要推送任何修改**，等这边分析（可能是 API 漂移，需要针对性适配）
-- **注意**：vLLM 有 AGENTS.md，要求 AI 客观评估 PR 价值、做重复工作检查——留言前确认 #21948（本 PR 解决的 issue）仍 open 且无并行 PR（`gh pr list -R vllm-project/vllm --search "21948 in:body" --state open`）
+修复方向（issue 已给出）：`flash-attention` fork 的 `hopper/tile_size.h`，decode 保留 `kBlockM=64` 但 FP8 分支改用与 prefill 相同的 `kBlockN`。验证方式：clone `vllm-project/flash-attention`，改 tile_size.h，按其 README 编译，重跑步骤 A 确认 mismatch 消失。**编译 FA3 需要 nvcc + 较长构建时间，若工具链不完整就跳过并记录**——复现数据（A+B）本身就足以支撑上游 PR 的开题。
 
 ---
 
-## 重要注意事项（血泪教训）
+## 任务 3（次任务）：vLLM #56900 复现 — Qwen1.5-MoE + torch.compile 退化输出
 
-1. **工具版本必须对照仓库锁定**：Dynamo pre-commit 用 black **23.1.0**（不是最新版！），vLLM 用 ruff **0.14.0**。格式化前先读各仓库 `.pre-commit-config.yaml`。
-2. **禁止 force push** 到任何 PR 分支。
-3. **修改代码前先跑一遍基线测试**，区分预存失败 vs 新引入失败。
-4. **Dynamo 测试无 CUDA 时会静默 skip**（conftest 检查 tensorrt_llm + 模块级 CUDA guard）——本地全绿不代表 GPU 上绿，这就是任务 1 存在的原因。
+Issue：https://github.com/vllm-project/vllm/issues/56900（Qwen/Qwen1.5-MoE-A2.7B-Chat 在 torch.compile 下产生退化输出，vLLM 0.28.0）。
+
+```bash
+# 取 issue 正文完整步骤（容器内若 gh 不可用，用 curl API）：
+gh issue view 56900 -R vllm-project/vllm --json body -q .body
+# 或: curl -s https://api.github.com/repos/vllm-project/vllm/issues/56900 | python3 -c "import json,sys;print(json.load(sys.stdin)['body'])"
+```
+
+按正文的复现命令跑（模型 A2.7B 很小，单卡几分钟），核心对照：eager（`--enforce-eager`）输出正常 vs compile 模式输出退化（重复/乱码）。日志存 `results/qwen15moe-compile-{eager,compile}.log`，附两边的生成文本样本。
+
+**任务 0 失败时的备注**：此 issue 报告环境是 0.28.0；若 cu129 装不上，检查 0.27.1 release 是否有 cu129 wheel 可作降级尝试（`gh release view v0.27.1 -R vllm-project/vllm --json assets -q '.assets[].name'`）。
 
 ---
 
-## 本地资源位置（仅原开发机，临时机器可忽略）
+## 结果回传（约定）
 
-| 路径 | 内容 | 状态 |
-|---|---|---|
-| `/data/workspace/github_open_source/dynamo-9819` | Dynamo #9819 工作副本（分支已 push） | 可直接用 |
-| `/data/workspace/ai-infra/vllm-omni` | vLLM-Omni 主工作区（分支 fix/abort-final-stage = PR #7006，已 push；`.venv`/`.deps` 为无 GPU 测试环境） | 保留勿动 |
-| `/data/workspace/ai-infra/vllm-omni-stage-cli` | PR #7007 工作副本 | 已合并，可忽略 |
+- 所有日志/结论提交到本仓库 `results/` 目录，文件名按上文指定
+- 顶层写 `RESULTS-2.md` 汇总（格式参考 `RESULTS.md`）
+- **禁止**：向上游仓库发任何评论/PR/push；修改任何上游分支
+- 完成后 commit + push 本仓库即可，owner 会接手所有上游动作
 
-所有 PR 分支在 GitHub fork 上都有完整备份，任何机器重新 clone 即可获得全部代码。
+## 当前上游状态快照（供参考，无需动作）
+
+| 项 | 状态 |
+|---|---|
+| Dynamo #9819 | CI 全绿 + review 意见解决 + H20 50/50 背书，等 tanmayv25 re-review + `/ok to test` |
+| vLLM #43764 | 已发如实留言（0.11.0 下 6/8 + bug 实证 + 愿向 #48062 收敛），等维护者 |
+| vLLM #56977（我们开的 issue） | 等 #56137/#56195 落地后提修复 PR |
+| vLLM-Omni #7006 | 等 review（Sy0307 已标 P1 跟踪） |
+| vLLM-Omni #7564 | 根因分析已发（两条丢失路径），等 module owner 拍板语义 |
