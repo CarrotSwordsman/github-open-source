@@ -15,9 +15,13 @@ owner 开发机                             临时 GPU 容器（AI 助手）
                                         3. 搭环境 → 跑实验（严格按任务里的验证命令）
                                         4. 结果写 RESULTS.md + 原始日志存 results/
        ◀────────────push─────────────   5. commit + push 回本仓库 main
-6. review 结果，决定后续（留言/改代码/
-   布置下一批任务）                       （如任务要求：去 upstream PR/issue 留言）
+6. review 结果，自行决定后续
+   （PR 留言 / 改代码 / 布置下一批任务）
 ```
+
+**职责边界**：GPU 侧 AI 助手**只负责执行实验和推送结果回本仓库**。对 upstream 的 PR 留言、
+评论、代码推送等对外动作一律由 owner 决定和执行（RESULTS.md 中的"留言草稿"只是供 owner
+参考的建议，不是待 AI 执行的步骤）。
 
 ## GPU 侧 AI 助手接手流程（每次会话自动执行）
 
@@ -28,8 +32,7 @@ owner 开发机                             临时 GPU 容器（AI 助手）
    - 结论写 `RESULTS.md` 对应小节（环境、命令、逐项结果、给 owner 的建议）
    - 原始日志存 `results/<task>-*.log`
    - commit message 格式：`docs: <任务名> verification results`
-5. push 回 main；若任务明确要求 upstream 留言/推送，用容器持久盘上的长期 PAT
-   （`git push` 走 credential helper 自动认证；API 用 `curl -H "Authorization: Bearer $GH_TOKEN"`）
+5. push 回 main（容器侧已配长期 PAT，git push 自动认证）
 
 ## 约定
 
