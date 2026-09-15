@@ -1,0 +1,9 @@
+[1] test_async_llm_parallel_sampling[RequestOutputKind.CUMULATIVE] => exit=1 test_parallel_sampling_output_kinds.py::test_async_llm_parallel_sampling[RequestOutputKind.CUMULATIVE] FAILED [100%]
+[2] test_async_llm_parallel_sampling[RequestOutputKind.DELTA] => exit=1 test_parallel_sampling_output_kinds.py::test_async_llm_parallel_sampling[RequestOutputKind.DELTA] FAILED [100%]
+[3] test_async_llm_parallel_sampling[RequestOutputKind.FINAL_ONLY] => exit=0 test_parallel_sampling_output_kinds.py::test_async_llm_parallel_sampling[RequestOutputKind.FINAL_ONLY] PASSED [100%]
+[4] test_llm_parallel_sampling_output_kinds[RequestOutputKind.CUMULATIVE] => exit=0 test_parallel_sampling_output_kinds.py::test_llm_parallel_sampling_output_kinds[RequestOutputKind.CUMULATIVE] PASSED [100%]
+[5] test_llm_parallel_sampling_output_kinds[RequestOutputKind.DELTA] => exit=0 test_parallel_sampling_output_kinds.py::test_llm_parallel_sampling_output_kinds[RequestOutputKind.DELTA] PASSED [100%]
+[6] test_llm_parallel_sampling_output_kinds[RequestOutputKind.FINAL_ONLY] => exit=0 test_parallel_sampling_output_kinds.py::test_llm_parallel_sampling_output_kinds[RequestOutputKind.FINAL_ONLY] PASSED [100%]
+[7] test_async_llm_parallel_sampling_delta_streaming => exit=0 test_parallel_sampling_output_kinds.py::test_async_llm_parallel_sampling_delta_streaming PASSED [100%]
+[8] test_async_llm_parallel_sampling_cumulative_monotonic => exit=0 test_parallel_sampling_output_kinds.py::test_async_llm_parallel_sampling_cumulative_monotonic PASSED [100%]
+ALL_DONE

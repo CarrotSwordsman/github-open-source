@@ -1,0 +1,62 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /apdcephfs_hzlf/share_1227201/mershi/envs/dynamo-9819-rc24/bin/python3.12
+cachedir: .pytest_cache
+benchmark: 5.3.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /apdcephfs_hzlf/share_1227201/mershi/github-open-source/dynamo-9819
+configfile: pyproject.toml
+plugins: benchmark-5.3.0, asyncio-1.4.0, ai-dynamo-1.5.0, timeout-2.4.0, anyio-4.15.1, mock-3.15.1
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 50 items
+
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_populate_kv_cache_capacity_publishes_engine_values PASSED [  2%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_populate_kv_cache_capacity_falls_back_when_unavailable PASSED [  4%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_populate_kv_cache_capacity_rejects_invalid_values PASSED [  6%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_custom_jinja_template_invalid_path PASSED [  8%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_custom_jinja_template_valid_path PASSED [ 10%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_custom_jinja_template_env_var_expansion PASSED [ 12%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_parse_args_returns_config_with_expected_attrs PASSED [ 14%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_config_use_kv_events_derived_from_publish_kv_events PASSED [ 16%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_publish_metrics_is_independent_from_kv_events PASSED [ 18%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_deprecated_publish_events_flag_alias_maps_to_both_controls PASSED [ 20%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_deprecated_publish_events_env_alias_maps_to_both_controls PASSED [ 22%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_init_llm_worker_rejects_invalid_kv_cache_config_override PASSED [ 24%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_config_has_connector PASSED [ 26%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_config_multiple_connectors_fails PASSED [ 28%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_enable_multimodal_maps_to_multimodal_modality PASSED [ 30%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_modality_multimodal_alias_does_not_warn PASSED [ 32%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_disaggregation_mode_accepts_canonical_agg PASSED [ 34%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_disaggregation_mode_accepts_pd_alias PASSED [ 36%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_removed_disaggregation_mode_legacy_aggregated_value_is_rejected PASSED [ 38%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_removed_disaggregation_mode_legacy_env_value_is_rejected PASSED [ 40%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_conversation_affinity_cli_flag PASSED [ 42%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_conversation_affinity_env_var PASSED [ 44%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_conversation_affinity_defaults_false PASSED [ 46%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_conversation_affinity_dp_rank_source_cli_flag PASSED [ 48%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_conversation_affinity_dp_rank_source_env_var PASSED [ 50%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_conversation_affinity_dp_rank_source_defaults_engine PASSED [ 52%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_enable_multimodal_rejects_diffusion_modality PASSED [ 54%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_deep_update_nested_merge PASSED [ 56%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_deep_update_overwrites_scalar_with_value PASSED [ 58%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_deep_update_empty_source_unchanged PASSED [ 60%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_deep_update_adds_new_keys PASSED [ 62%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_warn_override_collisions_logs_replaced_scalar PASSED [ 64%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_warn_override_collisions_recurses_into_nested_dicts PASSED [ 66%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_warn_override_collisions_skips_new_keys PASSED [ 68%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_warn_override_collisions_skips_identical_values PASSED [ 70%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_resolve_streaming_kv_events_config_uses_nested_kv_cache_config PASSED [ 72%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_streaming_kv_events_require_python_v2_cache_manager PASSED [ 74%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_streaming_kv_events_accept_python_v2_cache_manager PASSED [ 76%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_init_llm_worker_engine_args_without_overrides[publish_flags0-False] PASSED [ 78%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_init_llm_worker_engine_args_without_overrides[publish_flags1-True] PASSED [ 80%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_init_llm_worker_engine_args_without_overrides[publish_flags2-True] PASSED [ 82%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_init_llm_worker_engine_args_without_overrides[publish_flags3-True] PASSED [ 84%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_init_llm_worker_engine_args_with_extra_engine_args PASSED [ 86%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_publish_events_does_not_materialize_unset_kv_cache_defaults PASSED [ 88%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_init_llm_worker_creates_multimodal_processor PASSED [ 90%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_strip_postprocess_workers_handles_quoted_string_value PASSED [ 92%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_init_llm_worker_strips_num_postprocess_workers_from_extra_engine_args PASSED [ 94%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_warn_override_collisions_names_the_source PASSED [ 96%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_warn_override_collisions_recurses_nested_and_skips_identical PASSED [ 98%]
+components/src/dynamo/trtllm/tests/test_trtllm_unit.py::test_extra_engine_args_overwrite_is_warned PASSED [100%]
+
+============================= 50 passed in 37.77s ==============================
