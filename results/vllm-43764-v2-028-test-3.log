@@ -1,0 +1,21 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/bin/python
+cachedir: .pytest_cache
+rootdir: /tmp/t43764
+plugins: asyncio-1.4.0, anyio-4.15.1, forked-1.7.5
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+test_parallel_sampling_output_kinds.py::test_async_llm_parallel_sampling[RequestOutputKind.FINAL_ONLY] PASSED [100%]
+
+=============================== warnings summary ===============================
+test_parallel_sampling_output_kinds.py: 14 warnings
+  /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+test_parallel_sampling_output_kinds.py::test_async_llm_parallel_sampling[RequestOutputKind.FINAL_ONLY]
+  /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=8185) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 1 passed, 15 warnings in 56.75s ========================

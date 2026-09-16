@@ -1,0 +1,37 @@
+# vLLM #43764 复测 on 0.28.0 — 失败测试分析（2026-09-16, H20）
+
+## 最终结果：7/8 passed
+
+唯一失败（隔离复跑 2 次均稳定复现，确定性）：
+
+```
+test_parallel_sampling_output_kinds.py::test_async_llm_parallel_sampling[RequestOutputKind.CUMULATIVE] FAILED
+AssertionError: Expected 3 completions, got 2
+  → AsyncLLM.generate n=3 CUMULATIVE 模式最终 output 只有 index=1,2，
+    丢了 index=0 的 completion（截断的 CompletionOutput 列表见 test-1(-rerun).log）
+```
+
+- 原始日志: vllm-43764-v2-028-test-1.log / vllm-43764-v2-028-test-1-rerun.log
+- 隔离复跑日志: vllm-43764-v2-028-test-4-rerun.log（PASSED，见下）
+
+## 初跑 test-4 失败为环境误伤，非行为失败
+
+初跑中 `test_llm_parallel_sampling_output_kinds[RequestOutputKind.CUMULATIVE]`（test-4）
+失败于 `ValueError: Free memory on device cuda:0 (4.1/95.0 GiB)`——因当时另一实验
+（Qwen3-4B E2E）并行占卡所致。隔离复跑（无并行负载）**PASSED**（45.54s）。
+另一次复跑曾遇 HF API 429 限流，加 `HF_HUB_OFFLINE=1` 后通过。
+
+初跑 8 个测试中其余 6 个（DELTA ×2 / FINAL_ONLY ×2 / delta_streaming / cumulative_monotonic）
+全部 PASSED，无环境干扰（时间窗口不与并行实验重叠）。
+
+## 与 v1（0.11.0，6/8）对比
+
+| 测试 | 0.11.0 (v1) | 0.28.0 (本次) |
+|---|---|---|
+| async CUMULATIVE | FAIL | **FAIL（同款：丢 completion）** |
+| LLM CUMULATIVE | FAIL | PASS（隔离复跑确认） |
+| 其余 6 个 | PASS | PASS |
+
+→ 0.11.0 → 0.28.0 期间 LLM 离线 CUMULATIVE 路径已修复；AsyncLLM CUMULATIVE
+路径在 0.28.0 仍丢失 completion（index=0 从最终 output 消失），与 #21948 描述的
+现象一致，是独立于我们 PR 测试的现存 upstream bug 实证。

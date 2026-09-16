@@ -1,0 +1,258 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/bin/python
+cachedir: .pytest_cache
+rootdir: /tmp/t43764
+plugins: asyncio-1.4.0, anyio-4.15.1, forked-1.7.5
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+test_parallel_sampling_output_kinds.py::test_async_llm_parallel_sampling[RequestOutputKind.CUMULATIVE] FAILED [100%]
+
+=================================== FAILURES ===================================
+________ test_async_llm_parallel_sampling[RequestOutputKind.CUMULATIVE] ________
+
+output_kind = <RequestOutputKind.CUMULATIVE: 0>
+
+    @pytest.mark.parametrize(
+        "output_kind",
+        [
+            RequestOutputKind.CUMULATIVE,
+            RequestOutputKind.DELTA,
+            RequestOutputKind.FINAL_ONLY,
+        ],
+    )
+    @pytest.mark.asyncio
+    async def test_async_llm_parallel_sampling(output_kind):
+        """Test AsyncLLM.generate with n>1 across all output_kinds."""
+        n = 3
+        max_tokens = 20
+    
+        engine_args = AsyncEngineArgs(model=MODEL, enforce_eager=True)
+        engine = AsyncLLM.from_engine_args(engine_args)
+    
+        sampling_params = SamplingParams(
+            n=n,
+            max_tokens=max_tokens,
+            temperature=1.0,
+            output_kind=output_kind,
+        )
+    
+        final_output = None
+        async for out in engine.generate(
+            request_id="test-parallel-0",
+            prompt=PROMPTS[0],
+            sampling_params=sampling_params,
+        ):
+            final_output = out
+    
+        assert final_output is not None, "No output received from AsyncLLM.generate"
+>       assert len(final_output.outputs) == n, (
+            f"Expected {n} completions, got {len(final_output.outputs)}"
+        )
+E       AssertionError: Expected 3 completions, got 2
+E       assert 2 == 3
+E        +  where 2 = len([CompletionOutput(index=1, text=' not emitting all of the pollutants causing drought and floods.  France actually has lots of water rights though', token_ids=[45, 41427, 70, 9, 5, 29791, 3735, 7635, 8, 12530, 4, 1437, 1470, 888, 34, 3739, 9, 514, 659, 600], routed_experts=None, sampling_mask=None, cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None), CompletionOutput(index=2, text=' moving rapidly towards the French presidential election. Its Republican president, subtweeting President FrancoisALLY, is', token_ids=[1375, 6042, 1567, 5, 1515, 1939, 729, 4, 3139, 1172, 394, 6, 30757, 21210, 154, 270, 16704, 32191, 6, 16], routed_experts=None, sampling_mask=None, cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)])
+E        +    where [CompletionOutput(index=1, text=' not emitting all of the pollutants causing drought and floods.  France actually has lots of water rights though', token_ids=[45, 41427, 70, 9, 5, 29791, 3735, 7635, 8, 12530, 4, 1437, 1470, 888, 34, 3739, 9, 514, 659, 600], routed_experts=None, sampling_mask=None, cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None), CompletionOutput(index=2, text=' moving rapidly towards the French presidential election. Its Republican president, subtweeting President FrancoisALLY, is', token_ids=[1375, 6042, 1567, 5, 1515, 1939, 729, 4, 3139, 1172, 394, 6, 30757, 21210, 154, 270, 16704, 32191, 6, 16], routed_experts=None, sampling_mask=None, cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)] = RequestOutput(request_id=test-parallel-0, prompt='The capital of France is', prompt_token_ids=[2, 133, 812, 9, 1470, 16], encoder_prompt=None, encoder_prompt_token_ids=None, prompt_logprobs=None, outputs=[CompletionOutput(index=1, text=' not emitting all of the pollutants causing drought and floods.  France actually has lots of water rights though', token_ids=[45, 41427, 70, 9, 5, 29791, 3735, 7635, 8, 12530, 4, 1437, 1470, 888, 34, 3739, 9, 514, 659, 600], routed_experts=None, sampling_mask=None, cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None), CompletionOutput(index=2, text=' moving rapidly towards the French presidential election. Its Republican president, subtweeting President FrancoisALLY, is', token_ids=[1375, 6042, 1567, 5, 1515, 1939, 729, 4, 3139, 1172, 394, 6, 30757, 21210, 154, 270, 16704, 32191, 6, 16], routed_experts=None, sampling_mask=None, cumulative_logprob=None, logprobs=None, finish_reason=length, stop_reason=None)], finished=True, metrics=RequestStateStats(num_generation_tokens=20, arrival_time=1789561465.6257508, queued_ts=8607392.951422788, scheduled_ts=8607392.95143612, first_token_ts=8607392.974082002, last_token_ts=8607393.080874663, first_token_latency=0.05006289482116699, is_corrupted=False), lora_request=None, num_cached_tokens=0, num_cache_creation_tokens=0).outputs
+
+test_parallel_sampling_output_kinds.py:58: AssertionError
+----------------------------- Captured stdout call -----------------------------
+INFO 09-16 20:24:06 [arg_utils.py:813] HF_HUB_OFFLINE is True, replace model_id [facebook/opt-125m] to model_path [/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6]
+INFO 09-16 20:24:06 [model.py:672] Resolved architecture: OPTForCausalLM
+INFO 09-16 20:24:06 [model.py:1965] Using max model len 2048
+INFO 09-16 20:24:06 [scheduler.py:242] Chunked prefill is enabled with max_num_batched_tokens=2048.
+WARNING 09-16 20:24:06 [vllm.py:1285] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING 09-16 20:24:06 [vllm.py:1354] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 09-16 20:24:06 [kernel.py:308] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO 09-16 20:24:06 [vllm.py:1533] Cudagraph is disabled under eager mode
+INFO 09-16 20:24:07 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+(EngineCore pid=31046) INFO 09-16 20:24:07 [core.py:122] Initializing a V1 LLM engine (v0.28.0) with config: model='/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6', speculative_config=None, tokenizer='/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=2048, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [2048], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=31046) INFO 09-16 20:24:09 [parallel_state.py:1638] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_05c56637481a468ba120bd5c0ffca352 backend=nccl
+(EngineCore pid=31046) INFO 09-16 20:24:09 [parallel_state.py:1982] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=31046) INFO 09-16 20:24:09 [gpu_worker.py:396] Using V2 Model Runner
+(EngineCore pid=31046) INFO 09-16 20:24:11 [model_runner.py:358] Loading model from scratch...
+(EngineCore pid=31046) INFO 09-16 20:24:12 [cuda.py:486] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=31046) INFO 09-16 20:24:12 [flash_attn.py:866] Using FlashAttention version 3
+(EngineCore pid=31046) INFO 09-16 20:24:12 [default_loader.py:430] Loading weights took 0.18 seconds
+(EngineCore pid=31046) INFO 09-16 20:24:13 [model_runner.py:380] Model loading took 0.24 GiB memory and 2.698111 seconds
+(EngineCore pid=31046) INFO 09-16 20:24:13 [topk_topp_sampler.py:62] Using FlashInfer for top-p & top-k sampling.
+(EngineCore pid=31046) INFO 09-16 20:24:16 [gpu_worker.py:578] Available KV cache memory: 86.87 GiB
+(EngineCore pid=31046) INFO 09-16 20:24:16 [kv_cache_utils.py:1869] GPU KV cache size: 2,530,352 tokens, Maximum concurrency for 2,048 tokens per request: 1235.52x
+(EngineCore pid=31046) INFO 09-16 20:24:22 [kernel_warmup.py:260] Using FlashInfer autotune cache file: /root/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/90a/adb1cd77a7ec53f6a7054f21e6c07c47d27c7cd455df6b74d383bfc9c2644a57/autotune_configs.json
+(EngineCore pid=31046) INFO 09-16 20:24:22 [gpu_worker.py:804] Free memory on device (94.69/95.0 GiB) on startup. Desired GPU memory utilization is (0.92, 87.4 GiB). Actual usage is 0.5 GiB for consumed memory (weights + non-torch), 0.04 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=93122083759` (86.73 GiB) to fit into requested memory, or `--kv-cache-memory=100942083072` (94.01 GiB) to fully utilize gpu memory. Current kv cache memory in use is 86.87 GiB.
+(EngineCore pid=31046) INFO 09-16 20:24:24 [jit_monitor.py:85] Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+(EngineCore pid=31046) INFO 09-16 20:24:25 [torch_utils.py:262] Reducing Torch threads from 192 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=31046) INFO 09-16 20:24:25 [core.py:354] init engine (profile, create kv cache, warmup model) took 11.56 s
+(EngineCore pid=31046) INFO 09-16 20:24:25 [kernel.py:308] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+WARNING 09-16 20:24:25 [input_processor.py:296] Passing raw prompts to InputProcessor is deprecated and will be removed in v0.18. You should instead pass the outputs of Renderer.render_cmpl() or Renderer.render_chat().
+----------------------------- Captured stderr call -----------------------------
+(EngineCore pid=31046) Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+(EngineCore pid=31046) Loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  5.79it/s]
+(EngineCore pid=31046) Loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  5.78it/s]
+(EngineCore pid=31046) 
+(EngineCore pid=31046) 2026-09-16 20:24:22,188 - INFO - autotuner.py:829 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(EngineCore pid=31046) 2026-09-16 20:24:22,201 - INFO - autotuner.py:852 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(EngineCore pid=31046) 2026-09-16 20:24:22,213 - INFO - autotuner.py:2269 - flashinfer.jit: [Autotuner]: Saved 0 configs to /root/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/90a/adb1cd77a7ec53f6a7054f21e6c07c47d27c7cd455df6b74d383bfc9c2644a57/autotune_configs.json (0 new, 0 from previous config)
+------------------------------ Captured log call -------------------------------
+INFO     vllm.engine.arg_utils:arg_utils.py:813 HF_HUB_OFFLINE is True, replace model_id [facebook/opt-125m] to model_path [/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--facebook--opt-125m/snapshots/27dcfa74d334bc871f3234de431e71c6eeba5dd6]
+INFO     vllm.config.model:model.py:672 Resolved architecture: OPTForCausalLM
+INFO     vllm.config.model:model.py:1965 Using max model len 2048
+INFO     vllm.config.scheduler:scheduler.py:242 Chunked prefill is enabled with max_num_batched_tokens=2048.
+WARNING  vllm.config.vllm:vllm.py:1285 Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING  vllm.config.vllm:vllm.py:1354 Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO     vllm.config.kernel:kernel.py:308 Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO     vllm.config.vllm:vllm.py:1533 Cudagraph is disabled under eager mode
+INFO     vllm.config.compilation:compilation.py:329 Enabled custom fusions: norm_quant, act_quant
+WARNING  vllm.v1.engine.input_processor:input_processor.py:296 Passing raw prompts to InputProcessor is deprecated and will be removed in v0.18. You should instead pass the outputs of Renderer.render_cmpl() or Renderer.render_chat().
+=============================== warnings summary ===============================
+test_parallel_sampling_output_kinds.py: 14 warnings
+  /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+test_parallel_sampling_output_kinds.py::test_async_llm_parallel_sampling[RequestOutputKind.CUMULATIVE]
+  /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=30789) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED test_parallel_sampling_output_kinds.py::test_async_llm_parallel_sampling[RequestOutputKind.CUMULATIVE]
+======================= 1 failed, 15 warnings in 48.49s ========================
+--- Logging error ---
+Traceback (most recent call last):
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/logging/__init__.py", line 1163, in emit
+    stream.write(msg + self.terminator)
+ValueError: I/O operation on closed file.
+Call stack:
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/weakref.py", line 666, in _exitfunc
+    f()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/weakref.py", line 590, in __call__
+    return info.func(*info.args, **(info.kwargs or {}))
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/utils.py", line 615, in shutdown
+    logger.info(
+Message: '[shutdown] Process manager: send sigterm to process %s'
+Arguments: ('EngineCore',)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/logging/__init__.py", line 1163, in emit
+    stream.write(msg + self.terminator)
+ValueError: I/O operation on closed file.
+Call stack:
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1032, in _bootstrap
+    self._bootstrap_inner()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 728, in monitor_engine_cores
+    logger.warning_once(
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/logger.py", line 145, in warning_once
+    _print_warning_once(self, msg, *args)
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/logger.py", line 90, in _print_warning_once
+    logger.warning(msg, *args, stacklevel=3)
+Message: '[shutdown] MPClient: engine core exited unexpectedly; starting cleanup'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/logging/__init__.py", line 1163, in emit
+    stream.write(msg + self.terminator)
+ValueError: I/O operation on closed file.
+Call stack:
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1032, in _bootstrap
+    self._bootstrap_inner()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 731, in monitor_engine_cores
+    _self.shutdown()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 689, in shutdown
+    logger.info("[shutdown] MPClient: start timeout=%s", timeout_str)
+Message: '[shutdown] MPClient: start timeout=%s'
+Arguments: ('default',)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/logging/__init__.py", line 1163, in emit
+    stream.write(msg + self.terminator)
+ValueError: I/O operation on closed file.
+Call stack:
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1032, in _bootstrap
+    self._bootstrap_inner()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 731, in monitor_engine_cores
+    _self.shutdown()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 691, in shutdown
+    logger.info_once("[shutdown] MPClient: stopping engine manager")
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/logger.py", line 134, in info_once
+    _print_info_once(self, msg, *args)
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/logger.py", line 84, in _print_info_once
+    logger.info(msg, *args, stacklevel=3)
+Message: '[shutdown] MPClient: stopping engine manager'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/logging/__init__.py", line 1163, in emit
+    stream.write(msg + self.terminator)
+ValueError: I/O operation on closed file.
+Call stack:
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1032, in _bootstrap
+    self._bootstrap_inner()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 731, in monitor_engine_cores
+    _self.shutdown()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 693, in shutdown
+    logger.info_once("[shutdown] MPClient: engine manager stopped")
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/logger.py", line 134, in info_once
+    _print_info_once(self, msg, *args)
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/logger.py", line 84, in _print_info_once
+    logger.info(msg, *args, stacklevel=3)
+Message: '[shutdown] MPClient: engine manager stopped'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/logging/__init__.py", line 1163, in emit
+    stream.write(msg + self.terminator)
+ValueError: I/O operation on closed file.
+Call stack:
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1032, in _bootstrap
+    self._bootstrap_inner()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 731, in monitor_engine_cores
+    _self.shutdown()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 694, in shutdown
+    logger.info_once("[shutdown] MPClient: cleaning up background resources")
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/logger.py", line 134, in info_once
+    _print_info_once(self, msg, *args)
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/logger.py", line 84, in _print_info_once
+    logger.info(msg, *args, stacklevel=3)
+Message: '[shutdown] MPClient: cleaning up background resources'
+Arguments: ()
+--- Logging error ---
+Traceback (most recent call last):
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/logging/__init__.py", line 1163, in emit
+    stream.write(msg + self.terminator)
+ValueError: I/O operation on closed file.
+Call stack:
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1032, in _bootstrap
+    self._bootstrap_inner()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 731, in monitor_engine_cores
+    _self.shutdown()
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 696, in shutdown
+    logger.info_once("[shutdown] MPClient: complete")
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/logger.py", line 134, in info_once
+    _print_info_once(self, msg, *args)
+  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/logger.py", line 84, in _print_info_once
+    logger.info(msg, *args, stacklevel=3)
+Message: '[shutdown] MPClient: complete'
+Arguments: ()

@@ -1,0 +1,434 @@
+[Bug]: Qwen/Qwen1.5-MoE-A2.7B-Chat produces degenerate output with torch.compile (VLLM_COMPILE) but correct output without it on vLLM 0.28.0 (H100, torch 2.13.0+cu130); CUDA graphs, compile cache and custom_ops make no difference
+state: open
+---
+## Your current environment
+
+The `collect_env.py` output below was captured on 2026-09-14 at about 19:45 UTC on the same machine and Python virtual environment that produced the runs described in this report; the runs themselves executed between 21:02 and 21:07 UTC the same day. vLLM 0.28.0 is installed with the `torch==2.13.0` that its `requirements/cuda.txt` pins; the second Triton package listed (`tokenspeed-triton`) is pulled in by `tokenspeed-mla==0.1.8`, which `requirements/cuda.txt` of 0.28.0 pins.
+
+<details>
+<summary>The output of <code>python collect_env.py</code></summary>
+
+```text
+Collecting environment information...
+==============================
+        System Info
+==============================
+OS                           : Ubuntu 24.04.3 LTS (x86_64)
+GCC version                  : (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+Clang version                : Could not collect
+CMake version                : version 3.28.3
+Libc version                 : glibc-2.39
+
+==============================
+       PyTorch Info
+==============================
+PyTorch version              : 2.13.0+cu130
+Is debug build               : False
+CUDA used to build PyTorch   : 13.0
+ROCM used to build PyTorch   : N/A
+XPU used to build PyTorch    : N/A
+
+==============================
+      Python Environment
+==============================
+Python version               : 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0] (64-bit runtime)
+Python platform              : Linux-6.8.0-90-generic-x86_64-with-glibc2.39
+    
+==============================
+       CUDA / GPU Info
+==============================
+Is CUDA available            : True
+CUDA runtime version         : Could not collect
+CUDA_MODULE_LOADING set to   : 
+GPU models and configuration : GPU 0: NVIDIA H100 80GB HBM3
+Nvidia driver version        : 580.126.09
+cuDNN version                : Probably one of the following:
+/usr/lib/x86_64-linux-gnu/libcudnn.so.9.8.0
+/usr/lib/x86_64-linux-gnu/libcudnn_adv.so.9.8.0
+/usr/lib/x86_64-linux-gnu/libcudnn_cnn.so.9.8.0
+/usr/lib/x86_64-linux-gnu/libcudnn_engines_precompiled.so.9.8.0
+/usr/lib/x86_64-linux-gnu/libcudnn_engines_runtime_compiled.so.9.8.0
+/usr/lib/x86_64-linux-gnu/libcudnn_graph.so.9.8.0
+/usr/lib/x86_64-linux-gnu/libcudnn_heuristic.so.9.8.0
+/usr/lib/x86_64-linux-gnu/libcudnn_ops.so.9.8.0
+HIP runtime version          : N/A
+MIOpen runtime version       : N/A
+Is XNNPACK available         : False
+
+==============================
+          CPU Info
+==============================
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        46 bits physical, 57 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               208
+On-line CPU(s) list:                  0-207
+Vendor ID:                            GenuineIntel
+Model name:                           Intel(R) Xeon(R) Platinum 8470
+CPU family:                           6
+Model:                                143
+Thread(s) per core:                   2
+Core(s) per socket:                   52
+Socket(s):                            2
+Stepping:                             8
+CPU(s) scaling MHz:                   32%
+CPU max MHz:                          3800.0000
+CPU min MHz:                          800.0000
+BogoMIPS:                             4000.00
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cat_l2 cdp_l3 intel_ppin cdp_l2 ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust b
+mi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb intel_pt avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local split_lock_detect user_shstk avx_vnni avx512_bf16 wbnoinvd dtherm ida arat pln pts vnmi avx512vbmi umip pku ospke waitpkg avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg tme avx512_vpopcntdq la57 rdpid bus_lock_detect cldemote movdiri movdir64b enqcmd fsrm md_clear serialize tsxldtrk pconfig arch_lbr ibt amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d arch_capabilities ibpb_exit_to_user
+Virtualization:                       VT-x
+L1d cache:                            4.9 MiB (104 instances)
+L1i cache:                            3.3 MiB (104 instances)
+L2 cache:                             208 MiB (104 instances)
+L3 cache:                             210 MiB (2 instances)
+NUMA node(s):                         2
+NUMA node0 CPU(s):                    0-51,104-155
+NUMA node1 CPU(s):                    52-103,156-207
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Not affected
+Vulnerability Retbleed:               Not affected
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+Vulnerability Vmscape:                Mitigation; IBPB before exit to userspace
+
+==============================
+Versions of relevant libraries
+==============================
+[pip3] flashinfer-python==0.6.16.post3
+[pip3] nccl4py==0.5.0
+[pip3] numpy==2.3.5
+[pip3] nvidia-cublas==13.1.1.3
+[pip3] nvidia-cuda-cccl==13.3.4.2.1
+[pip3] nvidia-cuda-crt==13.4.59
+[pip3] nvidia-cuda-cupti==13.0.85
+[pip3] nvidia-cuda-nvcc==13.4.59
+[pip3] nvidia-cuda-nvdisasm==13.4.49
+[pip3] nvidia-cuda-nvrtc==13.0.88
+[pip3] nvidia-cuda-runtime==13.0.96
+[pip3] nvidia-cudnn-cu13==9.20.0.48
+[pip3] nvidia-cudnn-frontend==1.29.0
+[pip3] nvidia-cufft==12.0.0.61
+[pip3] nvidia-cufile==1.15.1.6
+[pip3] nvidia-curand==10.4.0.35
+[pip3] nvidia-cusolver==12.0.4.66
+[pip3] nvidia-cusparse==12.6.3.3
+[pip3] nvidia-cusparselt-cu13==0.8.1
+[pip3] nvidia-cutlass-dsl==4.6.2
+[pip3] nvidia-cutlass-dsl-libs-base==4.6.2
+[pip3] nvidia-cutlass-dsl-libs-core==4.6.2
+[pip3] nvidia-cutlass-dsl-libs-cu12==4.6.2
+[pip3] nvidia-cutlass-dsl-libs-cu13==4.6.2
+[pip3] nvidia-ml-py==13.610.43
+[pip3] nvidia-nccl-cu13==2.29.7
+[pip3] nvidia-nvjitlink==13.4.52
+[pip3] nvidia-nvshmem-cu13==3.4.5
+[pip3] nvidia-nvtx==13.0.85
+[pip3] nvidia-nvvm==13.4.59
+[pip3] pyzmq==27.2.0
+[pip3] tokenspeed-triton==3.8.10.post20260906
+[pip3] torch==2.13.0
+[pip3] torch_c_dlpack_ext==0.1.5
+[pip3] torchaudio==2.11.0
+[pip3] torchcodec==0.16.0
+[pip3] torchvision==0.28.0
+[pip3] transformers==5.17.0
+[pip3] triton==3.7.1
+[conda] Could not collect
+
+==============================
+         vLLM Info
+==============================
+ROCM Version                 : Could not collect
+vLLM Version                 : 0.28.0
+vLLM Build Flags:
+  CUDA Archs: Not Set; ROCm: Disabled; XPU: Disabled
+GPU Topology:
+  	[4mGPU0	NIC0	NIC1	NIC2	NIC3	NIC4	NIC5	NIC6	NIC7	NIC8	NIC9	CPU Affinity	NUMA Affinity	GPU NUMA ID[0m
+GPU0	 X 	SYS	SYS	SYS	SYS	NODE	NODE	NODE	PIX	SYS	SYS	52-103,156-207	1		N/A
+NIC0	SYS	 X 	NODE	NODE	NODE	SYS	SYS	SYS	SYS	NODE	NODE				
+NIC1	SYS	NODE	 X 	NODE	NODE	SYS	SYS	SYS	SYS	NODE	NODE				
+NIC2	SYS	NODE	NODE	 X 	NODE	SYS	SYS	SYS	SYS	NODE	NODE				
+NIC3	SYS	NODE	NODE	NODE	 X 	SYS	SYS	SYS	SYS	NODE	NODE				
+NIC4	NODE	SYS	SYS	SYS	SYS	 X 	NODE	NODE	NODE	SYS	SYS				
+NIC5	NODE	SYS	SYS	SYS	SYS	NODE	 X 	NODE	NODE	SYS	SYS				
+NIC6	NODE	SYS	SYS	SYS	SYS	NODE	NODE	 X 	NODE	SYS	SYS				
+NIC7	PIX	SYS	SYS	SYS	SYS	NODE	NODE	NODE	 X 	SYS	SYS				
+NIC8	SYS	NODE	NODE	NODE	NODE	SYS	SYS	SYS	SYS	 X 	PIX				
+NIC9	SYS	NODE	NODE	NODE	NODE	SYS	SYS	SYS	SYS	PIX	 X 				
+
+Legend:
+
+  X    = Self
+  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
+  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
+  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)
+  PIX  = Connection traversing at most a single PCIe bridge
+  NV#  = Connection traversing a bonded set of # NVLinks
+
+NIC Legend:
+
+  NIC0: ibp25s0
+  NIC1: ibp41s0
+  NIC2: ibp59s0
+  NIC3: ibp92s0
+  NIC4: ibp155s0
+  NIC5: ibp170s0
+  NIC6: ibp187s0
+  NIC7: ibp218s0
+  NIC8: rocep83s0f0
+  NIC9: rocep83s0f1
+
+==============================
+     Environment Variables
+==============================
+PYTORCH_NVML_BASED_CUDA_CHECK=1
+TORCHINDUCTOR_COMPILE_THREADS=1
+TORCHINDUCTOR_CACHE_DIR=/tmp/torchinductor_root
+
+```
+
+</details>
+
+## Describe the bug
+
+With vLLM 0.28.0 on a single H100 80GB, `Qwen/Qwen1.5-MoE-A2.7B-Chat` (architecture `Qwen2MoeForCausalLM`, bf16, unquantised, TP=1) produces degenerate text under greedy decoding whenever `CompilationConfig.mode` resolves to `VLLM_COMPILE` (3), and coherent text whenever it resolves to `NONE` (0). Nothing else in the configuration was found to matter: turning CUDA graphs on or off, enabling or disabling vLLM's torch.compile cache, and setting `custom_ops=['all']` all left the result unchanged. The behaviour is reproducible (two consecutive `generate` calls in the same process gave identical tokens in every configuration, and the three separate compile-on processes of rows 1, 2 and 5 gave identical tokens on all 16 prompts), so this is not run-to-run noise.
+
+### Example: prompt 0, 32 greedy tokens
+
+Prompt: `The verifier re-runs a sampled computation and compares hashes.` (12 prompt tokens).
+
+Compilation on (`mode=3`), identical for `cudagraph_mode` `FULL_AND_PIECEWISE` and `NONE`, for compile cache on and off, and for `custom_ops=['all']`:
+
+```text
+token ids: [279, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198, 1782, 198]
+text:      ' the\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\n'
+```
+
+Compilation off (`mode=0`), identical for `cudagraph_mode` `FULL` and `NONE`:
+
+```text
+token ids: [576, 88737, 646, 1083, 1779, 279, 11064, 315, 975, 320, 32904, 54, 8, 323, 11064, 315, 18279, 320, 32904, 50, 8, 369, 279, 34447, 13, 576, 88737, 646, 1083, 1779, 279, 11064]
+text:      ' The verifier can also check the proof of work (PoW) and proof of stake (PoS) for the computation. The verifier can also check the proof'
+```
+
+The two outputs differ from the very first generated token (279 versus 576). Across the batch, the compiled and uncompiled runs disagree on the first generated token for 15 of the 16 prompts (prompt 3 agrees on the first token and diverges at the second), so the difference is present in the prefill step rather than accumulating over the 32 generated tokens.
+
+### The six configurations
+
+Each row is one fresh Python process on the same machine, loading the same pinned model revision and generating 32 greedy tokens for the same batch of 16 prompts, twice. "Cycle" means the last 16 of the 32 generated tokens repeat with a period of 1, 2 or 3 (`t[i] == t[i+p]` for all i). "Identical to eager" counts prompts whose 32 tokens equal those of the compile-off, graphs-off row. The batch contains 8 distinct prompts, ea
+ch present twice (positions i and i+8); "duplicates agree" counts the pairs whose two copies produced identical tokens.
+
+| # | compilation_config passed | resolved mode | resolved cudagraph_mode | custom_ops | compile cache | prompts ending in a cycle (of 16) | identical to eager (of 16) | duplicates agree (of 8) | 2 repeats identical |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | `{"mode": 3, "cudagraph_mode": "FULL_AND_PIECEWISE"}` | 3 (VLLM_COMPILE) | FULL_AND_PIECEWISE | `['none']` | disabled | 9 | 0 | 0 | yes |
+| 2 | `{"mode": 3, "cudagraph_mode": "NONE"}` | 3 (VLLM_COMPILE) | NONE | `['none']` | disabled | 9 | 0 | 0 | yes |
+| 3 | `{"mode": 0, "cudagraph_mode": "FULL"}` | 0 (NONE) | FULL | `['all']` | disabled | 0 | 16 | 8 | yes |
+| 4 | `{"mode": 0, "cudagraph_mode": "NONE"}` (reference) | 0 (NONE) | NONE | `['all']` | disabled | 0 | 16 (reference) | 8 | yes |
+| 5 | as row 1, compile cache enabled | 3 (VLLM_COMPILE) | FULL_AND_PIECEWISE | `['none']` | enabled | 9 | 0 | 0 | yes |
+| 6 | as row 1 plus `"custom_ops": ["all"]` | 3 (VLLM_COMPILE) | FULL_AND_PIECEWISE | `['all']` | disabled | 9 | 0 | 0 | yes |
+
+Pairwise token identity over all 16 prompts:
+
+- row 1 versus row 2 (CUDA graphs on versus off, compile on): 16/16 identical
+- row 3 versus row 4 (CUDA graphs on versus off, compile off): 16/16 identical
+- row 1 versus row 5 (compile cache disabled versus enabled): 16/16 identical
+- row 1 versus row 6 (`custom_ops` `['none']` versus `['all']`): 8/16 identical (prompt 0 among the identical ones); row 6 versus row 4: 0/16
+- any compile-on row versus any compile-off row: 0/16 identical, first difference at prompt 0
+
+Per-prompt cycle periods (prompt order as in the reproduction below; `-` means no period of 3 or less over the last 16 tokens):
+
+- rows 1, 2 and 5: `2 - - 1 - 1 1 - 1 1 - - 2 - 1 1` (9 prompts: 7 with period 1, 2 with period 2)
+- row 6: `2 - 1 1 - 1 1 - 1 - 1 - 2 - - 1` (9 prompts: 7 with period 1, 2 with period 2)
+- rows 3 and 4: none
+
+The 7 compiled outputs without a short cycle are not coherent continuations either; the full texts are below.
+
+<details>
+<summary>All 16 prompts: compiled (row 1) versus eager (row 4) text</summary>
+
+Prompts 8 to 15 repeat prompts 0 to 7. Long prompts are the sentence "The verifier records the batch shape at every step and replays it later." repeated 3, 6, 9 or 12 times (45, 90, 135 and 180 prompt tokens).
+
+```text
+[ 0] prompt: The verifier re-runs a sampled computation and compares hashes.
+     compile: ' the\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\nthe\n'
+     eager  : ' The verifier can also check the proof of work (PoW) and proof of stake (PoS) for the computation. The verifier can also check the proof'
+[ 1] prompt: <long sentence x3>
+     compile: ' the.,慢慢地. ,0.,0.慢慢地(,0.     0.   ,,慢慢地 ( '
+     eager  : ' The verifier records the batch shape at every step and replays it later. The verifier records the batch shape at every step and replays it later. The verifier'
+[ 2] prompt: Floating-point addition is not associative, so
+     compile: '协体一分一分加体加加加加加加加加没有在法分分说说说说 传传传传说说说'
+     eager  : ' (a + b) + c is not necessarily equal to a + (b + c). (a + b) + c ≠ a + (b +'
+[ 3] prompt: <long sentence x6>
+     compile: ' The\n The'   (then 29 repetitions of token 151645)
+     eager  : ' The verifier records the batch shape at every step and replays it later. The verifier records the batch shape at every step and replays it later. The verifier'
+[ 4] prompt: def fibonacci(n):
+     compile: 'lang</:_\nvariomba.a\n any:\n the. def: None.\n\n 0.幼�勾\n好\n'
+     eager  : ' \n  if n <= 1: \n    return n \n  else: \n    return fibonacci(n-1) + fibonacci(n-2) \n\n#'
+[ 5] prompt: <long sentence x9>
+     compile: ' \n\n\n\n\n'
+     eager  : ' The verifier records the batch shape at every step and replays it later. The verifier records the batch shape at every step and replays it later. The verifier'
+[ 6] prompt: In 1854 the
+     compile: '.. .... ... ... ... ... ... & ... & & & & & & & & & & & & & & & & & & & &'
+     eager  : ' British government sent a fleet to ______.\nA. protect the Indian people\nB. protect the Indian army\nC. take over the government\nD. take'
+[ 7] prompt: <long sentence x12>
+     compile: ' of & to around\n to the\n the the\n the and the the around the the the around the the the the the the the the the'
+     eager  : ' The verifier records the batch shape at every step and replays it later. The verifier records the batch shape at every step and replays it later. The verifier'
+[ 8] prompt: (same as 0)
+     compile: '.\n\n\n\n\n to\n to\n\n to\n\n to to to to to to to to to to to to to to to to to to to'
+     eager  : ' The verifier can also check the proof of work (PoW) and proof of stake (PoS) for the computation. The verifier can also check the proof'
+[ 9] prompt: (same as 1)
+     compile: '刻. & to to to to to to to to to to to to to to to to to to to to to to to to to to to to to'
+     eager  : ' The verifier records the batch shape at every step and replays it later. The verifier records the batch shape at every step and replays it later. The verifier'
+[10] prompt: (same as 2)
+     compile: '的空关联。空关联。单通了数通的。空.皮.永远永远永远永远.永远.永远.永远.永远.'
+     eager  : ' (a + b) + c is not necessarily equal to a + (b + c). (a + b) + c ≠ a + (b +'
+[11] prompt: (same as 3)
+     compile: ' the at all. at the at all. at all. at all. at. at. at.  at.  at.  at.  at'
+     eager  : ' The verifier records the batch shape at every step and replays it later. The verifier records the batch shape at every step and replays it later. The verifier'
+[12] prompt: (same as 4)
+     compile: ' n) n: n: n, n, n, n, n, n, n, n, n, n, n, n, n,'
+     eager  : ' \n  if n <= 1: \n    return n \n  else: \n    return fibonacci(n-1) + fibonacci(n-2) \n\n#'
+[13] prompt: (same as 5)
+     compile: " like但不不不开散.及.不.不.不'及不不.不.不.不.不.不.不"
+     eager  : ' The verifier records the batch shape at every step and replays it later. The verifier records the batch shape at every step and replays it later. The verifier'
+[14] prompt: (same as 6)
+     compile: 'ersonog844444444444444444444444444444'
+     eager  : ' British government sent a fleet to ______.\nA. protect the Indian people\nB. protect the Indian army\nC. take over the government\nD. take'
+[15] prompt: (same as 7)
+     compile: ', to. ( (.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,.,'
+     eager  : ' The verifier records the batch shape at every step and replays it later. The verifier records the batch shape at every step and replays it later. The verifier'
+```
+
+</details>
+
+### Things that were ruled out
+
+- **CUDA graphs.** With compilation on, `cudagraph_mode` `FULL_AND_PIECEWISE` (51 PIECEWISE plus 51 FULL graphs captured) and `NONE` (capture skipped) gave token-identical output on all 16 prompts. With compilation off, `FULL` (51 FULL graphs captured) and `NONE` also gave token-identical output on all 16 prompts. So graph capture neither causes nor masks the difference.
+- **Compile cache.** Rows 1, 2 and 6 ran with `VLLM_DISABLE_COMPILE_CACHE=1` (log: `vLLM's torch.compile cache is disabled.`). Row 5 ran with the cache enabled; it compiled fresh (`Compiling a graph for compile range (1, 16384) takes 6.36 s`, then `saved AOT compiled function to /root/.cache/vllm/torch_compile_cache/torch_aot_compile/7954b1e9.../rank_0_0/model`; no line about loading an existing artefact) and produced tokens identical to row 1 on all 16 prompts. `VLLM_DISABLE_COMPILE_CACHE` controls vLLM's own cache only; Inductor's FX-graph cache stays enabled in 0.28.0 and was not cleared between processes.
+- **custom_ops.** Row 6 passed `custom_ops=['all']` (log: `Enabled custom fusions: norm_quant, act_quant`), still compiled (`Compiling a graph for compile range (1, 16384) takes 2.13 s`), and was still degenerate: 9 of 16 prompts end in a cycle, 0 of 16 match eager, prompt 0 identical to row 1.
+- **Flakiness.** Two consecutive `llm.generate` calls on the same batch in the same process gave identical tokens in all six processes.
+- **Plugins.** `VLLM_PLUGINS=""` was set for every run so that no general plugin from the environment was loaded. Each process checked after engine construction that `vllm.plugins.plugins_loaded` was True, `vllm.envs.VLLM_PLUGINS` was `['']`, the general plugin package installed in this environment was absent from `sys.modules`, and `FusedMoERouter.select_experts` still resolved to `vllm/model_executor/layers/fused_moe/router/fused_moe_router.py` from the installed vLLM.
+- **Batch position.** With compilation off, the two copies of each prompt in the batch produced identical tokens (8 of 8 pairs). With compilation on, no pair agreed (0 of 8 in rows 1, 2, 5 and 6) and every pair already differed at the first generated token, although the outputs for each position were reproducible across the two repeats. bf16 kernels are not guaranteed to be batch-invariant, so an occasional token flip between two copies would not be remarkable; disagreement from the first token on all 8 pairs, while the uncompiled run agrees on all 8, is why I do not read the compiled output as merely a different but valid greedy continuation.
+
+### Relevant log lines (row 1, compile on, graphs on)
+
+```text
+[model.py:672] Resolved architecture: Qwen2MoeForCausalLM
+[gpu_worker.py:396] Using V2 Model Runner
+[cuda.py:486] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+[flash_attn.py:866] Using FlashAttention version 3
+[unquantized.py:319] Using TRITON Unquantized MoE backend out of potential backends: ['TRITON', 'BATCHED_TRITON', 'FlashInfer TRTLLM', 'FlashInfer CUTLASS'].
+[unquantized.py:400] Using MoEPrepareAndFinalizeNoDPEPModular
+[unquantized.py:401] Using TritonExperts MoE backend
+[backends.py:1092] vLLM's torch.compile cache is disabled.
+[backends.py:1155] Dynamo bytecode transform time: 3.60 s
+[backends.py:393] Compiling a graph for compile range (1, 16384) takes 4.89 s
+[fused_moe.py:1161] Using default MoE config. Performance might be sub-optimal! Config file not found at /root/venv/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/configs/E=60,N=1408,device_name=NVIDIA_H100_80GB_HBM3.json
+[monitor.py:53] torch.compile and initial profiling/warmup run together took 11.45 s in total
+[model_runner.py:906] Graph capturing finished in 13 secs, took 0.85 GiB
+[core.py:347] init engine (profile, create kv cache, warmup model) took 32.41 s (compilation: 11.45 s)
+[jit_monitor.py:141] Triton kernel JIT compilation during inference: fused_moe_kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+```
+
+Resolved `compilation_config` for row 1 as printed by the engine and read back from `llm.llm_engine.vllm_config` after construction: `mode` VLLM_COMPILE, `backend` `'inductor'`, `custom_ops` `['none']`, `ir_enable_torch_wrap` True, `splitting_ops` = the 16 default attention, Mamba and KV-cache ops (`vllm::unified_attention_with_output`, ..., `vllm::unified_kv_cache_update`, `vllm::unified_mla_kv_cache_update`), `compile_ranges_endpoints` `[16384]`, `use_inductor_graph_partition` False, `cudagraph_mode` FULL_AND_PIECEWISE, `cudagraph_num_of_warmups` 1, `max_cudagraph_capture_size` 512 with 51 capture sizes from 1 to 512, `inductor_compile_config` `{'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}`, `pass_config` with every fusion flag False (`eliminate_noops` True), `dynamic_shapes_config` type `backed`, `fast_moe_cold_start` False, `static_all_moe_layers` = all 24 `model.layers.N.mlp.experts`. `kernel_config`: `ir_op_priority` `rms_norm=['native']`, `fused_add_rms_norm=['native']`, `enable_bf16x3_router_gemm` False, `moe_backend` `'auto'`, `linear_backend` `'auto'`. Row 2 resolves `cudagraph_mode` NONE and `max_cudagraph_capture_size` 0 with the same compile settings otherwise (`Compiling a graph for compile range (1, 16384) takes 0.43 s`). Rows 3 and 4 log
+TOTAL_LEN: 32998
+ `Inductor compilation was disabled by user settings` and resolve `custom_ops` to `['all']` with `Enabled custom fusions: norm_quant, act_quant`. Every process used dtype `torch.bfloat16`, `max_model_len` 2048, `enable_prefix_caching` False, `enforce_eager` False, `seed` 0.
+
+### Reproduction
+
+This is the engine construction, prompt set, sampling parameters and generate call transcribed from the script that produced the numbers above; the script was run exactly like this, one fresh process per row. The model was loaded at the pinned Hugging Face revision `ec052fda178e241c7c443468d2fa1db6618996be` (the current `main` of the repository at the time of writing).
+
+```python
+import os
+os.environ.setdefault("VLLM_ENABLE_V1_MULTIPROCESSING", "0")  # engine core in the same process
+
+from vllm import LLM, SamplingParams, TokensPrompt
+
+MODEL = "Qwen/Qwen1.5-MoE-A2.7B-Chat"
+REVISION = "ec052fda178e241c7c443468d2fa1db6618996be"
+
+SHORT = [
+    "The verifier re-runs a sampled computation and compares hashes.",
+    "Floating-point addition is not associative, so",
+    "def fibonacci(n):",
+    "In 1854 the",
+]
+LONG = [" ".join(["The verifier records the batch shape at every step and replays it later."] * k)
+        for k in (3, 6, 9, 12)]
+PROMPTS = [p for pair in zip(SHORT, LONG) for p in pair] * 2   # 16 prompts, 8 distinct, each twice
+
+
+def cycle_period(tokens, tail=16, max_period=3):
+    t = tokens[-tail:]
+    for p in range(1, max_period + 1):
+        if len(t) > p and all(t[i] == t[i + p] for i in range(len(t) - p)):
+            return p
+    return None
+
+
+def run(compile_on: bool, graphs_on: bool):
+    graph_mode = ("FULL_AND_PIECEWISE" if compile_on else "FULL") if graphs_on else "NONE"
+    llm = LLM(
+        model=MODEL, tensor_parallel_size=1, seed=0, max_model_len=2048,
+        enable_prefix_caching=False, enforce_eager=False,
+        compilation_config={"mode": 3 if compile_on else 0, "cudagraph_mode": graph_mode},
+        revision=REVISION, tokenizer_revision=REVISION,
+    )
+    tok = llm.get_tokenizer()
+    sp = SamplingParams(temperature=0.0, max_tokens=32, logprobs=5, ignore_eos=True)
+    batch = [TokensPrompt(prompt_token_ids=tok.encode(p)) for p in PROMPTS]
+    for repeat in range(2):
+        outs = llm.generate(batch, sp, use_tqdm=False)
+        for i, o in enumerate(outs):
+            ids = list(o.outputs[0].token_ids)
+            print(f"[{i:2d}] period={cycle_period(ids)} ids={ids}")
+            print(f"     text={o.outputs[0].text!r}")
+
+
+# One configuration per fresh process:
+#   compile on, graphs on   -> run(True, True)    (row 1)
+#   compile on, graphs off  -> run(True, False)   (row 2)
+#   compile off, graphs on  -> run(False, True)   (row 3)
+#   compile off, graphs off -> run(False, False)  (row 4)
+```
+
+Environment for every process: `VLLM_PLUGINS=""`, `VLLM_ENABLE_V1_MULTIPROCESSING=0`, weights from a local Hugging Face cache; `VLLM_DISABLE_COMPILE_CACHE=1` for rows 1 to 4 and 6, unset for row 5. Row 6 added `"custom_ops": ["all"]` to the `compilation_config` dictionary. The compile-off rows express eager execution as `{"mode": 0, "cudagraph_mode": "NONE"}` (or `"FULL"`) with `enforce_eager=False`; in 0.28.0 `enforce_eager=True` sets exactly `mode=NONE` and `cudagraph_mode=NONE` (`vllm/config/vllm.py`, "This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none"), but the flag itself was not passed. Row 1 passes explicitly the mode and cudagraph mode that 0.28.0 resolves to for the default optimisation level (`mode=None` becomes `VLLM_COMPILE` when the optimisation level is above O0, and the level defaults set `cudagraph_mode` `FULL_AND_PIECEWISE`); a run with no `compilation_config` argument at all was not performed.
+
+### What I checked upstream before filing
+
+- No existing issue or PR was found that reports compiled-versus-eager output differences for an unquantised Qwen1.5-MoE / `Qwen2MoeForCausalLM` on CUDA. Searches over vllm-project/vllm issues and PRs for combinations of `Qwen1.5-MoE`, `Qwen2MoE`, `MoE`, `fused_moe`, `torch.compile`, `compile`, `inductor`, `enforce_eager`, `garbage`, `gibberish`, `wrong output`, `repeating tokens`, `degenerate` and `0.28.0` returned nothing on this symptom. The nearest existing reports differ in path or symptom: #53430 (open) is run-to-run variation in the unquantised `BatchedTritonExperts` path on 0.27.1, whereas the runs here use `TritonExperts` and are deterministic; #33448 (closed, stale) concerns LoRA MoE outputs changing under eager mode; #41092 (closed) is a ROCm Quark MXFP4 path corrupting Qwen1.5-MoE output.
+- `docs/models/supported_models.md` on `main` lists `Qwen2MoeForCausalLM` (`Qwen/Qwen1.5-MoE-A2.7B`, `Qwen/Qwen1.5-MoE-A2.7B-Chat`) with no caveat, and `vllm/model_executor/models/qwen2_moe.py` carries no caveat about compilation (it is decorated with `@support_torch_compile` like the other decoder models). Between the `v0.28.0` tag and `main` at `dabc4362b47ad2665b0802b0b42b13f660efe634` (2026-09-14), that model file changes only by plumbing a `disable_tp` argument through `Qwen2MoeMLP`.
+- The accuracy configurations I found that exercise this model (`tests/evals/gsm8k/configs/Qwen1.5-MoE-A2.7B-Chat-INT8.yaml`, `tests/evals/gsm8k/configs/Qwen1.5-MoE-W4A16-CT.yaml`, `.buildkite/lm-eval-harness/configs/Qwen1.5-MoE-W4A16-compressed-tensors.yaml`) run quantised variants with `--enforce-eager` (the lm-eval harness defaults to `enforce_eager=true`); `tests/quantization/test_cpu_offload.py` uses the w4a16 checkpoint with `--enforce_eager`; `tests/distributed/test_pipeline_parallel.py` defines the bf16 model with an eager-only `fast()` setting and does not include it in `TEST_MODELS`; and the distributed test area runs `examples/features/data_parallel/data_parallel_offline.py` on `Qwen/Qwen1.5-MoE-A2.7B` with default compilation but does not check the output. So the compiled bf16 path for this model does not appear to be covered by an accuracy test. `tests/compile/fullgraph/test_basic_correctness.py` compares compilation modes for one MoE model, `ibm-granite/granite-3.0-1b-a400m-instruct`.
+- Between `v0.28.0` (`2cf0a6915ce544dc493a0990f2ea38d81601128a`, tagged 2026-08-24; its merge base with `main` is `53e211d2`, 2026-08-17) and `main`, there are no commits to `vllm/model_executor/layers/fused_moe/shared_fused_moe.py` or `vllm/model_executor/layers/quantization/unquantized.py`; `fused_moe/fused_moe.py` has one (#41100, a six-line reshape of a 0-D activation-scale tensor before the Triton launch, only reached when an activation scale is passed), `fused_moe/layer.py` three (#54985, #54566, #51695) and `fused_moe/modular_kernel.py` six (#54985, #55355, #55202, #51217, #51332, #53152). MoE correctness fixes merged in that window are #50220 (int64 row offsets in `moe_fused_mul_sum`, which its description ties to offsets above 2^31 at very large token counts), #54056 (Humming MoE `activation_output` aliasing), #51217 (masked activation for padded layouts in the Humming and batched Triton and Marlin experts) and #55899 (BF16x3 router GEMM accuracy, made default on sm100). Of these only #54056 is contained in `v0.29.0` (released 2026-09-09). I have not tested whether any of them changes this result.
+
+### What was not tested
+
+- Other MoE models, other GPUs, other CUDA driver versions, tensor parallelism greater than 1, or `VLLM_ENABLE_V1_MULTIPROCESSING=1`.
+- Other vLLM versions: neither `v0.29.0` nor current `main` was run. Other torch versions were not run.
+- `CompilationMode.STOCK_TORCH_COMPILE` and `CompilationMode.DYNAMO_TRACE_ONCE`, `enforce_eager=True` as a flag, or a plain `LLM(model=...)` call without `compilation_config`.
+- The Hugging Face `transformers` implementation as an external reference; the reference here is vLLM's own uncompiled output, which is coherent.
+- Output quality beyond the two measurements reported: short-cycle detection over the last 16 tokens and exact token identity with the uncompiled run. No accuracy benchmark was run. Sampling other than greedy was not run. `VLLM_LOGGING_LEVEL=DEBUG` output was not captured.
+- Quantised checkpoints of this model.
+- Prompts formatted with the model's chat template; every prompt here was raw text tokenised without a template, and the uncompiled run is coherent on the same inputs.
+- Logprobs: `logprobs=5` was requested but the per-token logprobs were not recorded, so the top-1 margin at the first divergent token is not reported.
+
+### Request
+
+Could you confirm whether this reproduces on `main` (or `v0.29.0`) with the script above, and whether it is a known issue with the compiled MoE path for this architecture? If further diagnostics on this stack would help (for example other compilation modes, `VLLM_LOGGING_LEVEL=DEBUG`, or dumping the compiled graph), please say which.
+
+## Before submitting a new issue...
+
+- [x] I searched the existing and past issues and pull requests for this symptom (queries listed above) and read the model's entry in the supported models documentation; no matching report was found.
+

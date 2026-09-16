@@ -1,0 +1,33 @@
+vllm 0.29 环境验证记录（2026-09-15, H20, driver 535.247.01, glibc 2.28）
+=====================================================================
+
+环境：conda env `vllm029`（Python 3.12.14）
+
+核心组合（全部实测可用）：
+  - vllm 0.28.0+cu129（GitHub release 官方 wheel，manylinux_2_28）
+  - torch 2.13.0+cu129 / torchvision 0.28.0+cu129 / torchaudio 2.11.0+cu129
+    （download.pytorch.org/whl/cu129；PEP 440 下 ==2.13.0 匹配 +cu129 本地版本，
+    vllm 的依赖检查不会触发 PyPI cu130 重装）
+  - transformers 5.17.0, flashinfer-python 0.6.16.post3, triton 3.7.1
+
+验证 1（import + CUDA）：PASS
+  torch 2.13.0+cu129 | vllm 0.28.0 | cuda available: True | NVIDIA H20
+
+验证 2（smoke test, facebook/opt-125m）：PASS
+  LLM 加载 + CUDA graph 捕获 + 生成正常：
+  "Hello, my name is" -> " my birthday in October. I went on Reddit because I have a hot girlfriend but"
+
+装环境过程中排掉的三个坑（复现时必看）：
+  1. torch 三件套必须先从 cu129 index 装，且 torchcodec 要换 +cu129 版：
+     pip install --force-reinstall --no-deps torchcodec==0.16.0+cu129 --index-url https://download.pytorch.org/whl/cu129
+     （PyPI 默认 torchcodec 0.16.0 链接 libnvrtc.so.13，dlopen 直接失败）
+  2. llguidance 1.7.x 的 abi3 wheel 全是 manylinux_2_31（glibc 墙），pip 会回退
+     sdist 源码构建。国内环境 crates.io 直连极慢会卡死 —— 必须：
+       conda create -n rustbuild -c conda-forge rust -y
+       export PATH=<mershi>/envs/rustbuild/bin:$PATH
+       export CARGO_HOME=<mershi>/.cargo   # 内含 rsproxy.cn 镜像配置，已建好
+     然后 pip install llguidance==1.7.6（约 2.5 分钟）
+  3. vllm 主 wheel 本体 manylinux_2_28 合规，其余依赖（tilelang 2_27、cutlass cu12 等）
+     也都合规，只有上述两个包需要手工处理。
+
+结论：任务 0 PASS，vllm 0.28.0 可用，任务 1/2/3 全部可执行。

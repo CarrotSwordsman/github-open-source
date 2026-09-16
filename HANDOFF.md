@@ -5,6 +5,15 @@
 > **分工约定（沿用 v1）**：GPU 侧只执行实验并把结果推回本仓库（`results/` 目录）；所有上游动作（PR 评论、push、开 issue）由 owner 执行。
 > 本清单取代 v1（v1 两个任务已完成，结果见 `RESULTS.md`）。
 
+## ✅ 执行状态（2026-09-16，全部完成，详见 RESULTS-2.md）
+
+| 任务 | 结果 | 一句话结论 |
+|---|---|---|
+| 0 cu129 环境验证 | ✅ PASS（09-15） | vllm 0.28.0+cu129 可用（`results/env-029.txt`） |
+| 1 #43764 复测 0.28.0 | ✅ 7/8 | AsyncLLM CUMULATIVE 仍丢 index=0 completion（#21948 现象）；LLM 离线路径已修好 |
+| 2 #54035 FA3 FP8 不一致 | ✅ **完全复现** | kernel 级 97 边界逐项吻合 + E2E 首个 mismatch 位置 97 + BF16 对照零差异 |
+| 3 #56900 MoE compile 退化 | ⚠️ 未复现（负结果） | H20+cu129 构建下 compile 输出连贯、12/16 token 级同 eager；差异点疑为 cu130 构建 |
+
 ## 环境关键发现（v1 的硬墙已绕过）
 
 v1 结论"只能跑 vllm 0.11.0"的墙是 **PyPI 默认 wheel 用 cu130（需 driver 580+）**。

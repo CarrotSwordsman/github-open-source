@@ -1,0 +1,257 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/bin/python
+cachedir: .pytest_cache
+rootdir: /tmp/t43764
+plugins: asyncio-1.4.0, anyio-4.15.1, forked-1.7.5
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+test_parallel_sampling_output_kinds.py::test_llm_parallel_sampling_output_kinds[RequestOutputKind.CUMULATIVE] FAILED [100%]
+
+=================================== FAILURES ===================================
+____ test_llm_parallel_sampling_output_kinds[RequestOutputKind.CUMULATIVE] _____
+
+output_kind = <RequestOutputKind.CUMULATIVE: 0>
+
+    @pytest.mark.parametrize(
+        "output_kind",
+        [
+            RequestOutputKind.CUMULATIVE,
+            RequestOutputKind.DELTA,
+            RequestOutputKind.FINAL_ONLY,
+        ],
+    )
+    def test_llm_parallel_sampling_output_kinds(output_kind):
+        """Test LLM.generate with n>1 across all output_kinds."""
+        n = 3
+        max_tokens = 20
+    
+>       llm = LLM(model=MODEL, enforce_eager=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+test_parallel_sampling_output_kinds.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/entrypoints/llm.py:343: in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py:179: in from_engine_args
+    return cls(
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py:105: in __init__
+    self.engine_core = EngineCoreClient.make_client(
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py:110: in make_client
+    return SyncMPClient(vllm_config, executor_class, log_stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/tracing/otel.py:178: in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py:812: in __init__
+    super().__init__(
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core_client.py:609: in __init__
+    with launch_core_engines(
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/contextlib.py:144: in __exit__
+    next(self.gen)
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/utils.py:1206: in launch_core_engines
+    wait_for_engine_startup(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+handshake_socket = <zmq.Socket(zmq.ROUTER) at 0x7f1fa4bf6270 closed>
+core_engines = [<vllm.v1.engine.utils.CoreEngine object at 0x7f1fa4eb5820>]
+parallel_config = ParallelConfig(pipeline_parallel_size=1, tensor_parallel_size=1, prefill_context_parallel_size=1, data_parallel_size=1...ess_rank=0, enable_fault_tolerance=False, fault_tolerance_config=FaultToleranceConfig(engine_recovery_timeout_sec=120))
+coordinated_dp = False
+cache_config = CacheConfig(block_size=16, user_specified_block_size=False, user_specified_mamba_block_size=False, prefix_match_unit=N...=False, kv_cache_memory_bytes=None, kv_offloading_size=None, kv_offloading_backend='native', _block_size_resolved=True)
+launch = CoreEngineLaunch(engine_manager=<vllm.v1.engine.utils.CoreEngineProcManager object at 0x7f1fa4c51f10>, coordinator=Non...=None, coordinator_output=None, frontend_stats_publish_address=None), tensor_queue=None, watched_frontend_processes=())
+
+    def wait_for_engine_startup(
+        handshake_socket: zmq.Socket,
+        core_engines: list[CoreEngine],
+        parallel_config: ParallelConfig,
+        coordinated_dp: bool,
+        cache_config: CacheConfig,
+        launch: CoreEngineLaunch,
+    ):
+        # Wait for engine core process(es) to send ready messages.
+        local_count = parallel_config.data_parallel_size_local
+        remote_count = len(core_engines) - local_count
+        # [local, remote] counts
+        conn_pending, start_pending = [local_count, remote_count], [0, 0]
+        poller = zmq.Poller()
+        poller.register(handshake_socket, zmq.POLLIN)
+    
+        remote_should_be_headless = (
+            not parallel_config.data_parallel_hybrid_lb
+            and not parallel_config.data_parallel_external_lb
+        )
+    
+        # 1. Engine processes
+        if isinstance(launch.engine_manager, CoreEngineProcManager):
+            for sentinel in launch.engine_manager.sentinels():
+                poller.register(sentinel, zmq.POLLIN)
+        # 2. DP Coordinator process, if present
+        coord_process = launch.coordinator.proc if launch.coordinator else None
+        if coord_process is not None:
+            poller.register(coord_process.sentinel, zmq.POLLIN)
+        # 3. Watched frontend processes, if any
+        frontend_process_by_fd: dict[int, FrontendProcess] = {}
+        for proc in launch.watched_frontend_processes:
+            fd = proc.sentinel if isinstance(proc.sentinel, int) else proc.sentinel.fileno()
+            frontend_process_by_fd[fd] = proc
+            poller.register(fd, zmq.POLLIN)
+    
+        while any(conn_pending) or any(start_pending):
+            events = poller.poll(STARTUP_POLL_PERIOD_MS)
+            if not events:
+                if any(conn_pending):
+                    logger.debug(
+                        "Waiting for %d local, %d remote core engine proc(s) to connect.",
+                        *conn_pending,
+                    )
+                if any(start_pending):
+                    logger.debug(
+                        "Waiting for %d local, %d remote core engine proc(s) to start.",
+                        *start_pending,
+                    )
+                continue
+            if len(events) > 1 or events[0][0] != handshake_socket:
+                # One of the local core, coordinator, or watched frontend processes exited.
+                if isinstance(launch.engine_manager, CoreEngineProcManager):
+                    finished = launch.engine_manager.finished_procs()
+                else:
+                    finished = {}
+                if coord_process is not None and coord_process.exitcode is not None:
+                    finished[coord_process.name] = coord_process.exitcode
+                failed_frontend_procs = {
+                    proc.name: proc.exitcode
+                    for fd, proc in frontend_process_by_fd.items()
+                    if proc.exitcode is not None
+                    or any(event_fd == fd for event_fd, _ in events)
+                }
+                if failed_frontend_procs and not finished:
+                    raise RuntimeError(
+                        "Frontend process failed during engine core initialization. "
+                        "See root cause above. "
+                        f"Failed frontend proc(s): {failed_frontend_procs}"
+                    )
+>               raise RuntimeError(
+                    "Engine core initialization failed. "
+                    "See root cause above. "
+                    f"Failed core proc(s): {finished}"
+                    + (
+                        f", failed frontend proc(s): {failed_frontend_procs}"
+                        if failed_frontend_procs
+                        else ""
+                    )
+                )
+E               RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/utils.py:1286: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+INFO 09-16 19:51:42 [api_utils.py:272] non-default args: {'disable_log_stats': True, 'enforce_eager': True, 'model': 'facebook/opt-125m'}
+INFO 09-16 19:51:46 [model.py:672] Resolved architecture: OPTForCausalLM
+INFO 09-16 19:51:46 [model.py:1965] Using max model len 2048
+INFO 09-16 19:51:46 [scheduler.py:242] Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING 09-16 19:51:46 [vllm.py:1285] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING 09-16 19:51:46 [vllm.py:1354] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO 09-16 19:51:46 [kernel.py:308] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO 09-16 19:51:46 [vllm.py:1533] Cudagraph is disabled under eager mode
+INFO 09-16 19:51:46 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+(EngineCore pid=11141) INFO 09-16 19:51:48 [core.py:122] Initializing a V1 LLM engine (v0.28.0) with config: model='facebook/opt-125m', speculative_config=None, tokenizer='facebook/opt-125m', skip_tokenizer_init=False, tokenizer_mode=auto, revision=main, tokenizer_revision=main, trust_remote_code=False, dtype=torch.float16, max_seq_len=2048, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=facebook/opt-125m, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [16384], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=11141) INFO 09-16 19:51:49 [parallel_state.py:1638] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_cf3f042386d34483a642883f6fee44d8 backend=nccl
+(EngineCore pid=11141) INFO 09-16 19:51:49 [parallel_state.py:1982] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=11141) INFO 09-16 19:51:49 [gpu_worker.py:396] Using V2 Model Runner
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346] EngineCore failed to start.
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346] Traceback (most recent call last):
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1315, in run_engine_core
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     return func(*args, **kwargs)
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1073, in __init__
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     super().__init__(
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 133, in __init__
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     self.model_executor = executor_class(vllm_config)
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     return func(*args, **kwargs)
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/executor/abstract.py", line 110, in __init__
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     self._init_executor()
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/executor/uniproc_executor.py", line 69, in _init_executor
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     self.driver_worker.init_device()
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/worker/worker_base.py", line 335, in init_device
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     self.worker.init_device()  # type: ignore
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     return func(*args, **kwargs)
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 407, in init_device
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     self.requested_memory = request_memory(init_snapshot, self.cache_config)
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/worker/utils.py", line 454, in request_memory
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346]     raise ValueError(
+(EngineCore pid=11141) ERROR 09-16 19:51:49 [core.py:1346] ValueError: Free memory on device cuda:0 (4.1/95.0 GiB) on startup is less than desired GPU memory utilization (0.92, 87.4 GiB). Decrease GPU memory utilization or reduce GPU memory used by other processes.
+INFO 09-16 19:51:50 [utils.py:615] [shutdown] Process manager: send sigterm to process EngineCore
+----------------------------- Captured stderr call -----------------------------
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+(EngineCore pid=11141) Process EngineCore:
+(EngineCore pid=11141) Traceback (most recent call last):
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+(EngineCore pid=11141)     self.run()
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/multiprocessing/process.py", line 108, in run
+(EngineCore pid=11141)     self._target(*self._args, **self._kwargs)
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1350, in run_engine_core
+(EngineCore pid=11141)     raise e
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1315, in run_engine_core
+(EngineCore pid=11141)     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=11141)                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=11141)     return func(*args, **kwargs)
+(EngineCore pid=11141)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 1073, in __init__
+(EngineCore pid=11141)     super().__init__(
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 133, in __init__
+(EngineCore pid=11141)     self.model_executor = executor_class(vllm_config)
+(EngineCore pid=11141)                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=11141)     return func(*args, **kwargs)
+(EngineCore pid=11141)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/executor/abstract.py", line 110, in __init__
+(EngineCore pid=11141)     self._init_executor()
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/executor/uniproc_executor.py", line 69, in _init_executor
+(EngineCore pid=11141)     self.driver_worker.init_device()
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/worker/worker_base.py", line 335, in init_device
+(EngineCore pid=11141)     self.worker.init_device()  # type: ignore
+(EngineCore pid=11141)     ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=11141)     return func(*args, **kwargs)
+(EngineCore pid=11141)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 407, in init_device
+(EngineCore pid=11141)     self.requested_memory = request_memory(init_snapshot, self.cache_config)
+(EngineCore pid=11141)                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=11141)   File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/v1/worker/utils.py", line 454, in request_memory
+(EngineCore pid=11141)     raise ValueError(
+(EngineCore pid=11141) ValueError: Free memory on device cuda:0 (4.1/95.0 GiB) on startup is less than desired GPU memory utilization (0.92, 87.4 GiB). Decrease GPU memory utilization or reduce GPU memory used by other processes.
+------------------------------ Captured log call -------------------------------
+INFO     vllm.entrypoints.serve.utils.api_utils:api_utils.py:272 non-default args: {'disable_log_stats': True, 'enforce_eager': True, 'model': 'facebook/opt-125m'}
+WARNING  huggingface_hub.utils._http:_http.py:965 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO     vllm.config.model:model.py:672 Resolved architecture: OPTForCausalLM
+INFO     vllm.config.model:model.py:1965 Using max model len 2048
+INFO     vllm.config.scheduler:scheduler.py:242 Chunked prefill is enabled with max_num_batched_tokens=16384.
+WARNING  vllm.config.vllm:vllm.py:1285 Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+WARNING  vllm.config.vllm:vllm.py:1354 Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+INFO     vllm.config.kernel:kernel.py:308 Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+INFO     vllm.config.vllm:vllm.py:1533 Cudagraph is disabled under eager mode
+INFO     vllm.config.compilation:compilation.py:329 Enabled custom fusions: norm_quant, act_quant
+INFO     vllm.v1.utils:utils.py:615 [shutdown] Process manager: send sigterm to process EngineCore
+=============================== warnings summary ===============================
+test_parallel_sampling_output_kinds.py: 14 warnings
+  /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+test_parallel_sampling_output_kinds.py::test_llm_parallel_sampling_output_kinds[RequestOutputKind.CUMULATIVE]
+  /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=9712) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED test_parallel_sampling_output_kinds.py::test_llm_parallel_sampling_output_kinds[RequestOutputKind.CUMULATIVE]
+======================= 1 failed, 15 warnings in 44.11s ========================
