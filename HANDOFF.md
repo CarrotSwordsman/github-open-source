@@ -1,102 +1,81 @@
-# H20 GPU 任务清单 v3（2026-09-16 晚，**双卡**）
+# H20 GPU 任务清单 v4（2026-09-17 晚，**仅 H20 可执行**）
 
 > 执行环境：2× NVIDIA H20 96GB (sm_90) / driver 535.247.01 / glibc 2.28
 > 账号：GitHub `CarrotSwordsman`
 > **分工约定（沿用）**：GPU 侧只执行实验并把结果推回本仓库（`results/`）；所有上游动作（PR 评论、push、开 issue）由 owner 执行。
-> v2 任务已全部完成（结果见 `RESULTS-2.md`：#43764 复测 7/8、#54035 完全复现、#56900 未复现）。
+> v2 已完成（`RESULTS-2.md`）；v3 未执行，其任务已并入本版。v4 变更：撤下 #54035/#184（作者已自行验证，无需我们背书），新增 #57092 与 #56564，增强 #6964 协议。
 
-## 环境要点（v2 已验证）
+## 环境要点（v2 已验证，直接复用）
 
-- `vllm 0.28.0+cu129` wheel 在 driver 535 上完全可用（conda env `vllm029`，torch 2.13.0+cu129）
-- **`vllm 0.29.0+cu129` wheel 也存在**（GitHub release），vLLM-Omni main 正好 pin v0.29.0
-- HF Hub 匿名限流严重：模型已缓存后设 `HF_HUB_OFFLINE=1`
-- 一个 vllm 进程默认吃 ~87GB KV cache；TP2 双卡任务天然单进程，无并行冲突问题
+- conda env `vllm029`（vllm 0.28.0+cu129 + torch 2.13.0+cu129）可用；`vllm 0.29.0+cu129` wheel 也存在（vLLM-Omni main pin 这个版本）
+- HF 限流：模型已缓存后 `HF_HUB_OFFLINE=1`；一个 vllm 进程默认吃 ~87GB KV cache
 
 ---
 
-## 任务 1（主任务）：vLLM-Omni #6964 — MiniMax-H3 TP2 DLO 并发非法参数死锁复现
+## 任务 1（主任务）：vLLM-Omni #6964 — MiniMax-H3 TP2 DLO 并发非法参数死锁
 
-Issue：https://github.com/vllm-project/vllm-omni/issues/6964
-无人认领、无并行 PR；模型 owner（david6666666）被 ping 未响应。
-报告者环境是 2×RTX 5090 (sm_120)——我们在 sm_90 上复现可验证**架构无关性**（同 #54035 的 H20 背书模式）。
+Issue：https://github.com/vllm-project/vllm-omni/issues/6964（无人认领、无并行 PR；模型 owner 被 ping 未响应）。
 
-### 环境搭建
+**v4 协议增强**（吸收外部 review 意见）：
+1. **先确认 current main 仍复现**：issue 报告基于 2026-09-01 的 main（`e51fe6e`），其后 #5810（H3 连续批处理）和 #5864（DLO DP 并发修复）已合并——先用最新 main 复现，若已修好则记录并关闭该任务
+2. **NCCL busy-wait 是报告者的假设，不是结论**——不要带着预设找 NCCL，先取证再归因
+3. 三组对照：单非法请求（预期 0.5s 报错）/ 双非法并发（预期死锁）/ 合法+非法混合（观察交叉行为）
+4. 死锁时 **py-spy dump 两个 worker**（含 native 栈：`py-spy dump --pid X --native`，NCCL spin 需要 native 帧才看得见）
+5. 死锁后发一个合法请求验证"永久性"，记录 top -H / nvidia-smi 快照
+6. 复现成功后：定位 abort/cancel 路径在并发失败时的重入性（请求校验是否在所有 rank 一致执行、一个 rank 抛异常时其他 rank 是否已进 collective）
+
+环境搭建、启动配置（`deploy/minimax_h3_disaggregated.yaml` + `tests/e2e/online_serving/minimax_h3/_common.py`）、复现 curl 命令：见 v3 版本的 git 历史（`git show 397f643:HANDOFF.md`）或 issue 正文。py-spy 提前 `pip install`。模型 `MiniMaxAI/MiniMax-H3` 需预下载（先确认 gated 状态）。
+
+回传：`results/omni6964-*`（server 日志、py-spy 栈、快照、当前 main 的复现结论）。
+
+## 任务 2（新增）：vLLM PR #57092 — FP8 MoE batch-invariance 的 kernel 组合测试验证
+
+PR：https://github.com/vllm-project/vllm/pull/57092（修 #57016：在线 FP8 MoE 激活 scale 改 per-token + Triton launcher stride 修复）。
+
+**缺口**：作者在其 WSL2 机器上**跑不了**模块化 kernel 组合测试（`CUDA error: invalid resource handle`，main 上也挂），这部分完全依赖 CI。H20 真机 Linux 可以补上。
 
 ```bash
-conda create -n omni-h3 python=3.12 -y && conda activate omni-h3
-pip install https://github.com/vllm-project/vllm/releases/download/v0.29.0/vllm-0.29.0+cu129-cp38-abi3-manylinux_2_28_x86_64.whl
-git clone https://github.com/vllm-project/vllm-omni.git && cd vllm-omni
-pip install -e .   # 或按 repo README 的 GPU 安装方式；CPU-only 依赖按 requirements/common.txt
-pip install py-spy  # 死锁栈抓取（本任务最高附加值的工具）
+# 复用 vllm029 env 或按 PR 分支要求建新 env
+git clone https://github.com/vllm-project/vllm.git vllm-57092 && cd vllm-57092
+git fetch origin pull/57092/head:pr57092 && git checkout pr57092
+pip install -e .   # 若与 0.28 wheel 冲突，建独立 conda env
+
+# 作者跑不了的套件（关键交付）
+CUDA_VISIBLE_DEVICES=0 python -m pytest tests/kernels/moe/test_modular_kernel_combinations.py -v 2>&1 | tee ../results/moe-57092-combinations.log
+
+# 修复前对照（main 上应能看到 NYI skip；PR 分支上该组合不再 skip）
+git checkout main && pip install -e .
+CUDA_VISIBLE_DEVICES=0 python -m pytest tests/kernels/moe/test_modular_kernel_combinations.py -v 2>&1 | tee ../results/moe-57092-main-baseline.log
+
+# PR 自带的 e2e 回归（H20 sm_90 与作者的 sm_120 形成架构交叉点）
+CUDA_VISIBLE_DEVICES=0 python -m pytest tests/v1/determinism/test_batch_invariance.py::test_online_fp8_moe_logprobs_bitwise_bs1_vs_bsN -v 2>&1 | tee ../results/moe-57092-e2e.log
 ```
 
-模型：`MiniMaxAI/MiniMax-H3`（先检查 HF 是否 gated；报告者 2×32GB 能跑，2×96GB 充裕；下载量大请提前拉取并缓存）。
+**判定**：三份日志存 `results/moe-57092-*`。组合套件在 PR 分支全过 → 这是给 review 的直接背书数据；有失败 → 完整 traceback 同样有价值（区分 PR 引入 vs main 预存，可用 stash/checkout 对照）。
 
-### 启动配置（按 issue 环境段）
+## 任务 3（新增，快速评估）：vLLM #56564 — GLM-5.3-Flash 在 sm_90 上 MLA sparse 后端自动选择错误
 
-TP2 + DLO(no-AllGather) + resident=20 + enforce-eager + CUDNN_ATTN + VAE tile。
-具体 flag 组装参考：
-- `vllm_omni/deploy/minimax_h3_disaggregated.yaml`（MiniMax-H3 的默认 deploy config）
-- `tests/e2e/online_serving/minimax_h3/_common.py`（e2e 测试的启动参数拼装）
-- issue 只给了配置摘要，serve 命令需按上述两处拼出；`--text-encoder-tp-size` 按 #7564 的结论只影响 stage-0 AR TP
+Issue：https://github.com/vllm-project/vllm/issues/56564（0 评论、无平行 PR、无人认领）。
 
-### 复现步骤（按序）
+报告者环境 H100；**H20 同为 sm_90**，大概率可复现。两步走：
 
 ```bash
-# 0. 启动 server（TP2 跨两张卡），等待 ready
-
-# 1. 对照组：单个非法请求（duration=2 低于 H3 最小值 4s）
-#    预期：~0.5s 内报错 "MiniMax H3 output duration must be in [4, 15] seconds, got 2.0"
-curl -X POST http://localhost:8000/v1/videos -F "prompt=test" -F "size=832x480" -F "fps=24" \
-  -F "num_inference_steps=20" -F "seconds=2" \
-  -F 'extra_params={"task":"t2va","duration":2,"flow_shift":12,"audio_flow_shift":3,"aspect_ratio":"16:9"}'
-
-# 2. 完全恢复/重启后：同一命令在两个终端立即并发（concurrency=2）
-#    预期（死锁）：两个 HTTP 200 in_progress → 两个 worker 100% CPU (state R)、GPU 0% →
-#    无 encode_prompt/diffuse 日志 → 后续任何请求全部挂起
-
-# 3. 死锁发生时【关键动作】：抓两个 worker 的栈
-ps aux | grep -E 'worker|dynamo'   # 找到两个 TP worker 的 PID
-py-spy dump --pid <worker_pid_1> | tee results/omni6964-pyspy-worker1.txt
-py-spy dump --pid <worker_pid_2> | tee results/omni6964-pyspy-worker2.txt
-# 若 py-spy 需要权限：sudo py-spy dump --pid ... 或 py-spy dump --nonblocking
-
-# 4. 验证"永久性"：死锁后再发一个正常请求（duration=5），确认也挂起
-# 5. 记录 nvidia-smi / top -H 快照；重启 server 确认恢复
+# 步骤 A（半小时内）：读 issue 拿复现命令（模型大小/serve 参数在其中），H20 上跑默认配置
+# 观察：是否自动选择 FLASHINFER_MLA_SPARSE_SM90、吞吐是否显著低于预期
+# 步骤 B：显式指定两个后端各跑一遍，得到 A/B 数据
+#   --attention-backend FLASHINFER_MLA_SPARSE  vs 默认自动选择
 ```
 
-### 判定与回传
+回传：`results/glm53-flash-56564-{auto,explicit}.log`（含吞吐对比）。复现成功 → 后端选择逻辑的根因定位（大概率 CPU 可分析），修复 PR 由 owner 跟进；不复现（H20 显存/带宽与 H100 不同导致选型合理）→ 负结果同样记录。
 
-- **复现成功** → 日志存 `results/omni6964-*`（server 日志、py-spy 栈、快照）。
-  py-spy 栈是 issue 最缺的诊断证据（NCCL busy-wait spin 的具体位置），价值最高。
-- **未复现**（sm_90 上行为不同）→ 同样有价值，完整记录配置与观察。
-- 不修改任何上游代码；复现数据由 owner 决定如何使用。
+## 任务 4（可选，沿用 v3）：vLLM-Omni #7376 — 非流式 chat duplicate index-0 choices
 
----
+单卡即可（Qwen2.5-Omni-7B）。按 issue 正文步骤复现（非流式 chat + modalities=["text","audio"]，记录 `len(resp.choices)`、`choices[0].message.audio` 是否 None）。日志 `results/omni7376-*`。
 
-## 任务 2（条件任务，暂不执行）：#54035 patch 验证
+## 明确排除 / 搁置
 
-已发复现背书（issue #54035 评论）。**触发条件**：报告者响应 / flash-attention fork 出现修复 PR。
-到时：clone `vllm-project/flash-attention`，按 PR 或 issue 提示改 `hopper/tile_size.h`（decode 保留 kBlockM=64、FP8 kBlockN 对齐 prefill 的 192），按其 README 编译，重跑 kernel reproducer 确认 19/28 → 0。**先等上游信号再动手。**
-
----
-
-## 任务 3（可选）：vLLM-Omni #7376 — 非流式 chat duplicate index-0 choices
-
-Issue：https://github.com/vllm-project/vllm-omni/issues/7376（n=1 请求返回 2 个 choices，audio 被塞进 choices[1]，spec 客户端静默丢音频）。无 assignee、无 PR。
-单卡即可（Qwen2.5-Omni-7B ~16GB）：
-
-```bash
-# 环境同任务 1（同一 omni-h3 env 可复用）
-vllm serve Qwen/Qwen2.5-Omni-7B --omni --port 8091
-# 按 issue 正文：非流式 chat completion，modalities=["text","audio"]，
-# 官方 asset URL 的 mary_had_lamb.ogg 音频 + "What is recited in the audio?"
-# 记录：len(resp.choices)==2? choices[0].message.audio is None? choices[1] 结构
-```
-
-日志存 `results/omni7376-*`。复现后 bug 大概率在 serving 层 choices 组装（CPU 可定位），修复由 owner 跟进。
-
----
+- **#54035 / flash-attention #184**：撤下——PR 作者已自行完成 H100 前后验证 + 回归测试，我们的验证不再关键
+- **#56900（MoE 编译退化）**：**需 H100 才能做复现侧**（H20/cu129 不复现是已知结论，我们的负结果数据点已交付）。搁置，等 H100 接入任务清单后启动跨构建定位
 
 ## 结果回传（约定不变）
 
@@ -108,10 +87,10 @@ vllm serve Qwen/Qwen2.5-Omni-7B --omni --port 8091
 
 | 项 | 状态 |
 |---|---|
-| vLLM-Omni #7006 | APPROVED + MERGEABLE，等 linyueqian cycle ready → 即将合并 |
-| vLLM-Omni #7652 | CI 跑着 + 自审已发，等 owner review（有 issue 语义确认背书） |
-| vLLM #54035 | 复现背书已发（kernel+E2E+BF16 对照），等报告者响应 |
-| vLLM #43764 | 0.28.0 数据（7/8）已补发，等维护者 |
-| vLLM #56900 | 克制负结果已发，等报告者 graph dump |
+| vLLM-Omni #7006 | **已合并**（第 2 个 merged） |
+| vLLM-Omni #7652 | In Review（bug/core 标签 + Priority: high，等 owner review） |
+| sglang #36691 | 已 rebase 激活（11/11 验证），等 review |
+| vLLM #54035 | 复现背书已发，FA fork PR #184 在等 review |
+| vLLM #43764 / #56900 | 数据点已补，等维护者/报告者 |
 | Dynamo #9819 | 等 tanmayv25 re-review + GPU CI |
 | vLLM #56977 | 等 #56137/#56195 落地 |
