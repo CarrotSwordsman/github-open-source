@@ -1,0 +1,478 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/bin/python
+cachedir: .pytest_cache
+rootdir: /tmp/moetest57092
+plugins: asyncio-1.4.0, anyio-4.15.1, forked-1.7.5
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 11 items
+
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_multigpu[NOTSET] SKIPPED [  9%]
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype0-None-MoEPrepareAndFinalizeNoDPEPModular-TritonExperts-1] PASSED [ 18%]
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype1-quant_config1-MoEPrepareAndFinalizeNoDPEPModular-TritonExperts-1] PASSED [ 27%]
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype2-quant_config2-MoEPrepareAndFinalizeNoDPEPModular-CutlassExpertsFp8-1] PASSED [ 36%]
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype3-quant_config3-MoEPrepareAndFinalizeNoDPEPModular-TritonExperts-1] PASSED [ 45%]
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype4-quant_config4-MoEPrepareAndFinalizeNoDPEPModular-CutlassExpertsFp8-1] PASSED [ 54%]
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype5-quant_config5-MoEPrepareAndFinalizeNoDPEPModular-TritonExperts-1] PASSED [ 63%]
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype6-quant_config6-MoEPrepareAndFinalizeNoDPEPModular-CutlassExpertsFp8-1] PASSED [ 72%]
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype7-quant_config7-MoEPrepareAndFinalizeNoDPEPModular-TritonExperts-1] PASSED [ 81%]
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype8-quant_config8-MoEPrepareAndFinalizeNoDPEPModular-DeepGemmExperts-1] FAILED [ 90%]
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype9-quant_config9-MoEPrepareAndFinalizeNoDPEPModular-TritonOrDeepGemmExperts-1] FAILED [100%]
+
+=================================== FAILURES ===================================
+_ test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype8-quant_config8-MoEPrepareAndFinalizeNoDPEPModular-DeepGemmExperts-1] _
+tests/kernels/moe/test_modular_kernel_combinations.py:373: in test_modular_kernel_combinations_singlegpu
+    run(config, verbosity > 0)
+tests/kernels/moe/test_modular_kernel_combinations.py:204: in run
+    parallel_launch_with_config(
+tests/kernels/moe/modular_kernel_tools/parallel_utils.py:151: in parallel_launch_with_config
+    spawn(
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/multiprocessing/spawn.py:340: in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/multiprocessing/spawn.py:296: in start_processes
+    while not context.join():
+              ^^^^^^^^^^^^^^
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/multiprocessing/spawn.py:211: in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+E   torch.multiprocessing.spawn.ProcessRaisedException: 
+E   
+E   -- Process 0 terminated with the following error:
+E   Traceback (most recent call last):
+E     File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/multiprocessing/spawn.py", line 87, in _wrap
+E       fn(i, *args)
+E     File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/parallel_utils.py", line 128, in _worker_parallel_launch
+E       _run_worker()
+E     File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/parallel_utils.py", line 110, in _run_worker
+E       worker(
+E     File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 189, in rank_worker
+E       raise RuntimeError(
+E   RuntimeError: 4 of 4 tests failed in child process, rank=0.
+----------------------------- Captured stdout call -----------------------------
+INFO 09-17 22:20:26 [kernel.py:308] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+0 of 0 valid configs generated.
+10 of 56 valid configs generated.
+INFO 09-17 22:21:00 [parallel_state.py:1982] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+Running[0]: m=32, topk=4 ...
+Making ABCMeta {'moe_config': FusedMoEConfig(num_experts=32, experts_per_token=4, hidden_dim=2048, intermediate_size=1024, num_local_experts=32, num_logical_experts=32, activation=<MoEActivation.SILU: 'silu'>, device=device(type='cuda'), routing_method=<RoutingMethodType.DeepSeekV3: 2>, moe_parallel_config=FusedMoEParallelConfig(tp_size=1, pcp_size=1, dp_size=1, ep_size=1, tp_rank=0, pcp_rank=0, dp_rank=0, ep_rank=0, sp_size=1, use_ep=False, all2all_backend=None, enable_eplb=False), in_dtype=torch.bfloat16, router_logits_dtype=torch.bfloat16, hidden_dim_unpadded=2048, intermediate_size_per_partition_unpadded=1024, intermediate_pad=None, moe_backend='auto', max_num_tokens=32, has_bias=False, is_lora_enabled=False, skip_final_all_reduce=False, defer_moe_finalize=False, swiglu_limit=None, swiglu_alpha=None, swiglu_beta=None, activation_situ_beta=None, activation_situ_linear_beta=None, max_capture_size=0, intermediate_size_per_partition=1024, rocm_aiter_fmoe_enabled=None, aiter_fmoe_shared_expert_enabled=None), 'quant_config': FusedMoEQuantConfig(_a1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _a2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _w1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 16)), alpha_or_gscale=None, zp=None, bias=None), _w2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 8)), alpha_or_gscale=None, zp=None, bias=None), is_scale_swizzled=True, gemm1_alpha=None, gemm1_beta=None, gemm1_clamp_limit=None, mx_alignment=0)} ...
+INFO 09-17 22:21:00 [deep_gemm.py:186] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+INFO 09-17 22:21:00 [deep_gemm.py:213] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+INFO 09-17 22:21:00 [deep_gemm.py:131] DeepGEMM E8M0 enabled on current platform.
+E	Traceback (most recent call last):
+E	  File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 129, in rank_worker
+E	    mk_out = run_modular_kernel(pgi, vllm_config, config, weights, rank_tensors)
+E	             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E	  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/common.py", line 793, in run_modular_kernel
+E	    out = mk.apply(**mk_kwargs)
+E	          ^^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1714, in apply
+E	    return self.impl.apply(
+E	           ^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1494, in apply
+E	    fused_out = self._fused_experts(
+E	                ^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1342, in _fused_experts
+E	    self.fused_experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/deep_gemm_moe.py", line 358, in apply
+E	    m_grouped_fp8_gemm_nt_contiguous(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/utils/deep_gemm.py", line 478, in m_grouped_fp8_gemm_nt_contiguous
+E	    return _grouped_impl(
+E	           ^^^^^^^^^^^^^^
+E	RuntimeError: Assertion error (/workspace/.deps/deepgemm-src/csrc/apis/../jit_kernels/impls/../../jit/compiler.hpp:187): (major > 12 or (major == 12 and minor >= 3)) and "NVCC version should be >= 12.3"
+
+FAILED == Config:
+ world_size=1
+ PF=MoEPrepareAndFinalizeNoDPEPModular
+ FE=DeepGemmExperts
+ E=32
+ Ms=32
+ N=1024
+ K=2048
+ topk=4
+ dtype=torch.bfloat16
+ Quant:
+     q_dtype=torch.float8_e4m3fn
+     q_block_shape=[128, 128]
+     q_per_out_ch_quant=False
+     q_per_act_token=False
+ - Assertion error  ...
+
+Running[0]: m=32, topk=1 ...
+Making ABCMeta {'moe_config': FusedMoEConfig(num_experts=32, experts_per_token=1, hidden_dim=2048, intermediate_size=1024, num_local_experts=32, num_logical_experts=32, activation=<MoEActivation.SILU: 'silu'>, device=device(type='cuda'), routing_method=<RoutingMethodType.DeepSeekV3: 2>, moe_parallel_config=FusedMoEParallelConfig(tp_size=1, pcp_size=1, dp_size=1, ep_size=1, tp_rank=0, pcp_rank=0, dp_rank=0, ep_rank=0, sp_size=1, use_ep=False, all2all_backend=None, enable_eplb=False), in_dtype=torch.bfloat16, router_logits_dtype=torch.bfloat16, hidden_dim_unpadded=2048, intermediate_size_per_partition_unpadded=1024, intermediate_pad=None, moe_backend='auto', max_num_tokens=32, has_bias=False, is_lora_enabled=False, skip_final_all_reduce=False, defer_moe_finalize=False, swiglu_limit=None, swiglu_alpha=None, swiglu_beta=None, activation_situ_beta=None, activation_situ_linear_beta=None, max_capture_size=0, intermediate_size_per_partition=1024, rocm_aiter_fmoe_enabled=None, aiter_fmoe_shared_expert_enabled=None), 'quant_config': FusedMoEQuantConfig(_a1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _a2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _w1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 16)), alpha_or_gscale=None, zp=None, bias=None), _w2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 8)), alpha_or_gscale=None, zp=None, bias=None), is_scale_swizzled=True, gemm1_alpha=None, gemm1_beta=None, gemm1_clamp_limit=None, mx_alignment=0)} ...
+E	Traceback (most recent call last):
+E	  File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 129, in rank_worker
+E	    mk_out = run_modular_kernel(pgi, vllm_config, config, weights, rank_tensors)
+E	             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E	  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/common.py", line 793, in run_modular_kernel
+E	    out = mk.apply(**mk_kwargs)
+E	          ^^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1714, in apply
+E	    return self.impl.apply(
+E	           ^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1494, in apply
+E	    fused_out = self._fused_experts(
+E	                ^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1342, in _fused_experts
+E	    self.fused_experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/deep_gemm_moe.py", line 358, in apply
+E	    m_grouped_fp8_gemm_nt_contiguous(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/utils/deep_gemm.py", line 478, in m_grouped_fp8_gemm_nt_contiguous
+E	    return _grouped_impl(
+E	           ^^^^^^^^^^^^^^
+E	RuntimeError: Assertion error (/workspace/.deps/deepgemm-src/csrc/apis/../jit_kernels/impls/../../jit/compiler.hpp:187): (major > 12 or (major == 12 and minor >= 3)) and "NVCC version should be >= 12.3"
+
+FAILED == Config:
+ world_size=1
+ PF=MoEPrepareAndFinalizeNoDPEPModular
+ FE=DeepGemmExperts
+ E=32
+ Ms=32
+ N=1024
+ K=2048
+ topk=1
+ dtype=torch.bfloat16
+ Quant:
+     q_dtype=torch.float8_e4m3fn
+     q_block_shape=[128, 128]
+     q_per_out_ch_quant=False
+     q_per_act_token=False
+ - Assertion error  ...
+
+Running[0]: m=64, topk=4 ...
+Making ABCMeta {'moe_config': FusedMoEConfig(num_experts=32, experts_per_token=4, hidden_dim=2048, intermediate_size=1024, num_local_experts=32, num_logical_experts=32, activation=<MoEActivation.SILU: 'silu'>, device=device(type='cuda'), routing_method=<RoutingMethodType.DeepSeekV3: 2>, moe_parallel_config=FusedMoEParallelConfig(tp_size=1, pcp_size=1, dp_size=1, ep_size=1, tp_rank=0, pcp_rank=0, dp_rank=0, ep_rank=0, sp_size=1, use_ep=False, all2all_backend=None, enable_eplb=False), in_dtype=torch.bfloat16, router_logits_dtype=torch.bfloat16, hidden_dim_unpadded=2048, intermediate_size_per_partition_unpadded=1024, intermediate_pad=None, moe_backend='auto', max_num_tokens=64, has_bias=False, is_lora_enabled=False, skip_final_all_reduce=False, defer_moe_finalize=False, swiglu_limit=None, swiglu_alpha=None, swiglu_beta=None, activation_situ_beta=None, activation_situ_linear_beta=None, max_capture_size=0, intermediate_size_per_partition=1024, rocm_aiter_fmoe_enabled=None, aiter_fmoe_shared_expert_enabled=None), 'quant_config': FusedMoEQuantConfig(_a1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _a2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _w1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 16)), alpha_or_gscale=None, zp=None, bias=None), _w2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 8)), alpha_or_gscale=None, zp=None, bias=None), is_scale_swizzled=True, gemm1_alpha=None, gemm1_beta=None, gemm1_clamp_limit=None, mx_alignment=0)} ...
+E	Traceback (most recent call last):
+E	  File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 129, in rank_worker
+E	    mk_out = run_modular_kernel(pgi, vllm_config, config, weights, rank_tensors)
+E	             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E	  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/common.py", line 793, in run_modular_kernel
+E	    out = mk.apply(**mk_kwargs)
+E	          ^^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1714, in apply
+E	    return self.impl.apply(
+E	           ^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1494, in apply
+E	    fused_out = self._fused_experts(
+E	                ^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1342, in _fused_experts
+E	    self.fused_experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/deep_gemm_moe.py", line 358, in apply
+E	    m_grouped_fp8_gemm_nt_contiguous(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/utils/deep_gemm.py", line 478, in m_grouped_fp8_gemm_nt_contiguous
+E	    return _grouped_impl(
+E	           ^^^^^^^^^^^^^^
+E	RuntimeError: Assertion error (/workspace/.deps/deepgemm-src/csrc/apis/../jit_kernels/impls/../../jit/compiler.hpp:187): (major > 12 or (major == 12 and minor >= 3)) and "NVCC version should be >= 12.3"
+
+FAILED == Config:
+ world_size=1
+ PF=MoEPrepareAndFinalizeNoDPEPModular
+ FE=DeepGemmExperts
+ E=32
+ Ms=64
+ N=1024
+ K=2048
+ topk=4
+ dtype=torch.bfloat16
+ Quant:
+     q_dtype=torch.float8_e4m3fn
+     q_block_shape=[128, 128]
+     q_per_out_ch_quant=False
+     q_per_act_token=False
+ - Assertion error  ...
+
+Running[0]: m=64, topk=1 ...
+Making ABCMeta {'moe_config': FusedMoEConfig(num_experts=32, experts_per_token=1, hidden_dim=2048, intermediate_size=1024, num_local_experts=32, num_logical_experts=32, activation=<MoEActivation.SILU: 'silu'>, device=device(type='cuda'), routing_method=<RoutingMethodType.DeepSeekV3: 2>, moe_parallel_config=FusedMoEParallelConfig(tp_size=1, pcp_size=1, dp_size=1, ep_size=1, tp_rank=0, pcp_rank=0, dp_rank=0, ep_rank=0, sp_size=1, use_ep=False, all2all_backend=None, enable_eplb=False), in_dtype=torch.bfloat16, router_logits_dtype=torch.bfloat16, hidden_dim_unpadded=2048, intermediate_size_per_partition_unpadded=1024, intermediate_pad=None, moe_backend='auto', max_num_tokens=64, has_bias=False, is_lora_enabled=False, skip_final_all_reduce=False, defer_moe_finalize=False, swiglu_limit=None, swiglu_alpha=None, swiglu_beta=None, activation_situ_beta=None, activation_situ_linear_beta=None, max_capture_size=0, intermediate_size_per_partition=1024, rocm_aiter_fmoe_enabled=None, aiter_fmoe_shared_expert_enabled=None), 'quant_config': FusedMoEQuantConfig(_a1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _a2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _w1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 16)), alpha_or_gscale=None, zp=None, bias=None), _w2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 8)), alpha_or_gscale=None, zp=None, bias=None), is_scale_swizzled=True, gemm1_alpha=None, gemm1_beta=None, gemm1_clamp_limit=None, mx_alignment=0)} ...
+E	Traceback (most recent call last):
+E	  File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 129, in rank_worker
+E	    mk_out = run_modular_kernel(pgi, vllm_config, config, weights, rank_tensors)
+E	             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E	  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/common.py", line 793, in run_modular_kernel
+E	    out = mk.apply(**mk_kwargs)
+E	          ^^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1714, in apply
+E	    return self.impl.apply(
+E	           ^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1494, in apply
+E	    fused_out = self._fused_experts(
+E	                ^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1342, in _fused_experts
+E	    self.fused_experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/deep_gemm_moe.py", line 358, in apply
+E	    m_grouped_fp8_gemm_nt_contiguous(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/utils/deep_gemm.py", line 478, in m_grouped_fp8_gemm_nt_contiguous
+E	    return _grouped_impl(
+E	           ^^^^^^^^^^^^^^
+E	RuntimeError: Assertion error (/workspace/.deps/deepgemm-src/csrc/apis/../jit_kernels/impls/../../jit/compiler.hpp:187): (major > 12 or (major == 12 and minor >= 3)) and "NVCC version should be >= 12.3"
+
+FAILED == Config:
+ world_size=1
+ PF=MoEPrepareAndFinalizeNoDPEPModular
+ FE=DeepGemmExperts
+ E=32
+ Ms=64
+ N=1024
+ K=2048
+ topk=1
+ dtype=torch.bfloat16
+ Quant:
+     q_dtype=torch.float8_e4m3fn
+     q_block_shape=[128, 128]
+     q_per_out_ch_quant=False
+     q_per_act_token=False
+ - Assertion error  ...
+
+4 of 4 tests failed in child process, rank=0.
+----------------------------- Captured stderr call -----------------------------
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+Traceback (most recent call last):
+  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/parallel_utils.py", line 128, in _worker_parallel_launch
+    _run_worker()
+  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/parallel_utils.py", line 110, in _run_worker
+    worker(
+  File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 189, in rank_worker
+    raise RuntimeError(
+RuntimeError: 4 of 4 tests failed in child process, rank=0.
+------------------------------ Captured log call -------------------------------
+INFO     vllm.config.kernel:kernel.py:308 Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+_ test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype9-quant_config9-MoEPrepareAndFinalizeNoDPEPModular-TritonOrDeepGemmExperts-1] _
+tests/kernels/moe/test_modular_kernel_combinations.py:373: in test_modular_kernel_combinations_singlegpu
+    run(config, verbosity > 0)
+tests/kernels/moe/test_modular_kernel_combinations.py:204: in run
+    parallel_launch_with_config(
+tests/kernels/moe/modular_kernel_tools/parallel_utils.py:151: in parallel_launch_with_config
+    spawn(
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/multiprocessing/spawn.py:340: in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/multiprocessing/spawn.py:296: in start_processes
+    while not context.join():
+              ^^^^^^^^^^^^^^
+/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/multiprocessing/spawn.py:211: in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+E   torch.multiprocessing.spawn.ProcessRaisedException: 
+E   
+E   -- Process 0 terminated with the following error:
+E   Traceback (most recent call last):
+E     File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/multiprocessing/spawn.py", line 87, in _wrap
+E       fn(i, *args)
+E     File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/parallel_utils.py", line 128, in _worker_parallel_launch
+E       _run_worker()
+E     File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/parallel_utils.py", line 110, in _run_worker
+E       worker(
+E     File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 189, in rank_worker
+E       raise RuntimeError(
+E   RuntimeError: 4 of 4 tests failed in child process, rank=0.
+----------------------------- Captured stdout call -----------------------------
+INFO 09-17 22:21:07 [kernel.py:308] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+0 of 0 valid configs generated.
+10 of 56 valid configs generated.
+INFO 09-17 22:21:41 [parallel_state.py:1982] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+Running[0]: m=32, topk=4 ...
+Making ABCMeta {'moe_config': FusedMoEConfig(num_experts=32, experts_per_token=4, hidden_dim=2048, intermediate_size=1024, num_local_experts=32, num_logical_experts=32, activation=<MoEActivation.SILU: 'silu'>, device=device(type='cuda'), routing_method=<RoutingMethodType.DeepSeekV3: 2>, moe_parallel_config=FusedMoEParallelConfig(tp_size=1, pcp_size=1, dp_size=1, ep_size=1, tp_rank=0, pcp_rank=0, dp_rank=0, ep_rank=0, sp_size=1, use_ep=False, all2all_backend=None, enable_eplb=False), in_dtype=torch.bfloat16, router_logits_dtype=torch.bfloat16, hidden_dim_unpadded=2048, intermediate_size_per_partition_unpadded=1024, intermediate_pad=None, moe_backend='auto', max_num_tokens=32, has_bias=False, is_lora_enabled=False, skip_final_all_reduce=False, defer_moe_finalize=False, swiglu_limit=None, swiglu_alpha=None, swiglu_beta=None, activation_situ_beta=None, activation_situ_linear_beta=None, max_capture_size=0, intermediate_size_per_partition=1024, rocm_aiter_fmoe_enabled=None, aiter_fmoe_shared_expert_enabled=None), 'quant_config': FusedMoEQuantConfig(_a1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _a2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _w1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 16)), alpha_or_gscale=None, zp=None, bias=None), _w2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 8)), alpha_or_gscale=None, zp=None, bias=None), is_scale_swizzled=True, gemm1_alpha=None, gemm1_beta=None, gemm1_clamp_limit=None, mx_alignment=0)} ...
+INFO 09-17 22:21:41 [deep_gemm.py:186] deep_gemm not found in site-packages, trying vendored vllm.third_party.deep_gemm
+INFO 09-17 22:21:41 [deep_gemm.py:213] DeepGEMM PDL enabled on vllm.third_party.deep_gemm.
+INFO 09-17 22:21:41 [deep_gemm.py:131] DeepGEMM E8M0 enabled on current platform.
+E	Traceback (most recent call last):
+E	  File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 129, in rank_worker
+E	    mk_out = run_modular_kernel(pgi, vllm_config, config, weights, rank_tensors)
+E	             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E	  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/common.py", line 793, in run_modular_kernel
+E	    out = mk.apply(**mk_kwargs)
+E	          ^^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1714, in apply
+E	    return self.impl.apply(
+E	           ^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1494, in apply
+E	    fused_out = self._fused_experts(
+E	                ^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1342, in _fused_experts
+E	    self.fused_experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/fallback.py", line 154, in apply
+E	    experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/deep_gemm_moe.py", line 358, in apply
+E	    m_grouped_fp8_gemm_nt_contiguous(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/utils/deep_gemm.py", line 478, in m_grouped_fp8_gemm_nt_contiguous
+E	    return _grouped_impl(
+E	           ^^^^^^^^^^^^^^
+E	RuntimeError: Assertion error (/workspace/.deps/deepgemm-src/csrc/apis/../jit_kernels/impls/../../jit/compiler.hpp:187): (major > 12 or (major == 12 and minor >= 3)) and "NVCC version should be >= 12.3"
+
+FAILED == Config:
+ world_size=1
+ PF=MoEPrepareAndFinalizeNoDPEPModular
+ FE=TritonOrDeepGemmExperts
+ E=32
+ Ms=32
+ N=1024
+ K=2048
+ topk=4
+ dtype=torch.bfloat16
+ Quant:
+     q_dtype=torch.float8_e4m3fn
+     q_block_shape=[128, 128]
+     q_per_out_ch_quant=False
+     q_per_act_token=False
+ - Assertion error  ...
+
+Running[0]: m=32, topk=1 ...
+Making ABCMeta {'moe_config': FusedMoEConfig(num_experts=32, experts_per_token=1, hidden_dim=2048, intermediate_size=1024, num_local_experts=32, num_logical_experts=32, activation=<MoEActivation.SILU: 'silu'>, device=device(type='cuda'), routing_method=<RoutingMethodType.DeepSeekV3: 2>, moe_parallel_config=FusedMoEParallelConfig(tp_size=1, pcp_size=1, dp_size=1, ep_size=1, tp_rank=0, pcp_rank=0, dp_rank=0, ep_rank=0, sp_size=1, use_ep=False, all2all_backend=None, enable_eplb=False), in_dtype=torch.bfloat16, router_logits_dtype=torch.bfloat16, hidden_dim_unpadded=2048, intermediate_size_per_partition_unpadded=1024, intermediate_pad=None, moe_backend='auto', max_num_tokens=32, has_bias=False, is_lora_enabled=False, skip_final_all_reduce=False, defer_moe_finalize=False, swiglu_limit=None, swiglu_alpha=None, swiglu_beta=None, activation_situ_beta=None, activation_situ_linear_beta=None, max_capture_size=0, intermediate_size_per_partition=1024, rocm_aiter_fmoe_enabled=None, aiter_fmoe_shared_expert_enabled=None), 'quant_config': FusedMoEQuantConfig(_a1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _a2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _w1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 16)), alpha_or_gscale=None, zp=None, bias=None), _w2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 8)), alpha_or_gscale=None, zp=None, bias=None), is_scale_swizzled=True, gemm1_alpha=None, gemm1_beta=None, gemm1_clamp_limit=None, mx_alignment=0)} ...
+E	Traceback (most recent call last):
+E	  File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 129, in rank_worker
+E	    mk_out = run_modular_kernel(pgi, vllm_config, config, weights, rank_tensors)
+E	             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E	  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/common.py", line 793, in run_modular_kernel
+E	    out = mk.apply(**mk_kwargs)
+E	          ^^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1714, in apply
+E	    return self.impl.apply(
+E	           ^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1494, in apply
+E	    fused_out = self._fused_experts(
+E	                ^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1342, in _fused_experts
+E	    self.fused_experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/fallback.py", line 154, in apply
+E	    experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/deep_gemm_moe.py", line 358, in apply
+E	    m_grouped_fp8_gemm_nt_contiguous(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/utils/deep_gemm.py", line 478, in m_grouped_fp8_gemm_nt_contiguous
+E	    return _grouped_impl(
+E	           ^^^^^^^^^^^^^^
+E	RuntimeError: Assertion error (/workspace/.deps/deepgemm-src/csrc/apis/../jit_kernels/impls/../../jit/compiler.hpp:187): (major > 12 or (major == 12 and minor >= 3)) and "NVCC version should be >= 12.3"
+
+FAILED == Config:
+ world_size=1
+ PF=MoEPrepareAndFinalizeNoDPEPModular
+ FE=TritonOrDeepGemmExperts
+ E=32
+ Ms=32
+ N=1024
+ K=2048
+ topk=1
+ dtype=torch.bfloat16
+ Quant:
+     q_dtype=torch.float8_e4m3fn
+     q_block_shape=[128, 128]
+     q_per_out_ch_quant=False
+     q_per_act_token=False
+ - Assertion error  ...
+
+Running[0]: m=64, topk=4 ...
+Making ABCMeta {'moe_config': FusedMoEConfig(num_experts=32, experts_per_token=4, hidden_dim=2048, intermediate_size=1024, num_local_experts=32, num_logical_experts=32, activation=<MoEActivation.SILU: 'silu'>, device=device(type='cuda'), routing_method=<RoutingMethodType.DeepSeekV3: 2>, moe_parallel_config=FusedMoEParallelConfig(tp_size=1, pcp_size=1, dp_size=1, ep_size=1, tp_rank=0, pcp_rank=0, dp_rank=0, ep_rank=0, sp_size=1, use_ep=False, all2all_backend=None, enable_eplb=False), in_dtype=torch.bfloat16, router_logits_dtype=torch.bfloat16, hidden_dim_unpadded=2048, intermediate_size_per_partition_unpadded=1024, intermediate_pad=None, moe_backend='auto', max_num_tokens=64, has_bias=False, is_lora_enabled=False, skip_final_all_reduce=False, defer_moe_finalize=False, swiglu_limit=None, swiglu_alpha=None, swiglu_beta=None, activation_situ_beta=None, activation_situ_linear_beta=None, max_capture_size=0, intermediate_size_per_partition=1024, rocm_aiter_fmoe_enabled=None, aiter_fmoe_shared_expert_enabled=None), 'quant_config': FusedMoEQuantConfig(_a1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _a2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _w1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 16)), alpha_or_gscale=None, zp=None, bias=None), _w2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 8)), alpha_or_gscale=None, zp=None, bias=None), is_scale_swizzled=True, gemm1_alpha=None, gemm1_beta=None, gemm1_clamp_limit=None, mx_alignment=0)} ...
+E	Traceback (most recent call last):
+E	  File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 129, in rank_worker
+E	    mk_out = run_modular_kernel(pgi, vllm_config, config, weights, rank_tensors)
+E	             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E	  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/common.py", line 793, in run_modular_kernel
+E	    out = mk.apply(**mk_kwargs)
+E	          ^^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1714, in apply
+E	    return self.impl.apply(
+E	           ^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1494, in apply
+E	    fused_out = self._fused_experts(
+E	                ^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1342, in _fused_experts
+E	    self.fused_experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/fallback.py", line 154, in apply
+E	    experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/deep_gemm_moe.py", line 358, in apply
+E	    m_grouped_fp8_gemm_nt_contiguous(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/utils/deep_gemm.py", line 478, in m_grouped_fp8_gemm_nt_contiguous
+E	    return _grouped_impl(
+E	           ^^^^^^^^^^^^^^
+E	RuntimeError: Assertion error (/workspace/.deps/deepgemm-src/csrc/apis/../jit_kernels/impls/../../jit/compiler.hpp:187): (major > 12 or (major == 12 and minor >= 3)) and "NVCC version should be >= 12.3"
+
+FAILED == Config:
+ world_size=1
+ PF=MoEPrepareAndFinalizeNoDPEPModular
+ FE=TritonOrDeepGemmExperts
+ E=32
+ Ms=64
+ N=1024
+ K=2048
+ topk=4
+ dtype=torch.bfloat16
+ Quant:
+     q_dtype=torch.float8_e4m3fn
+     q_block_shape=[128, 128]
+     q_per_out_ch_quant=False
+     q_per_act_token=False
+ - Assertion error  ...
+
+Running[0]: m=64, topk=1 ...
+Making ABCMeta {'moe_config': FusedMoEConfig(num_experts=32, experts_per_token=1, hidden_dim=2048, intermediate_size=1024, num_local_experts=32, num_logical_experts=32, activation=<MoEActivation.SILU: 'silu'>, device=device(type='cuda'), routing_method=<RoutingMethodType.DeepSeekV3: 2>, moe_parallel_config=FusedMoEParallelConfig(tp_size=1, pcp_size=1, dp_size=1, ep_size=1, tp_rank=0, pcp_rank=0, dp_rank=0, ep_rank=0, sp_size=1, use_ep=False, all2all_backend=None, enable_eplb=False), in_dtype=torch.bfloat16, router_logits_dtype=torch.bfloat16, hidden_dim_unpadded=2048, intermediate_size_per_partition_unpadded=1024, intermediate_pad=None, moe_backend='auto', max_num_tokens=64, has_bias=False, is_lora_enabled=False, skip_final_all_reduce=False, defer_moe_finalize=False, swiglu_limit=None, swiglu_alpha=None, swiglu_beta=None, activation_situ_beta=None, activation_situ_linear_beta=None, max_capture_size=0, intermediate_size_per_partition=1024, rocm_aiter_fmoe_enabled=None, aiter_fmoe_shared_expert_enabled=None), 'quant_config': FusedMoEQuantConfig(_a1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _a2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=None, alpha_or_gscale=None, zp=None, bias=None), _w1=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 16)), alpha_or_gscale=None, zp=None, bias=None), _w2=FusedMoEQuantDesc(dtype=torch.float8_e4m3fn, shape=GroupShape(row=128, col=128), scale=tensor([...], device='cuda:0', size=(32, 16, 8)), alpha_or_gscale=None, zp=None, bias=None), is_scale_swizzled=True, gemm1_alpha=None, gemm1_beta=None, gemm1_clamp_limit=None, mx_alignment=0)} ...
+E	Traceback (most recent call last):
+E	  File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 129, in rank_worker
+E	    mk_out = run_modular_kernel(pgi, vllm_config, config, weights, rank_tensors)
+E	             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E	  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/common.py", line 793, in run_modular_kernel
+E	    out = mk.apply(**mk_kwargs)
+E	          ^^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1714, in apply
+E	    return self.impl.apply(
+E	           ^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1494, in apply
+E	    fused_out = self._fused_experts(
+E	                ^^^^^^^^^^^^^^^^^^^^
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/modular_kernel.py", line 1342, in _fused_experts
+E	    self.fused_experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/fallback.py", line 154, in apply
+E	    experts.apply(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/model_executor/layers/fused_moe/experts/deep_gemm_moe.py", line 358, in apply
+E	    m_grouped_fp8_gemm_nt_contiguous(
+E	  File "/apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/vllm/utils/deep_gemm.py", line 478, in m_grouped_fp8_gemm_nt_contiguous
+E	    return _grouped_impl(
+E	           ^^^^^^^^^^^^^^
+E	RuntimeError: Assertion error (/workspace/.deps/deepgemm-src/csrc/apis/../jit_kernels/impls/../../jit/compiler.hpp:187): (major > 12 or (major == 12 and minor >= 3)) and "NVCC version should be >= 12.3"
+
+FAILED == Config:
+ world_size=1
+ PF=MoEPrepareAndFinalizeNoDPEPModular
+ FE=TritonOrDeepGemmExperts
+ E=32
+ Ms=64
+ N=1024
+ K=2048
+ topk=1
+ dtype=torch.bfloat16
+ Quant:
+     q_dtype=torch.float8_e4m3fn
+     q_block_shape=[128, 128]
+     q_per_out_ch_quant=False
+     q_per_act_token=False
+ - Assertion error  ...
+
+4 of 4 tests failed in child process, rank=0.
+----------------------------- Captured stderr call -----------------------------
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+<frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+Traceback (most recent call last):
+  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/parallel_utils.py", line 128, in _worker_parallel_launch
+    _run_worker()
+  File "/tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/parallel_utils.py", line 110, in _run_worker
+    worker(
+  File "/tmp/moetest57092/tests/kernels/moe/test_modular_kernel_combinations.py", line 189, in rank_worker
+    raise RuntimeError(
+RuntimeError: 4 of 4 tests failed in child process, rank=0.
+------------------------------ Captured log call -------------------------------
+INFO     vllm.config.kernel:kernel.py:308 Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+=============================== warnings summary ===============================
+../../apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/jit/_script.py:365: 14 warnings
+  /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+<frozen importlib._bootstrap_external>:1301
+  <frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+
+<frozen importlib._bootstrap_external>:1301
+  <frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+
+tests/kernels/moe/modular_kernel_tools/mk_objects.py:50
+  /tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/mk_objects.py:50: PytestCollectionWarning: cannot collect test class 'TestMoEQuantConfig' because it has a __init__ constructor (from: tests/kernels/moe/test_modular_kernel_combinations.py)
+    @dataclass
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype8-quant_config8-MoEPrepareAndFinalizeNoDPEPModular-DeepGemmExperts-1]
+FAILED tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_singlegpu[2048-1024-32-dtype9-quant_config9-MoEPrepareAndFinalizeNoDPEPModular-TritonOrDeepGemmExperts-1]
+======= 2 failed, 8 passed, 1 skipped, 17 warnings in 497.75s (0:08:17) ========
+[W917 22:21:49.058428479 CudaIPCTypes.cpp:16] Producer process has been terminated before all shared CUDA tensors released. See Note [Sharing CUDA tensors]

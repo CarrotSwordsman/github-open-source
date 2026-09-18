@@ -1,0 +1,68 @@
+{
+  "id": "chatcmpl-92f420e9d5ae34cf",
+  "object": "chat.completion",
+  "created": 1789652821,
+  "model": "Qwen/Qwen2.5-Omni-7B",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "The audio contains a recitation of 'Mary Had A Little Lamb'.",
+        "refusal": null,
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "reasoning": null
+      },
+      "logprobs": null,
+      "finish_reason": "stop",
+      "stop_reason": null,
+      "token_ids": null,
+      "routed_experts": null
+    },
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "refusal": null,
+        "annotations": null,
+        "audio": {
+          "id": "audio-33f8a1137881471d",
+          "data": "<42300 base64 chars>",
+          "expires_at": 1789739223,
+          "transcript": ""
+        },
+        "function_call": null,
+        "reasoning": null
+      },
+      "logprobs": null,
+      "finish_reason": "stop",
+      "stop_reason": null,
+      "token_ids": null,
+      "routed_experts": null,
+      "audio_metadata": {
+        "format": "wav",
+        "sample_rate_hz": 24000,
+        "frame_count": 15840,
+        "channels": 1
+      }
+    }
+  ],
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "prompt_tokens": 428,
+    "total_tokens": 443,
+    "completion_tokens": 15,
+    "prompt_tokens_details": null,
+    "completion_tokens_details": null
+  },
+  "prompt_logprobs": null,
+  "prompt_token_ids": null,
+  "prompt_text": null,
+  "kv_transfer_params": null,
+  "ec_transfer_params": null,
+  "metrics": null
+}

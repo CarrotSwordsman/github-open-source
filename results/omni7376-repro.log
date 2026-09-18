@@ -1,0 +1,7 @@
+HTTP 200
+len(resp.choices) = 2   (issue reports 2 for n=1)
+choices[0]: index=0 finish=stop content="The audio contains a recitation of 'Mary Had A Little Lamb'." audio=None
+choices[1]: index=0 finish=stop content='None' audio={id:audio-2f49895430eb4119, bytes:42300}
+
+VERDICT: REPRODUCED
+

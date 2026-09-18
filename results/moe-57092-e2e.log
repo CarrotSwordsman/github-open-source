@@ -1,0 +1,33 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/bin/python
+cachedir: .pytest_cache
+rootdir: /tmp/moetest57092/e2e_det
+plugins: asyncio-1.4.0, anyio-4.15.1, forked-1.7.5
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 1 item
+
+test_batch_invariance.py::test_online_fp8_moe_logprobs_bitwise_bs1_vs_bsN PASSED [100%]
+
+=============================== warnings summary ===============================
+test_batch_invariance.py:24
+  /tmp/moetest57092/e2e_det/test_batch_invariance.py:24: PytestUnknownMarkWarning: Unknown pytest.mark.flaky - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.flaky(reruns=3)
+
+test_batch_invariance.py:25
+  /tmp/moetest57092/e2e_det/test_batch_invariance.py:25: PytestUnknownMarkWarning: Unknown pytest.mark.timeout - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.timeout(1000)
+
+test_batch_invariance.py:928
+  /tmp/moetest57092/e2e_det/test_batch_invariance.py:928: PytestUnknownMarkWarning: Unknown pytest.mark.timeout - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.timeout(600)
+
+test_batch_invariance.py: 14 warnings
+  /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+test_batch_invariance.py::test_online_fp8_moe_logprobs_bitwise_bs1_vs_bsN
+  /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=21309) is multi-threaded, use of fork() may lead to deadlocks in the child.
+    self.pid = os.fork()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================== 1 passed, 18 warnings in 151.04s (0:02:31) ==================

@@ -1,0 +1,460 @@
+/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/version.py:55: RuntimeWarning: vLLM and vLLM-Omni appear to have mismatched major/minor versions:
+ --> vLLM-Omni version 0.1.dev1+g538eddd74
+ --> vLLM version 0.29.0
+This will likely cause compatibility issues.
+  warn_if_misaligned_vllm_version()
+INFO 09-17 22:04:43 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 09-17 22:04:44 [patch.py:503] inductor factorable-divisibility patch: installed.
+INFO 09-17 22:04:44 [patch.py:568] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+INFO 09-17 22:04:54 [main.py:54] Delegating entrypoint handling to vllm-omni
+INFO 09-17 22:04:54 [serve.py:311] Detected diffusion model: MiniMaxAI/MiniMax-H3
+INFO 09-17 22:04:54 [logo.py:52]        [97m█     █     █▄   ▄█[0m    [34m   ▄▀▀[38;5;208m▀▀▄ [0m[97m█▄   ▄█ █▄    █ ▀█▀ [0m
+INFO 09-17 22:04:54 [logo.py:52]  [38;5;208m▄▄[0m [34m▄█[0m [97m█     █     █ ▀▄▀ █[0m[97m  ▄▄▄ [0m[34m █    [38;5;208m█ [0m[97m█ ▀▄▀ █ █ ▀▄  █  █  [0m
+INFO 09-17 22:04:54 [logo.py:52]   [38;5;208m█[0m[34m▄█▀[0m [97m█     █     █     █[0m[97m      [0m[34m █    [38;5;208m█ [0m[97m█     █ █   ▀▄█  █  [0m
+INFO 09-17 22:04:54 [logo.py:52]    [34m▀▀[0m  [97m▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀[0m      [35m  ▀▀▀▀  [0m[97m▀     ▀ ▀     ▀ ▀▀▀ [0m
+INFO 09-17 22:04:54 [logo.py:52] 
+[0;36m(APIServer pid=26436)[0;0m INFO 09-17 22:04:54 [api_utils.py:347] vLLM server version 0.29.0, serving model MiniMaxAI/MiniMax-H3
+[0;36m(APIServer pid=26436)[0;0m INFO 09-17 22:04:54 [api_utils.py:286] non-default args: {'model_tag': 'MiniMaxAI/MiniMax-H3', 'model': 'MiniMaxAI/MiniMax-H3', 'trust_remote_code': True, 'enforce_eager': True, 'attention_backend': 'CUDNN_ATTN', 'tensor_parallel_size': 2}
+[0;36m(APIServer pid=26436)[0;0m INFO 09-17 22:04:54 [omni_base.py:208] [AsyncOmni] Initializing with model MiniMaxAI/MiniMax-H3
+[0;36m(APIServer pid=26436)[0;0m INFO 09-17 22:04:54 [omni_engine_base.py:163] [OmniEngine] Initializing with model MiniMaxAI/MiniMax-H3
+[0;36m(APIServer pid=26436)[0;0m INFO 09-17 22:04:54 [config_factory.py:678] Resolved generic diffusion final_output_type='video' for model_class_name='MiniMaxH3ModularPipeline'.
+[0;36m(APIServer pid=26436)[0;0m INFO 09-17 22:04:55 [omni_engine_base.py:312] [OmniEngine] Launching Orchestrator thread with 1 stages
+[0;36m(APIServer pid=26436)[0;0m INFO 09-17 22:04:55 [data.py:1345] HF_HUB_OFFLINE is True, replace model_id [MiniMaxAI/MiniMax-H3] to model_path [/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe]
+[0;36m(APIServer pid=26436)[0;0m INFO 09-17 22:04:57 [multiproc_executor.py:350] Starting server...
+/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/version.py:55: RuntimeWarning: vLLM and vLLM-Omni appear to have mismatched major/minor versions:
+ --> vLLM-Omni version 0.1.dev1+g538eddd74
+ --> vLLM version 0.29.0
+This will likely cause compatibility issues.
+  warn_if_misaligned_vllm_version()
+/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/version.py:55: RuntimeWarning: vLLM and vLLM-Omni appear to have mismatched major/minor versions:
+ --> vLLM-Omni version 0.1.dev1+g538eddd74
+ --> vLLM version 0.29.0
+This will likely cause compatibility issues.
+  warn_if_misaligned_vllm_version()
+[32mINFO[0m [90m09-17 22:05:35[0m [90m[patch.py:252][0m NVFP4 W4A4 weight_scale NaN-clamp: installed.
+[32mINFO[0m [90m09-17 22:05:35[0m [90m[patch.py:252][0m NVFP4 W4A4 weight_scale NaN-clamp: installed.
+[32mINFO[0m [90m09-17 22:05:35[0m [90m[patch.py:503][0m inductor factorable-divisibility patch: installed.
+[32mINFO[0m [90m09-17 22:05:35[0m [90m[patch.py:503][0m inductor factorable-divisibility patch: installed.
+[32mINFO[0m [90m09-17 22:05:35[0m [90m[patch.py:568][0m [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+[32mINFO[0m [90m09-17 22:05:35[0m [90m[patch.py:568][0m [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+[0;36m(DiffusionWorker pid=27251)[0;0m [32mINFO[0m [90m09-17 22:05:48[0m [90m[diffusion_worker.py:1058][0m Worker 0 created result MessageQueue
+[0;36m(DiffusionWorker pid=27252)[0;0m [32mINFO[0m [90m09-17 22:05:48[0m [90m[diffusion_worker.py:1058][0m Worker 1 created result MessageQueue
+[0;36m(DiffusionWorker pid=27251)[0;0m [32mINFO[0m [90m09-17 22:05:48[0m [90m[scheduler.py:277][0m Chunked prefill is enabled with max_num_batched_tokens=2048.
+[0;36m(DiffusionWorker pid=27251)[0;0m [32mINFO[0m [90m09-17 22:05:48[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+[0;36m(DiffusionWorker pid=27251)[0;0m [32mINFO[0m [90m09-17 22:05:48[0m [90m[diffusion_worker.py:327][0m Final IR op priority after setting vLLM-Omni overrides: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(DiffusionWorker pid=27252)[0;0m [32mINFO[0m [90m09-17 22:05:48[0m [90m[scheduler.py:277][0m Chunked prefill is enabled with max_num_batched_tokens=2048.
+[0;36m(DiffusionWorker pid=27252)[0;0m [32mINFO[0m [90m09-17 22:05:48[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+[0;36m(DiffusionWorker pid=27252)[0;0m [32mINFO[0m [90m09-17 22:05:48[0m [90m[diffusion_worker.py:327][0m Final IR op priority after setting vLLM-Omni overrides: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[W917 22:05:48.172445278 socket.cpp:764] [c10d] The client socket has failed to connect to [localhost]:39305 (errno: 99 - Cannot assign requested address).
+[0;36m(DiffusionWorker pid=27251)[0;0m [0;36m(DiffusionWorker pid=27252)[0;0m [32mINFO[0m [90m09-17 22:05:49[0m [90m[diffusion_worker.py:339][0m Worker 0: Initialized device and distributed environment.
+[32mINFO[0m [90m09-17 22:05:49[0m [90m[diffusion_worker.py:339][0m Worker 1: Initialized device and distributed environment.
+[0;36m(DiffusionWorker pid=27251)[0;0m [32mINFO[0m [90m09-17 22:05:49[0m [90m[parallel_state.py:599][0m Building SP subgroups from explicit sp_group_ranks (sp_size=1, ulysses=1, ring=1, use_ulysses_low=True).
+[0;36m(DiffusionWorker pid=27252)[0;0m [32mINFO[0m [90m09-17 22:05:49[0m [90m[parallel_state.py:599][0m Building SP subgroups from explicit sp_group_ranks (sp_size=1, ulysses=1, ring=1, use_ulysses_low=True).
+[0;36m(DiffusionWorker pid=27251)[0;0m [32mINFO[0m [90m09-17 22:05:49[0m [90m[parallel_state.py:641][0m SP group details for rank 0: sp_group=[0], ulysses_group=[0], ring_group=[0]
+[0;36m(DiffusionWorker pid=27252)[0;0m [32mINFO[0m [90m09-17 22:05:49[0m [90m[parallel_state.py:641][0m SP group details for rank 1: sp_group=[1], ulysses_group=[1], ring_group=[1]
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m [0;36m(DiffusionWorker_TP0 pid=27251)[0;0m Process DiffusionWorker-1:
+Process DiffusionWorker-0:
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m Traceback (most recent call last):
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m Traceback (most recent call last):
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m [0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     self.run()
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/process.py", line 108, in run
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/process.py", line 108, in run
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     self._target(*self._args, **self._kwargs)
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     self._target(*self._args, **self._kwargs)
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1515, in worker_main
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1515, in worker_main
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     worker_proc = WorkerProc(
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     worker_proc = WorkerProc(
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m                   ^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m                   ^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1063, in __init__
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1063, in __init__
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     self.worker = self._create_worker(gpu_id, od_config, worker_extension_cls, custom_pipeline_args)
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     self.worker = self._create_worker(gpu_id, od_config, worker_extension_cls, custom_pipeline_args)
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1098, in _create_worker
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1098, in _create_worker
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     wrapper = WorkerWrapperBase(
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     wrapper = WorkerWrapperBase(
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m               ^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m               ^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1587, in __init__
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1587, in __init__
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     self.worker = worker_class(
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     self.worker = worker_class(
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m                   ^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m                   ^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 295, in __init__
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 295, in __init__
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     self.load_model(load_format=self.od_config.diffusion_load_format)
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     self.load_model(load_format=self.od_config.diffusion_load_format)
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 411, in load_model
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 411, in load_model
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     self.model_runner.load_model(
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     self.model_runner.load_model(
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 332, in load_model
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 332, in load_model
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     self.pipeline = model_loader.load_model(
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     self.pipeline = model_loader.load_model(
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m                     ^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m                     ^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/model_loader/diffusers_loader.py", line 685, in load_model
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/model_loader/diffusers_loader.py", line 685, in load_model
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     model = self._init_from_load_format(load_format, target_device, custom_pipeline_name, is_hsdp=False)
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     model = self._init_from_load_format(load_format, target_device, custom_pipeline_name, is_hsdp=False)
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/model_loader/diffusers_loader.py", line 1199, in _init_from_load_format
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/model_loader/diffusers_loader.py", line 1199, in _init_from_load_format
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     model = initialize_model(self.od_config)
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     model = initialize_model(self.od_config)
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/registry.py", line 435, in initialize_model
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/registry.py", line 435, in initialize_model
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     model = model_class(od_config=od_config)
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     model = model_class(od_config=od_config)
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 831, in __init__
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 831, in __init__
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     json.loads((model_root / "fastvideo_inference.json").read_text(encoding="utf-8"))
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     json.loads((model_root / "fastvideo_inference.json").read_text(encoding="utf-8"))
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/pathlib.py", line 1027, in read_text
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/pathlib.py", line 1027, in read_text
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     with self.open(mode='r', encoding=encoding, errors=errors) as f:
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     with self.open(mode='r', encoding=encoding, errors=errors) as f:
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/pathlib.py", line 1013, in open
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/pathlib.py", line 1013, in open
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m     return io.open(self, mode, buffering, encoding, errors, newline)
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m     return io.open(self, mode, buffering, encoding, errors, newline)
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=27252)[0;0m FileNotFoundError: [Errno 2] No such file or directory: '/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe/fastvideo_inference.json'
+[0;36m(DiffusionWorker_TP0 pid=27251)[0;0m FileNotFoundError: [Errno 2] No such file or directory: '/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe/fastvideo_inference.json'
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [multiproc_executor.py:398] Rank 0 scheduler is dead. Please check if there are relevant logs.
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [multiproc_executor.py:400] Exit code: 1
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307] [StageRuntime] Stage initialization failed; shutting down 0 initialized client(s)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307] Traceback (most recent call last):
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 294, in initialize
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     initialized_clients = self._initialize_stage_replicas(stage_plans, self._stage_init_timeout)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 782, in _initialize_stage_replicas
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     raise primary_exc
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 743, in _init_group
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     client = self._initialize_replica(
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]              ^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 972, in _initialize_replica
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     return self._initialize_local_diffusion_replica(plan, stage_init_timeout)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 1095, in _initialize_local_diffusion_replica
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     client, resources = launch_diffusion_stage_replica(
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_engine_startup.py", line 1599, in launch_diffusion_stage_replica
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     client = initialize_diffusion_stage(
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_init_utils.py", line 2017, in initialize_diffusion_stage
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     return create_diffusion_client(model, od_config, metadata, stage_init_timeout, use_inline)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/stage_diffusion_client.py", line 58, in create_diffusion_client
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     return InlineStageDiffusionClient(model, od_config, metadata)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/inline_stage_diffusion_client.py", line 70, in __init__
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     self._engine = DiffusionEngine.make_engine(self.od_config)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 871, in make_engine
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     engine = engine_class(config, scheduler=scheduler)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 257, in __init__
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     self._init_executor(od_config)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 328, in _init_executor
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     self.executor = executor_class(od_config)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/abstract.py", line 75, in __init__
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     self._init_executor()
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/multiproc_executor.py", line 167, in _init_executor
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     processes, result_handles = self._launch_workers(broadcast_handle, self.wake_events)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/multiproc_executor.py", line 396, in _launch_workers
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     data = reader.recv()
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]            ^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 250, in recv
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     buf = self._recv_bytes()
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]           ^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 430, in _recv_bytes
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     buf = self._recv(4)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]           ^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 399, in _recv
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307]     raise EOFError
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [stage_runtime.py:307] EOFError
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474] [OmniEngine] Orchestrator thread crashed
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474] Traceback (most recent call last):
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/omni_engine_base.py", line 468, in _bootstrap_orchestrator
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     loop.run_until_complete(_run_orchestrator())
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     return future.result()
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]            ^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/omni_engine_base.py", line 442, in _run_orchestrator
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     self._initialize_stages(stage_init_timeout)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/omni_engine_base.py", line 389, in _initialize_stages
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     self._runtime.initialize()
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 313, in initialize
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     raise exc
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 294, in initialize
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     initialized_clients = self._initialize_stage_replicas(stage_plans, self._stage_init_timeout)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 782, in _initialize_stage_replicas
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     raise primary_exc
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 743, in _init_group
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     client = self._initialize_replica(
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]              ^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 972, in _initialize_replica
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     return self._initialize_local_diffusion_replica(plan, stage_init_timeout)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 1095, in _initialize_local_diffusion_replica
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     client, resources = launch_diffusion_stage_replica(
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_engine_startup.py", line 1599, in launch_diffusion_stage_replica
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     client = initialize_diffusion_stage(
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_init_utils.py", line 2017, in initialize_diffusion_stage
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     return create_diffusion_client(model, od_config, metadata, stage_init_timeout, use_inline)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/stage_diffusion_client.py", line 58, in create_diffusion_client
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     return InlineStageDiffusionClient(model, od_config, metadata)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/inline_stage_diffusion_client.py", line 70, in __init__
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     self._engine = DiffusionEngine.make_engine(self.od_config)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 871, in make_engine
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     engine = engine_class(config, scheduler=scheduler)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 257, in __init__
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     self._init_executor(od_config)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 328, in _init_executor
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     self.executor = executor_class(od_config)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/abstract.py", line 75, in __init__
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     self._init_executor()
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/multiproc_executor.py", line 167, in _init_executor
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     processes, result_handles = self._launch_workers(broadcast_handle, self.wake_events)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/multiproc_executor.py", line 396, in _launch_workers
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     data = reader.recv()
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]            ^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 250, in recv
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     buf = self._recv_bytes()
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]           ^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 430, in _recv_bytes
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     buf = self._recv(4)
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]           ^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 399, in _recv
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474]     raise EOFError
+[0;36m(APIServer pid=26436)[0;0m ERROR 09-17 22:05:52 [omni_engine_base.py:474] EOFError
+[0;36m(APIServer pid=26436)[0;0m [0;36m(APIServer pid=26436)[0;0m INFO 09-17 22:05:52 [omni_engine_base.py:1144] [OmniEngine] Shutting down Orchestrator
+Exception in thread orchestrator:
+[0;36m(APIServer pid=26436)[0;0m Traceback (most recent call last):
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+[0;36m(APIServer pid=26436)[0;0m     self.run()
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/threading.py", line 1012, in run
+[0;36m(APIServer pid=26436)[0;0m     self._target(*self._args, **self._kwargs)
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/omni_engine_base.py", line 468, in _bootstrap_orchestrator
+[0;36m(APIServer pid=26436)[0;0m     loop.run_until_complete(_run_orchestrator())
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+[0;36m(APIServer pid=26436)[0;0m     return future.result()
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/omni_engine_base.py", line 442, in _run_orchestrator
+[0;36m(APIServer pid=26436)[0;0m     self._initialize_stages(stage_init_timeout)
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/omni_engine_base.py", line 389, in _initialize_stages
+[0;36m(APIServer pid=26436)[0;0m     self._runtime.initialize()
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 313, in initialize
+[0;36m(APIServer pid=26436)[0;0m     raise exc
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 294, in initialize
+[0;36m(APIServer pid=26436)[0;0m     initialized_clients = self._initialize_stage_replicas(stage_plans, self._stage_init_timeout)
+[0;36m(APIServer pid=26436)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 782, in _initialize_stage_replicas
+[0;36m(APIServer pid=26436)[0;0m     raise primary_exc
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 743, in _init_group
+[0;36m(APIServer pid=26436)[0;0m     client = self._initialize_replica(
+[0;36m(APIServer pid=26436)[0;0m              ^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 972, in _initialize_replica
+[0;36m(APIServer pid=26436)[0;0m     return self._initialize_local_diffusion_replica(plan, stage_init_timeout)
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 1095, in _initialize_local_diffusion_replica
+[0;36m(APIServer pid=26436)[0;0m     client, resources = launch_diffusion_stage_replica(
+[0;36m(APIServer pid=26436)[0;0m                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_engine_startup.py", line 1599, in launch_diffusion_stage_replica
+[0;36m(APIServer pid=26436)[0;0m     client = initialize_diffusion_stage(
+[0;36m(APIServer pid=26436)[0;0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_init_utils.py", line 2017, in initialize_diffusion_stage
+[0;36m(APIServer pid=26436)[0;0m     return create_diffusion_client(model, od_config, metadata, stage_init_timeout, use_inline)
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/stage_diffusion_client.py", line 58, in create_diffusion_client
+[0;36m(APIServer pid=26436)[0;0m     return InlineStageDiffusionClient(model, od_config, metadata)
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/inline_stage_diffusion_client.py", line 70, in __init__
+[0;36m(APIServer pid=26436)[0;0m     self._engine = DiffusionEngine.make_engine(self.od_config)
+[0;36m(APIServer pid=26436)[0;0m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 871, in make_engine
+[0;36m(APIServer pid=26436)[0;0m     engine = engine_class(config, scheduler=scheduler)
+[0;36m(APIServer pid=26436)[0;0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 257, in __init__
+[0;36m(APIServer pid=26436)[0;0m     self._init_executor(od_config)
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 328, in _init_executor
+[0;36m(APIServer pid=26436)[0;0m     self.executor = executor_class(od_config)
+[0;36m(APIServer pid=26436)[0;0m                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/abstract.py", line 75, in __init__
+[0;36m(APIServer pid=26436)[0;0m     self._init_executor()
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/multiproc_executor.py", line 167, in _init_executor
+[0;36m(APIServer pid=26436)[0;0m     processes, result_handles = self._launch_workers(broadcast_handle, self.wake_events)
+[0;36m(APIServer pid=26436)[0;0m                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/multiproc_executor.py", line 396, in _launch_workers
+[0;36m(APIServer pid=26436)[0;0m     data = reader.recv()
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 250, in recv
+[0;36m(APIServer pid=26436)[0;0m     buf = self._recv_bytes()
+[0;36m(APIServer pid=26436)[0;0m           ^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 430, in _recv_bytes
+[0;36m(APIServer pid=26436)[0;0m     buf = self._recv(4)
+[0;36m(APIServer pid=26436)[0;0m           ^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 399, in _recv
+[0;36m(APIServer pid=26436)[0;0m     raise EOFError
+[0;36m(APIServer pid=26436)[0;0m EOFError
+[0;36m(APIServer pid=26436)[0;0m Traceback (most recent call last):
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/threading.py", line 1075, in _bootstrap_inner
+[0;36m(APIServer pid=26436)[0;0m     self.run()
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/threading.py", line 1012, in run
+[0;36m(APIServer pid=26436)[0;0m     self._target(*self._args, **self._kwargs)
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/omni_engine_base.py", line 468, in _bootstrap_orchestrator
+[0;36m(APIServer pid=26436)[0;0m     loop.run_until_complete(_run_orchestrator())
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+[0;36m(APIServer pid=26436)[0;0m     return future.result()
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/omni_engine_base.py", line 442, in _run_orchestrator
+[0;36m(APIServer pid=26436)[0;0m     self._initialize_stages(stage_init_timeout)
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/omni_engine_base.py", line 389, in _initialize_stages
+[0;36m(APIServer pid=26436)[0;0m     self._runtime.initialize()
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 313, in initialize
+[0;36m(APIServer pid=26436)[0;0m     raise exc
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 294, in initialize
+[0;36m(APIServer pid=26436)[0;0m     initialized_clients = self._initialize_stage_replicas(stage_plans, self._stage_init_timeout)
+[0;36m(APIServer pid=26436)[0;0m                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 782, in _initialize_stage_replicas
+[0;36m(APIServer pid=26436)[0;0m     raise primary_exc
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 743, in _init_group
+[0;36m(APIServer pid=26436)[0;0m     client = self._initialize_replica(
+[0;36m(APIServer pid=26436)[0;0m              ^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 972, in _initialize_replica
+[0;36m(APIServer pid=26436)[0;0m     return self._initialize_local_diffusion_replica(plan, stage_init_timeout)
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_runtime.py", line 1095, in _initialize_local_diffusion_replica
+[0;36m(APIServer pid=26436)[0;0m     client, resources = launch_diffusion_stage_replica(
+[0;36m(APIServer pid=26436)[0;0m                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_engine_startup.py", line 1599, in launch_diffusion_stage_replica
+[0;36m(APIServer pid=26436)[0;0m     client = initialize_diffusion_stage(
+[0;36m(APIServer pid=26436)[0;0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/stage_init_utils.py", line 2017, in initialize_diffusion_stage
+[0;36m(APIServer pid=26436)[0;0m     return create_diffusion_client(model, od_config, metadata, stage_init_timeout, use_inline)
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/stage_diffusion_client.py", line 58, in create_diffusion_client
+[0;36m(APIServer pid=26436)[0;0m     return InlineStageDiffusionClient(model, od_config, metadata)
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/inline_stage_diffusion_client.py", line 70, in __init__
+[0;36m(APIServer pid=26436)[0;0m     self._engine = DiffusionEngine.make_engine(self.od_config)
+[0;36m(APIServer pid=26436)[0;0m                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 871, in make_engine
+[0;36m(APIServer pid=26436)[0;0m     engine = engine_class(config, scheduler=scheduler)
+[0;36m(APIServer pid=26436)[0;0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 257, in __init__
+[0;36m(APIServer pid=26436)[0;0m     self._init_executor(od_config)
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 328, in _init_executor
+[0;36m(APIServer pid=26436)[0;0m     self.executor = executor_class(od_config)
+[0;36m(APIServer pid=26436)[0;0m                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/abstract.py", line 75, in __init__
+[0;36m(APIServer pid=26436)[0;0m     self._init_executor()
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/multiproc_executor.py", line 167, in _init_executor
+[0;36m(APIServer pid=26436)[0;0m     processes, result_handles = self._launch_workers(broadcast_handle, self.wake_events)
+[0;36m(APIServer pid=26436)[0;0m                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/executor/multiproc_executor.py", line 396, in _launch_workers
+[0;36m(APIServer pid=26436)[0;0m     data = reader.recv()
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 250, in recv
+[0;36m(APIServer pid=26436)[0;0m     buf = self._recv_bytes()
+[0;36m(APIServer pid=26436)[0;0m           ^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 430, in _recv_bytes
+[0;36m(APIServer pid=26436)[0;0m     buf = self._recv(4)
+[0;36m(APIServer pid=26436)[0;0m           ^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/connection.py", line 399, in _recv
+[0;36m(APIServer pid=26436)[0;0m     raise EOFError
+[0;36m(APIServer pid=26436)[0;0m EOFError
+[0;36m(APIServer pid=26436)[0;0m 
+[0;36m(APIServer pid=26436)[0;0m The above exception was the direct cause of the following exception:
+[0;36m(APIServer pid=26436)[0;0m 
+[0;36m(APIServer pid=26436)[0;0m Traceback (most recent call last):
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/bin/vllm", line 6, in <module>
+[0;36m(APIServer pid=26436)[0;0m     sys.exit(main())
+[0;36m(APIServer pid=26436)[0;0m              ^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/vllm/entrypoints/cli/main.py", line 55, in main
+[0;36m(APIServer pid=26436)[0;0m     omni_main()
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/cli/main.py", line 72, in main
+[0;36m(APIServer pid=26436)[0;0m     args.dispatch_function(args)
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/cli/serve.py", line 158, in cmd
+[0;36m(APIServer pid=26436)[0;0m     uvloop.run(omni_run_server(args))
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/uvloop/__init__.py", line 96, in run
+[0;36m(APIServer pid=26436)[0;0m     return __asyncio.run(
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/asyncio/runners.py", line 195, in run
+[0;36m(APIServer pid=26436)[0;0m     return runner.run(main)
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/asyncio/runners.py", line 118, in run
+[0;36m(APIServer pid=26436)[0;0m     return self._loop.run_until_complete(task)
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/uvloop/__init__.py", line 48, in wrapper
+[0;36m(APIServer pid=26436)[0;0m     return await main
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/openai/api_server.py", line 238, in omni_run_server
+[0;36m(APIServer pid=26436)[0;0m     await omni_run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/openai/api_server.py", line 312, in omni_run_server_worker
+[0;36m(APIServer pid=26436)[0;0m     async with build_async_omni(
+[0;36m(APIServer pid=26436)[0;0m                ^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/contextlib.py", line 210, in __aenter__
+[0;36m(APIServer pid=26436)[0;0m     return await anext(self.gen)
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/openai/api_server.py", line 492, in build_async_omni
+[0;36m(APIServer pid=26436)[0;0m     async with build_async_omni_from_stage_config(
+[0;36m(APIServer pid=26436)[0;0m                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/contextlib.py", line 210, in __aenter__
+[0;36m(APIServer pid=26436)[0;0m     return await anext(self.gen)
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/openai/api_server.py", line 597, in build_async_omni_from_stage_config
+[0;36m(APIServer pid=26436)[0;0m     async_omni = AsyncOmni(model=model, **kwargs)
+[0;36m(APIServer pid=26436)[0;0m                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/async_omni.py", line 83, in __init__
+[0;36m(APIServer pid=26436)[0;0m     AsyncOmniBase.__init__(self, *args, model=model, **kwargs)
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/async_omni_base.py", line 107, in __init__
+[0;36m(APIServer pid=26436)[0;0m     OmniBase.__init__(self, model=model, **kwargs)
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/omni_base.py", line 215, in __init__
+[0;36m(APIServer pid=26436)[0;0m     self.engine = self._create_engine(
+[0;36m(APIServer pid=26436)[0;0m                   ^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/async_omni.py", line 79, in _create_engine
+[0;36m(APIServer pid=26436)[0;0m     return AsyncOmniEngine(**engine_kwargs)
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/omni_engine_base.py", line 327, in __init__
+[0;36m(APIServer pid=26436)[0;0m     self._wait_for_orchestrator_init(startup_future, startup_timeout)
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/engine/omni_engine_base.py", line 526, in _wait_for_orchestrator_init
+[0;36m(APIServer pid=26436)[0;0m     startup_future.result(
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+[0;36m(APIServer pid=26436)[0;0m     return self.__get_result()
+[0;36m(APIServer pid=26436)[0;0m            ^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=26436)[0;0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+[0;36m(APIServer pid=26436)[0;0m     raise self._exception
+[0;36m(APIServer pid=26436)[0;0m RuntimeError: Orchestrator initialization failed: 
