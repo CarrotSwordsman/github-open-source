@@ -1,8 +1,8 @@
-# RESULTS-4 — HANDOFF v5 执行结果（2026-09-22，进行中）
+# RESULTS-4 — HANDOFF v5 执行结果（2026-09-22，全部完成）
 
 > 环境：2×H20 96GB (sm_90) / driver 535.247.01 / glibc 2.28
 > 分工：GPU 侧实验与结果回传；上游动作归 owner。
-> 状态：任务 1 ✅ ｜ 任务 2 ✅（**死锁不复现**）｜ 任务 3 🟡 进行中（gate 认知修正，见下）
+> 状态：任务 1 ✅ ｜ 任务 2 ✅（**死锁不复现**）｜ 任务 3 ✅ 负结果交付（multigpu 本机不可达，gate 认知修正）
 
 ---
 
@@ -101,12 +101,53 @@ py-spy 栈未抓取（无死锁可抓）。
 - 测试套件从 pr57092 分支重建（`/tmp/moetest57092`，含自建顶层 conftest 预 import vllm.config +
   补齐 `tests/kernels/{utils,quant_utils,allclose_default,quantization/}` 依赖）→ 11 tests collected
 
-**卡点**：multigpu 用例 skip 理由是 `got empty parameter set`——根因：multigpu 的全部
-prepare/finalize 类型（`DeepEPHT/LL/V2`、Mori）都注册自 DeepEP 家族，本机无 deep_ep →
-`MK_MULTI_GPU_PREPARE_FINALIZE_TYPES` 为空 → 参数集为空。**装 flashinfer 不解除 multigpu skip**
-（HANDOFF v5 的 gate 假设有误；flashinfer 只影响部分 expert 类型）。
+**卡点已查透，最终状态：✅ 负结果交付 —— multigpu 补跑在本机不可达**（三道墙）：
 
-deep_ep PyPI 仅有源码包（1.0.0 tar.gz），需本机 nvcc 12.1 编译（DeepEP 推荐 CUDA 12.3+）。
-下一步：限时尝试编译，失败则记录负结果收尾。
+1. **参数集为空**：multigpu 用例 skip 理由是 `got empty parameter set`——multigpu 的全部
+   prepare/finalize 类型（`DeepEPHT/LL/V2`、Mori）都注册自 DeepEP 家族，本机无 deep_ep →
+   `MK_MULTI_GPU_PREPARE_FINALIZE_TYPES` 为空 → 参数集为空。**装 flashinfer 不解除 multigpu
+   skip**（HANDOFF v5 的 gate 假设有误；flashinfer 只影响部分 expert 类型）
+2. **deep_ep 无法安装**：PyPI `deep-ep 1.0.0` 仅 sdist，metadata 阶段即
+   `AssertionError: Failed to find NVSHMEM`；且 DeepEP 依赖 **DeepSeek 私改版 NVSHMEM**
+   （README 明示 "our modified NVSHMEM"，setup.py 静态链 `-l:libnvshmem.a
+   -l:nvshmem_bootstrap_uid.so`），GitHub NVIDIA/nvshmem releases 无二进制资产、
+   NVIDIA 下载直链 404 → 需从源码编私改 NVSHMEM（MPI 依赖 + 本机 nvcc 12.1 只读 +
+   无 RDMA + share 磁盘 96%），不可行
+3. **即使装上也只解一半**：multigpu 组合中的 DeepGemmExperts 部分仍会撞 deep_gemm JIT
+   nvcc≥12.3 环境墙（v4 run A 与本次重跑的 dtype8/9 均实证）
 
-（本文件将在任务 3 结束后更新并再次 push）
+### 补充：v4 "自建 workspace_init conftest" 的完整含义（本次踩坑）
+
+重建套件时只拷 moe 目录 + 预 import vllm.config 不够——测试用 `workspace_init` fixture
+（定义在 pr57092 的**根** `tests/conftest.py`），缺它所有 singlegpu 用例 ERROR at setup
+（`fixture 'workspace_init' not found`）。完整版 conftest = 预 import vllm.config +
+复刻该 fixture（`init_workspace_manager(torch.device(0))` / teardown `reset_workspace_manager`）。
+
+### patch 环境健康度验证（singlegpu 全量对照 v4 run A）
+
+`results/moe-57092-singlegpu-repatch.log`：**7 passed / 3 failed / 1 skipped，436s**
+（v4 run A：8/2/1，471s）——等价：
+
+- dtype8/9（DeepGemm nvcc 墙）与 v4 一致 FAILED；multigpu skip 与 v4 一致
+- 唯一差异 dtype6（quant_config6 per-act-token FP8 + CutlassExpertsFp8）本次 FAILED 后
+  **单独复跑 PASSED**——失败模式为 topk=4 场景 1-2 个元素超差（max abs diff 0.0334/0.0347
+  vs 容差 0.03，仅超限 ~11%），属 FP8 量化噪声在容差边缘的抖动，非稳定回归
+
+### 产物
+
+`results/moe-57092-multigpu.log`（skip 记录）/ `results/moe-57092-singlegpu-repatch.log` /
+`results/moe-57092-deepep-install-attempt.log`（安装尝试与三道墙记录）
+
+---
+
+## 环境备注（v5 新增，跨任务）
+
+- **`set -x` + bootstrap.sh 会把 GH_TOKEN 打进日志**（GitHub push protection 拦截过一次）：
+  脚本里 `source bootstrap.sh` 必须带 `2>/dev/null` 或去掉 `set -x`（GPU 机
+  `tools/omni6964-serve.sh` 已修；本次三个 server 日志已脱敏）
+- MiniMax-H3 两种 serve 姿势：① repo id + HF_HUB_OFFLINE=1 在 current main 上会触发
+  IncompleteSnapshotError（FL2VA 部分下载被全量校验拒绝）→ 传本地 snapshot 路径；
+  ② diffusion attention 必须显式 `--diffusion-attention-backend TORCH_SDPA`（CLI
+  `--attention-backend` 不作用于 diffusion；FA2 有 PTX JIT 墙、CUDNN 不支持 seq_len=1）
+- **multigpu MoE 测试（DeepEP 路径）在本机永久不可达**，除非解决 DeepSeek 私改 NVSHMEM +
+  nvcc 12.3+ 两个硬墙——后续 HANDOFF 不应再排此类任务到本机

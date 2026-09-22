@@ -1,0 +1,16 @@
+=== deep_ep install attempt log (2026-09-22) ===
+pip download deep-ep==1.0.0 (metadata stage):
+AssertionError: Failed to find NVSHMEM
+
+sdist setup.py requirements:
+- NVSHMEM_DIR env must point to DeepSeek MODIFIED nvshmem (README: 'DeepEP also depends on our modified NVSHMEM')
+- static link: -l:libnvshmem.a -l:nvshmem_bootstrap_uid.so
+- TORCH_CUDA_ARCH_LIST=9.0, -rdc=true + -dlink
+
+nvshmem availability:
+- GitHub NVIDIA/nvshmem releases (v3.7.2 latest): NO binary assets
+- NVIDIA developer.download URL pattern: 404
+- => would require building DeepSeek's modified nvshmem from source (MPI deps, nvcc 12.1 read-only, no RDMA, disk 96%)
+
+additional wall even if deep_ep built:
+- multigpu combos with DeepGemmExperts still hit deep_gemm JIT nvcc>=12.3 wall (proven by dtype8/9 failures in both v4 run A and today's rerun)

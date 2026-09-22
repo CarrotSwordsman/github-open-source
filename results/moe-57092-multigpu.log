@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/bin/python
+cachedir: .pytest_cache
+rootdir: /tmp/moetest57092
+plugins: asyncio-1.4.0, anyio-4.15.1, forked-1.7.5
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 11 items / 10 deselected / 1 selected
+
+tests/kernels/moe/test_modular_kernel_combinations.py::test_modular_kernel_combinations_multigpu[NOTSET] SKIPPED [100%]
+
+=============================== warnings summary ===============================
+../../apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/jit/_script.py:365: 14 warnings
+  /apdcephfs_hzlf/share_1227201/mershi/envs/vllm029/lib/python3.12/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+<frozen importlib._bootstrap_external>:1301
+  <frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+
+<frozen importlib._bootstrap_external>:1301
+  <frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+
+tests/kernels/moe/modular_kernel_tools/mk_objects.py:50
+  /tmp/moetest57092/tests/kernels/moe/modular_kernel_tools/mk_objects.py:50: PytestCollectionWarning: cannot collect test class 'TestMoEQuantConfig' because it has a __init__ constructor (from: tests/kernels/moe/test_modular_kernel_combinations.py)
+    @dataclass
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================ 1 skipped, 10 deselected, 17 warnings in 2.57s ================
