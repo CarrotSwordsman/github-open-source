@@ -1,0 +1,1108 @@
++ source /apdcephfs_hzlf/share_1227201/mershi/bootstrap.sh
+++ export HF_HOME=/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface
+++ HF_HOME=/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface
+++ export MODELSCOPE_CACHE=/apdcephfs_hzlf/share_1227201/mershi/.cache/modelscope
+++ MODELSCOPE_CACHE=/apdcephfs_hzlf/share_1227201/mershi/.cache/modelscope
+++ export TORCH_HOME=/apdcephfs_hzlf/share_1227201/mershi/.cache/torch
+++ TORCH_HOME=/apdcephfs_hzlf/share_1227201/mershi/.cache/torch
+++ export PIP_CACHE_DIR=/apdcephfs_hzlf/share_1227201/mershi/.cache/pip
+++ PIP_CACHE_DIR=/apdcephfs_hzlf/share_1227201/mershi/.cache/pip
+++ mkdir -p /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface /apdcephfs_hzlf/share_1227201/mershi/.cache/modelscope /apdcephfs_hzlf/share_1227201/mershi/.cache/torch /apdcephfs_hzlf/share_1227201/mershi/.cache/pip
+++ _MINICONDA=/apdcephfs_hzlf/share_1227201/mershi/miniconda3
+++ '[' -f /apdcephfs_hzlf/share_1227201/mershi/miniconda3/etc/profile.d/conda.sh ']'
+++ source /apdcephfs_hzlf/share_1227201/mershi/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/conda
++++ CONDA_EXE=/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/conda
+++++ dirname /apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin
++++ PATH=/apdcephfs_hzlf/share_1227201/mershi/miniconda3/condabin:/root/.codebuddy-server-cn/bin/stable-b4c35ed08ffb428910211608831a314565c1256e/extensions/genie/out/vendor/shim/safe-bin:/root/.codebuddy-server-cn/bin/stable-b4c35ed08ffb428910211608831a314565c1256e/bin/remote-cli:/usr/local/cuda/bin:/usr/local/cuda/bin:/usr/share/Modules/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin:/root/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ unset _MINICONDA
+++ command -v conda
+++ conda config --show envs_dirs
+++ grep -q /apdcephfs_hzlf/share_1227201/mershi/envs
+++ conda activate base
+++ _PERSIST_HIST=/apdcephfs_hzlf/share_1227201/mershi/.bash_history
+++ '[' -f /apdcephfs_hzlf/share_1227201/mershi/.bash_history ']'
+++ '[' '!' -L /root/.bash_history ']'
++++ readlink /root/.bash_history
+++ '[' /apdcephfs_hzlf/share_1227201/mershi/.bash_history '!=' /apdcephfs_hzlf/share_1227201/mershi/.bash_history ']'
+++ unset _PERSIST_HIST
+++ export HISTFILE=/root/.bash_history
+++ HISTFILE=/root/.bash_history
+++ export HISTSIZE=50000
+++ HISTSIZE=50000
+++ export HISTFILESIZE=200000
+++ HISTFILESIZE=200000
+++ export 'HISTTIMEFORMAT=%F %T '
+++ HISTTIMEFORMAT='%F %T '
+++ export HISTCONTROL=ignoredups:erasedups
+++ HISTCONTROL=ignoredups:erasedups
+++ shopt -s histappend
+++ case "$PROMPT_COMMAND" in
+++ PROMPT_COMMAND='history -a'
+++ _GH_TOKEN_FILE=/apdcephfs_hzlf/share_1227201/mershi/.github_token
+++ '[' -s /apdcephfs_hzlf/share_1227201/mershi/.github_token ']'
++++ cat /apdcephfs_hzlf/share_1227201/mershi/.github_token
+++ export GH_TOKEN=<REDACTED_PAT>
+++ GH_TOKEN=<REDACTED_PAT>
+++ export GITHUB_TOKEN=<REDACTED_PAT>
+++ GITHUB_TOKEN=<REDACTED_PAT>
+++ git config --global credential.helper '!f() { test -r /apdcephfs_hzlf/share_1227201/mershi/.github_token && printf "username=CarrotSwordsman\npassword=%s\n" "$(cat /apdcephfs_hzlf/share_1227201/mershi/.github_token)"; }; f'
+++ echo '[bootstrap]       GitHub token 已加载（git push / API 认证可用）'
+[bootstrap]       GitHub token 已加载（git push / API 认证可用）
+++ unset _GH_TOKEN_FILE
++++ which python
+++ echo '[bootstrap ready] python=/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/python (in env: base)'
+[bootstrap ready] python=/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/python (in env: base)
+++ echo '[bootstrap]       可用环境（conda env list 查看完整列表）：'
+[bootstrap]       可用环境（conda env list 查看完整列表）：
+++ conda env list
+++ awk '!/^#/ && NF>0 {print "                    - " $1}'
+                    - dynamo-9819
+                    - dynamo-9819-rc24
+                    - lora-repro
+                    - minimind-o
+                    - mpi-libs
+                    - omni-h3
+                    - rustbuild
+                    - tf-course
+                    - vllm-dev
+                    - vllm-new
+                    - vllm029
+                    - base
+++ echo '[bootstrap]       提示：直接用 conda activate <env-name> 切换环境'
+[bootstrap]       提示：直接用 conda activate <env-name> 切换环境
++ conda activate omni-h3
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate omni-h3
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate omni-h3
+++ '[' -n '' ']'
+++ /apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/conda shell.posix activate omni-h3
++ ask_conda='unset _CE_M
+unset _CE_CONDA
+PS1='\''(omni-h3) '\''
+export PATH='\''/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/bin:/apdcephfs_hzlf/share_1227201/mershi/miniconda3/condabin:/root/.codebuddy-server-cn/bin/stable-b4c35ed08ffb428910211608831a314565c1256e/extensions/genie/out/vendor/shim/safe-bin:/root/.codebuddy-server-cn/bin/stable-b4c35ed08ffb428910211608831a314565c1256e/bin/remote-cli:/usr/local/cuda/bin:/usr/local/cuda/bin:/usr/share/Modules/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin:/root/bin'\''
+export CONDA_PREFIX='\''/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''omni-h3'\''
+export CONDA_PROMPT_MODIFIER='\''(omni-h3) '\''
+export CONDA_PREFIX_1='\''/apdcephfs_hzlf/share_1227201/mershi/miniconda3'\''
+export CONDA_EXE='\''/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/conda'\''
+export CONDA_PYTHON_EXE='\''/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/python'\'''
++ eval 'unset _CE_M
+unset _CE_CONDA
+PS1='\''(omni-h3) '\''
+export PATH='\''/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/bin:/apdcephfs_hzlf/share_1227201/mershi/miniconda3/condabin:/root/.codebuddy-server-cn/bin/stable-b4c35ed08ffb428910211608831a314565c1256e/extensions/genie/out/vendor/shim/safe-bin:/root/.codebuddy-server-cn/bin/stable-b4c35ed08ffb428910211608831a314565c1256e/bin/remote-cli:/usr/local/cuda/bin:/usr/local/cuda/bin:/usr/share/Modules/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin:/root/bin'\''
+export CONDA_PREFIX='\''/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''omni-h3'\''
+export CONDA_PROMPT_MODIFIER='\''(omni-h3) '\''
+export CONDA_PREFIX_1='\''/apdcephfs_hzlf/share_1227201/mershi/miniconda3'\''
+export CONDA_EXE='\''/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/conda'\''
+export CONDA_PYTHON_EXE='\''/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/python'\'''
+++ unset _CE_M
+++ unset _CE_CONDA
+++ PS1='(omni-h3) '
+++ export PATH=/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/bin:/apdcephfs_hzlf/share_1227201/mershi/miniconda3/condabin:/root/.codebuddy-server-cn/bin/stable-b4c35ed08ffb428910211608831a314565c1256e/extensions/genie/out/vendor/shim/safe-bin:/root/.codebuddy-server-cn/bin/stable-b4c35ed08ffb428910211608831a314565c1256e/bin/remote-cli:/usr/local/cuda/bin:/usr/local/cuda/bin:/usr/share/Modules/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin:/root/bin
+++ PATH=/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/bin:/apdcephfs_hzlf/share_1227201/mershi/miniconda3/condabin:/root/.codebuddy-server-cn/bin/stable-b4c35ed08ffb428910211608831a314565c1256e/extensions/genie/out/vendor/shim/safe-bin:/root/.codebuddy-server-cn/bin/stable-b4c35ed08ffb428910211608831a314565c1256e/bin/remote-cli:/usr/local/cuda/bin:/usr/local/cuda/bin:/usr/share/Modules/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/root/bin:/root/bin
+++ export CONDA_PREFIX=/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3
+++ CONDA_PREFIX=/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=omni-h3
+++ CONDA_DEFAULT_ENV=omni-h3
+++ export 'CONDA_PROMPT_MODIFIER=(omni-h3) '
+++ CONDA_PROMPT_MODIFIER='(omni-h3) '
+++ export CONDA_PREFIX_1=/apdcephfs_hzlf/share_1227201/mershi/miniconda3
+++ CONDA_PREFIX_1=/apdcephfs_hzlf/share_1227201/mershi/miniconda3
+++ export CONDA_EXE=/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/conda
+++ CONDA_EXE=/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/conda
+++ export CONDA_PYTHON_EXE=/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/apdcephfs_hzlf/share_1227201/mershi/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ export HF_HUB_OFFLINE=1
++ HF_HUB_OFFLINE=1
++ export VLLM_WORKER_MULTIPROC_METHOD=spawn
++ VLLM_WORKER_MULTIPROC_METHOD=spawn
++ cd /apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/tests
++ H3_SNAPSHOT=/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe
++ exec vllm serve /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe --omni --trust-remote-code --task-type t2va --num-gpus 2 --tensor-parallel-size 2 --usp 1 --ring 1 --text-encoder-tp-size 2 --vae-patch-parallel-size 2 --vae-parallel-mode tile --vae-use-tiling --enable-distributed-layerwise-offload --dlo-no-use-allgather --dlo-resident-layers 20 --enforce-eager --attention-backend CUDNN_ATTN --diffusion-attention-backend CUDNN_ATTN --port 8000
+/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/version.py:55: RuntimeWarning: vLLM and vLLM-Omni appear to have mismatched major/minor versions:
+ --> vLLM-Omni version 0.1.dev1+g538eddd74
+ --> vLLM version 0.29.0
+This will likely cause compatibility issues.
+  warn_if_misaligned_vllm_version()
+INFO 09-22 20:54:53 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 09-22 20:54:53 [patch.py:503] inductor factorable-divisibility patch: installed.
+INFO 09-22 20:54:53 [patch.py:568] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+INFO 09-22 20:55:04 [main.py:54] Delegating entrypoint handling to vllm-omni
+INFO 09-22 20:55:04 [serve.py:311] Detected diffusion model: /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe
+INFO 09-22 20:55:04 [logo.py:52]        [97m█     █     █▄   ▄█[0m    [34m   ▄▀▀[38;5;208m▀▀▄ [0m[97m█▄   ▄█ █▄    █ ▀█▀ [0m
+INFO 09-22 20:55:04 [logo.py:52]  [38;5;208m▄▄[0m [34m▄█[0m [97m█     █     █ ▀▄▀ █[0m[97m  ▄▄▄ [0m[34m █    [38;5;208m█ [0m[97m█ ▀▄▀ █ █ ▀▄  █  █  [0m
+INFO 09-22 20:55:04 [logo.py:52]   [38;5;208m█[0m[34m▄█▀[0m [97m█     █     █     █[0m[97m      [0m[34m █    [38;5;208m█ [0m[97m█     █ █   ▀▄█  █  [0m
+INFO 09-22 20:55:04 [logo.py:52]    [34m▀▀[0m  [97m▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀[0m      [35m  ▀▀▀▀  [0m[97m▀     ▀ ▀     ▀ ▀▀▀ [0m
+INFO 09-22 20:55:04 [logo.py:52] 
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:55:04 [api_utils.py:347] vLLM server version 0.29.0, serving model /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:55:04 [api_utils.py:286] non-default args: {'model_tag': '/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe', 'model': '/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe', 'trust_remote_code': True, 'enforce_eager': True, 'attention_backend': 'CUDNN_ATTN', 'tensor_parallel_size': 2}
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:55:04 [omni_base.py:208] [AsyncOmni] Initializing with model /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:55:04 [omni_engine_base.py:163] [OmniEngine] Initializing with model /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:55:04 [config_factory.py:678] Resolved generic diffusion final_output_type='video' for model_class_name='MiniMaxH3ModularPipeline'.
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:55:04 [omni_engine_base.py:312] [OmniEngine] Launching Orchestrator thread with 1 stages
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:55:06 [multiproc_executor.py:350] Starting server...
+/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/version.py:55: RuntimeWarning: vLLM and vLLM-Omni appear to have mismatched major/minor versions:
+ --> vLLM-Omni version 0.1.dev1+g538eddd74
+ --> vLLM version 0.29.0
+This will likely cause compatibility issues.
+  warn_if_misaligned_vllm_version()
+/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/version.py:55: RuntimeWarning: vLLM and vLLM-Omni appear to have mismatched major/minor versions:
+ --> vLLM-Omni version 0.1.dev1+g538eddd74
+ --> vLLM version 0.29.0
+This will likely cause compatibility issues.
+  warn_if_misaligned_vllm_version()
+[32mINFO[0m [90m09-22 20:55:41[0m [90m[patch.py:252][0m NVFP4 W4A4 weight_scale NaN-clamp: installed.
+[32mINFO[0m [90m09-22 20:55:41[0m [90m[patch.py:252][0m NVFP4 W4A4 weight_scale NaN-clamp: installed.
+[32mINFO[0m [90m09-22 20:55:41[0m [90m[patch.py:503][0m inductor factorable-divisibility patch: installed.
+[32mINFO[0m [90m09-22 20:55:41[0m [90m[patch.py:503][0m inductor factorable-divisibility patch: installed.
+[32mINFO[0m [90m09-22 20:55:41[0m [90m[patch.py:568][0m [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+[32mINFO[0m [90m09-22 20:55:41[0m [90m[patch.py:568][0m [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+[0;36m(DiffusionWorker pid=18812)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[diffusion_worker.py:1058][0m Worker 0 created result MessageQueue
+[0;36m(DiffusionWorker pid=18813)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[diffusion_worker.py:1058][0m Worker 1 created result MessageQueue
+[0;36m(DiffusionWorker pid=18813)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[scheduler.py:277][0m Chunked prefill is enabled with max_num_batched_tokens=2048.
+[0;36m(DiffusionWorker pid=18813)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+[0;36m(DiffusionWorker pid=18813)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[diffusion_worker.py:327][0m Final IR op priority after setting vLLM-Omni overrides: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[W922 20:55:55.760355851 socket.cpp:764] [c10d] The client socket has failed to connect to [localhost]:48503 (errno: 99 - Cannot assign requested address).
+[0;36m(DiffusionWorker pid=18812)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[scheduler.py:277][0m Chunked prefill is enabled with max_num_batched_tokens=2048.
+[0;36m(DiffusionWorker pid=18812)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+[0;36m(DiffusionWorker pid=18812)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[diffusion_worker.py:327][0m Final IR op priority after setting vLLM-Omni overrides: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(DiffusionWorker pid=18813)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[diffusion_worker.py:339][0m Worker 1: Initialized device and distributed environment.
+[0;36m(DiffusionWorker pid=18812)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[diffusion_worker.py:339][0m Worker 0: Initialized device and distributed environment.
+[0;36m(DiffusionWorker pid=18813)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[parallel_state.py:599][0m Building SP subgroups from explicit sp_group_ranks (sp_size=1, ulysses=1, ring=1, use_ulysses_low=True).
+[0;36m(DiffusionWorker pid=18812)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[parallel_state.py:599][0m Building SP subgroups from explicit sp_group_ranks (sp_size=1, ulysses=1, ring=1, use_ulysses_low=True).
+[0;36m(DiffusionWorker pid=18813)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[parallel_state.py:641][0m SP group details for rank 1: sp_group=[1], ulysses_group=[1], ring_group=[1]
+[0;36m(DiffusionWorker pid=18812)[0;0m [32mINFO[0m [90m09-22 20:55:55[0m [90m[parallel_state.py:641][0m SP group details for rank 0: sp_group=[0], ulysses_group=[0], ring_group=[0]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:55:56[0m [90m[selector.py:84][0m Resolved diffusion attention backend 'CUDNN_ATTN' for role='minimax_h3.token_refiner' (role_category='self') via attention_config.default
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:55:56[0m [90m[selector.py:93][0m Resolved diffusion attention backend 'CUDNN_ATTN' for role='self' via attention_config.default
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:55:56[0m [90m[selector.py:84][0m Resolved diffusion attention backend 'CUDNN_ATTN' for role='minimax_h3.token_refiner' (role_category='self') via attention_config.default
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:55:56[0m [90m[selector.py:93][0m Resolved diffusion attention backend 'CUDNN_ATTN' for role='self' via attention_config.default
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:55:59[0m [90m[encoder.py:1133][0m MiniMax H3 Qwen3-VL encoder: 50 retained decoder layers, text_encoder_tp_size=2, vision replicated
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:55:59[0m [90m[encoder.py:1133][0m MiniMax H3 Qwen3-VL encoder: 50 retained decoder layers, text_encoder_tp_size=2, vision replicated
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m The config attributes {'vae_ratio': 16, 'vae_ratio_t': 4} were passed to AutoencoderKLLegacy, but are not expected and will be ignored. Please verify your config.json configuration file.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:28[0m [90m[diffusers_loader.py:805][0m DLO direct checkpoint mmap unavailable; using ordinary loader: TP=2 requires the ordinary loader
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:   0% Completed | 0/13 [00:00<?, ?it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:   8% Completed | 1/13 [00:00<00:04,  2.79it/s]
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:28[0m [90m[diffusers_loader.py:805][0m DLO direct checkpoint mmap unavailable; using ordinary loader: TP=2 requires the ordinary loader
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  15% Completed | 2/13 [00:00<00:04,  2.42it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  23% Completed | 3/13 [00:01<00:04,  2.32it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  31% Completed | 4/13 [00:01<00:04,  2.15it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  38% Completed | 5/13 [00:02<00:03,  2.09it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  46% Completed | 6/13 [00:02<00:03,  2.14it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  54% Completed | 7/13 [00:03<00:02,  2.19it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  62% Completed | 8/13 [00:03<00:02,  2.13it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  69% Completed | 9/13 [00:04<00:01,  2.07it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  77% Completed | 10/13 [00:04<00:01,  2.08it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  85% Completed | 11/13 [00:05<00:00,  2.14it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  92% Completed | 12/13 [00:05<00:00,  2.15it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards: 100% Completed | 13/13 [00:06<00:00,  2.10it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards: 100% Completed | 13/13 [00:06<00:00,  2.15it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m 
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:   0% Completed | 0/14 [00:00<?, ?it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:   7% Completed | 1/14 [00:00<00:04,  3.06it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  14% Completed | 2/14 [00:00<00:03,  3.35it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  21% Completed | 3/14 [00:00<00:03,  3.52it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  29% Completed | 4/14 [00:01<00:02,  3.53it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  36% Completed | 5/14 [00:01<00:02,  3.64it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  43% Completed | 6/14 [00:01<00:02,  3.62it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  50% Completed | 7/14 [00:01<00:01,  3.62it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  57% Completed | 8/14 [00:02<00:01,  3.53it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  64% Completed | 9/14 [00:02<00:01,  3.66it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  71% Completed | 10/14 [00:02<00:00,  4.02it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  79% Completed | 11/14 [00:02<00:00,  4.48it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards:  86% Completed | 12/14 [00:03<00:00,  4.85it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m Multi-thread loading shards: 100% Completed | 14/14 [00:03<00:00,  4.54it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m 
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:37[0m [90m[diffusers_loader.py:1079][0m Loading weights took 9.19 seconds
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:38[0m [90m[diffusion_model_runner.py:340][0m Model loading took 0.0000 GiB and 42.301656 seconds
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:38[0m [90m[diffusion_model_runner.py:346][0m Model runner: Model loaded successfully.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:38[0m [90m[base.py:189][0m Distributed layerwise offload: all selected components use rank-local transfer (no DLO shard or AllGather)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:38[0m [90m[__init__.py:179][0m Enabling offloader backend: DistributedLayerwiseOffloadBackend
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:38[0m [90m[distributed_layerwise_backend.py:1742][0m DLO is using host tensors materialized by the ordinary loader
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:40[0m [90m[diffusion_model_runner.py:340][0m Model loading took 0.0000 GiB and 44.588271 seconds
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:40[0m [90m[diffusion_model_runner.py:346][0m Model runner: Model loaded successfully.
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:40[0m [90m[base.py:189][0m Distributed layerwise offload: all selected components use rank-local transfer (no DLO shard or AllGather)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:40[0m [90m[__init__.py:179][0m Enabling offloader backend: DistributedLayerwiseOffloadBackend
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:40[0m [90m[distributed_layerwise_backend.py:1742][0m DLO is using host tensors materialized by the ordinary loader
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:48[0m [90m[distributed_layerwise_backend.py:1510][0m Enabled rank-local DLO transfer for text encoder text_encoder (77 blocks across 2 stacks, group_size=1)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:48[0m [90m[component_utils.py:153][0m Prepared text_encoder for pipeline-managed staged offload
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:48[0m [90m[component_utils.py:153][0m Prepared video_vae for pipeline-managed staged offload
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:48[0m [90m[component_utils.py:153][0m Prepared audio_vae for pipeline-managed staged offload
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:48[0m [90m[distributed_layerwise_backend.py:1754][0m Applying distributed layer-wise offloading on ['transformer']
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:48[0m [90m[component_utils.py:84][0m Applying hooks on transformer (MiniMaxH3DiTModel)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:48[0m [90m[distributed_layerwise_backend.py:1768][0m Keeping 20 leading blocks resident on transformer; streaming 30 tail blocks
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:56:48[0m [90m[distributed_layerwise_backend.py:1564][0m Distributed layerwise offload for submodule 'token_refiner.blocks' (2 blocks, 735 MB total, group_size=1)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:51[0m [90m[distributed_layerwise_backend.py:1510][0m Enabled rank-local DLO transfer for text encoder text_encoder (77 blocks across 2 stacks, group_size=1)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:51[0m [90m[component_utils.py:153][0m Prepared text_encoder for pipeline-managed staged offload
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:51[0m [90m[component_utils.py:153][0m Prepared video_vae for pipeline-managed staged offload
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:51[0m [90m[component_utils.py:153][0m Prepared audio_vae for pipeline-managed staged offload
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:51[0m [90m[distributed_layerwise_backend.py:1754][0m Applying distributed layer-wise offloading on ['transformer']
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:51[0m [90m[component_utils.py:84][0m Applying hooks on transformer (MiniMaxH3DiTModel)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:51[0m [90m[distributed_layerwise_backend.py:1768][0m Keeping 20 leading blocks resident on transformer; streaming 30 tail blocks
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:56:51[0m [90m[distributed_layerwise_backend.py:1564][0m Distributed layerwise offload for submodule 'token_refiner.blocks' (2 blocks, 735 MB total, group_size=1)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:57:07[0m [90m[distributed_layerwise_backend.py:2082][0m Allocated 2 shared device buffers (max block size: {'torch.bfloat16': '615.7MB'})
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:57:07[0m [90m[distributed_layerwise_backend.py:1867][0m Distributed layer-wise offloading enabled on 109 blocks across 4 group(s), transfers={dit: rank-local}, unified shared_buffers=2
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:57:07[0m [90m[diffusion_model_runner.py:437][0m Model runner: Initialization complete.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:57:08[0m [90m[diffusion_worker.py:420][0m Worker 0: Process-scoped GPU memory after model loading: 0.00 GiB.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:57:08[0m [90m[manager.py:112][0m Initializing DiffusionLoRAManager: device=cuda:0, dtype=torch.bfloat16, max_cached_adapters=1, static_lora_path=None
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:57:08[0m [90m[diffusion_worker.py:297][0m Worker 0: Initialization complete.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:57:08[0m [90m[diffusion_worker.py:1523][0m Worker 0: Scheduler loop started.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 20:57:08[0m [90m[diffusion_worker.py:1367][0m Worker 0 ready to receive requests via shared memory
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:57:10[0m [90m[distributed_layerwise_backend.py:2082][0m Allocated 2 shared device buffers (max block size: {'torch.bfloat16': '615.7MB'})
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:57:10[0m [90m[distributed_layerwise_backend.py:1867][0m Distributed layer-wise offloading enabled on 109 blocks across 4 group(s), transfers={dit: rank-local}, unified shared_buffers=2
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:57:10[0m [90m[diffusion_model_runner.py:437][0m Model runner: Initialization complete.
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:57:11[0m [90m[diffusion_worker.py:420][0m Worker 1: Process-scoped GPU memory after model loading: 0.00 GiB.
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:57:11[0m [90m[manager.py:112][0m Initializing DiffusionLoRAManager: device=cuda:1, dtype=torch.bfloat16, max_cached_adapters=1, static_lora_path=None
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:57:11[0m [90m[diffusion_worker.py:297][0m Worker 1: Initialization complete.
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:57:11[0m [90m[diffusion_worker.py:1523][0m Worker 1: Scheduler loop started.
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 20:57:11[0m [90m[diffusion_worker.py:1367][0m Worker 1 ready to receive requests via shared memory
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [multiproc_executor.py:893] Async result pump started for 2 worker queue(s)
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [diffusion_engine.py:402] [RequestBatch] engine init max_num_seqs=1 max_wait_ms=0.0
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [diffusion_engine.py:1167] Skipping dummy warmup run (num_frames=0)
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [inline_stage_diffusion_client.py:82] [InlineStageDiffusionClient] stage-0 [rep-0] initialized inline (max_num_seqs=1)
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [stage_runtime.py:1107] [StageRuntime] Stage 0 replica 0 initialized (diffusion)
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [orchestrator.py:416] [Orchestrator] Starting event loop
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [omni_engine_base.py:344] [OmniEngine] Orchestrator ready with 1 stages
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [omni_base.py:227] [AsyncOmni] AsyncOmniEngine initialized in 126.60 seconds
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [omni_base.py:246] [AsyncOmni] Initialized with 1 stages for model /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [api_server.py:764] Detected pure diffusion mode (single diffusion stage)
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [serving_video.py:159] Video response frame conversion pool configured: workers=8
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [speaker_cache.py:239] Speaker cache ready (max_bytes=536870912)
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [serving_speech.py:264] Speaker storage: dir=/root/.cache/vllm-omni/speakers, max_speakers=1000, restored=0
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [serving.py:91] Robot OpenPI serving disabled for model /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [api_server.py:852] Pure diffusion API server initialized for model: /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/42ed227ee7df40d41602854ae760620d6eb651fe
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [api_server.py:366] Starting vLLM API server (pure diffusion mode) on http://0.0.0.0:8000
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:61] Available routes are:
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /openapi.json, Methods: HEAD, GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /docs, Methods: HEAD, GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /docs/oauth2-redirect, Methods: HEAD, GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /redoc, Methods: HEAD, GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /load, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /version, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /metrics, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /tokenize, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /detokenize, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /ping, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /ping, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /invocations, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/responses, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/responses/{response_id}, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/responses/{response_id}/cancel, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/completions, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/messages, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/messages/count_tokens, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /generative_scoring, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /scale_elastic_ep, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /is_scaling_elastic_ep, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/chat/completions/render, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/messages/render, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/completions/render, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/chat/completions/derender, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/completions/derender, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /inference/v1/generate, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/chat/completions, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/chat/completions/batch, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/audio/speech, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/audio/speech/batch, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/audio/generate, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/audio/voices, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/audio/voices, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/audio/voices/{name}, Methods: DELETE
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/realtime/sessions, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/realtime/sessions/{session_id}/step, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/realtime/sessions/{session_id}/reset, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/realtime/sessions/{session_id}/close, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/realtime/sessions/{session_id}/status, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /health, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/models, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/images/generations, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/images/edits, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/videos, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/videos/sync, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/videos, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/videos/{video_id}, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/videos/{video_id}, Methods: DELETE
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/videos/{video_id}/content, Methods: GET
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/omni/sleep, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:70] Route: /v1/omni/wakeup, Methods: POST
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:81] Route: /v1/audio/speech/stream, Endpoint: streaming_speech
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:81] Route: /v1/video/chat/stream, Endpoint: streaming_video_chat
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:81] Route: /v1/realtime/video, Endpoint: streaming_video_output
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:81] Route: /v1/realtime, Endpoint: realtime_websocket
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:81] Route: /v1/duplex, Endpoint: duplex_websocket
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:57:11 [launcher.py:81] Route: /v1/realtime/robot/openpi, Endpoint: realtime_robot_openpi
+[0;36m(APIServer pid=17907)[0;0m INFO:     Started server process [17907]
+[0;36m(APIServer pid=17907)[0;0m INFO:     Waiting for application startup.
+[0;36m(APIServer pid=17907)[0;0m INFO:     Application startup complete.
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:58054 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:38392 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:38404 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:58002 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:58014 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:49904 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:49918 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:42294 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:42302 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:55004 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:55012 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:35530 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:35538 - "GET /v1/models HTTP/1.1" 200 OK
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:35548 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:38590 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:21 [helpers.py:816] Video generation handler: OmniOpenAIServingVideo
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:38594 - "POST /v1/videos HTTP/1.1" 200 OK
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:21 [serving_video.py:400] Boundary ratio parse: request=None gen_params=None
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:21 [serving_video.py:442] Applied extra_params: {'task': 't2va', 'duration': 5, 'flow_shift': 12, 'audio_flow_shift': 3, 'aspect_ratio': '16:9'}
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:21 [serving_video.py:446] Video sampling params: steps=20 guidance=None guidance_2=None seed=None
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:38606 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 200 OK
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:38622 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m   0%|          | 0/19 [00:00<?, ?it/s]/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m   return func(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m /apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m   return func(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m   0%|          | 0/19 [00:01<?, ?it/s]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m Error executing method 'execute_model'. This might cause issues in distributed execution.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m Traceback (most recent call last):
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1737, in execute_method
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return func(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 671, in execute_model
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     output = self.model_runner.execute_model(req, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 869, in execute_model
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     runner_output = self._execute_request_list(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 787, in _execute_request_list
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     raw_outputs = self.pipeline.forward(batch)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return func(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 2194, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     video_latent, audio_latent = self.diffuse(**{**denoise_kwargs, "seed": output_seed})
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 1691, in diffuse
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     video_rows, audio_rows = minimax_h3_denoise_loop(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                              ^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/denoise_loop.py", line 335, in minimax_h3_denoise_loop
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     v_video, v_audio = model(**fk)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                        ^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1593, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     decoder_input, t_emb = self._embed(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                            ^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1480, in _embed
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     text_embed = self.token_refiner(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                  ^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 869, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     x = block(x, cu_seqlens=cu_seqlens, max_seqlen=max_seqlen, num_requests=num_requests)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 141, in __call__
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return registry.dispatch(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 315, in dispatch
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     output = self.module._omni_original_forward(*args, **kwargs)  # type: ignore[attr-defined]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 828, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     x = x + self.attn(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m             ^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m Error executing method 'execute_model'. This might cause issues in distributed execution.
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m Traceback (most recent call last):
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1737, in execute_method
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return func(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 686, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 671, in execute_model
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     out = self._run_packed_attention(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     output = self.model_runner.execute_model(req, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1446, in _fn
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 869, in execute_model
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return fn(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     runner_output = self._execute_request_list(
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 622, in _run_packed_attention
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 787, in _execute_request_list
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self.attention(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     raw_outputs = self.pipeline.forward(batch)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return func(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 2194, in forward
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     video_latent, audio_latent = self.diffuse(**{**denoise_kwargs, "seed": output_seed})
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 385, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 1691, in diffuse
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._forward_impl(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     video_rows, audio_rows = minimax_h3_denoise_loop(
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                              ^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 489, in _forward_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/denoise_loop.py", line 335, in minimax_h3_denoise_loop
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     out = self._run_local_attention(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     v_video, v_audio = model(**fk)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                        ^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 561, in _run_local_attention
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self.attention.forward(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._call_impl(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/abstract.py", line 291, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self.forward_cuda(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return forward_call(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/cudnn_attn.py", line 118, in forward_cuda
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1593, in forward
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     raise ValueError(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     decoder_input, t_emb = self._embed(
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m ValueError: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                            ^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1480, in _embed
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     text_embed = self.token_refiner(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m                  ^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 869, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     x = block(x, cu_seqlens=cu_seqlens, max_seqlen=max_seqlen, num_requests=num_requests)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 141, in __call__
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return registry.dispatch(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 315, in dispatch
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     output = self.module._omni_original_forward(*args, **kwargs)  # type: ignore[attr-defined]
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 828, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     x = x + self.attn(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m             ^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 686, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     out = self._run_packed_attention(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1446, in _fn
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return fn(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 622, in _run_packed_attention
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self.attention(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 385, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self._forward_impl(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 489, in _forward_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     out = self._run_local_attention(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 561, in _run_local_attention
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self.attention.forward(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/abstract.py", line 291, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     return self.forward_cuda(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/cudnn_attn.py", line 118, in forward_cuda
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m     raise ValueError(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1741][0m ValueError: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m Error executing RPC: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m Traceback (most recent call last):
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1316, in _execute_rpc
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     result = self.worker.execute_method(method, *args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1742, in execute_method
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     raise e
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1737, in execute_method
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return func(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 671, in execute_model
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     output = self.model_runner.execute_model(req, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 869, in execute_model
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     runner_output = self._execute_request_list(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 787, in _execute_request_list
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     raw_outputs = self.pipeline.forward(batch)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return func(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 2194, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     video_latent, audio_latent = self.diffuse(**{**denoise_kwargs, "seed": output_seed})
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 1691, in diffuse
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     video_rows, audio_rows = minimax_h3_denoise_loop(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                              ^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/denoise_loop.py", line 335, in minimax_h3_denoise_loop
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     v_video, v_audio = model(**fk)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                        ^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1593, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     decoder_input, t_emb = self._embed(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                            ^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1480, in _embed
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     text_embed = self.token_refiner(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                  ^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 869, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     x = block(x, cu_seqlens=cu_seqlens, max_seqlen=max_seqlen, num_requests=num_requests)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 141, in __call__
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return registry.dispatch(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 315, in dispatch
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     output = self.module._omni_original_forward(*args, **kwargs)  # type: ignore[attr-defined]
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m Error executing RPC: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 828, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m Traceback (most recent call last):
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     x = x + self.attn(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1316, in _execute_rpc
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m             ^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     result = self.worker.execute_method(method, *args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1742, in execute_method
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     raise e
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1737, in execute_method
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return func(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 686, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 671, in execute_model
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     out = self._run_packed_attention(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     output = self.model_runner.execute_model(req, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1446, in _fn
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 869, in execute_model
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return fn(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     runner_output = self._execute_request_list(
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 622, in _run_packed_attention
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 787, in _execute_request_list
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self.attention(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     raw_outputs = self.pipeline.forward(batch)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return func(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 2194, in forward
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     video_latent, audio_latent = self.diffuse(**{**denoise_kwargs, "seed": output_seed})
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 385, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 1691, in diffuse
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._forward_impl(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     video_rows, audio_rows = minimax_h3_denoise_loop(
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                              ^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 489, in _forward_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/denoise_loop.py", line 335, in minimax_h3_denoise_loop
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     out = self._run_local_attention(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     v_video, v_audio = model(**fk)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                        ^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 561, in _run_local_attention
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self.attention.forward(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._call_impl(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/abstract.py", line 291, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self.forward_cuda(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return forward_call(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/cudnn_attn.py", line 118, in forward_cuda
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1593, in forward
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     raise ValueError(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     decoder_input, t_emb = self._embed(
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m ValueError: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                            ^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1480, in _embed
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     text_embed = self.token_refiner(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m                  ^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 869, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     x = block(x, cu_seqlens=cu_seqlens, max_seqlen=max_seqlen, num_requests=num_requests)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 141, in __call__
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return registry.dispatch(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 315, in dispatch
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     output = self.module._omni_original_forward(*args, **kwargs)  # type: ignore[attr-defined]
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 828, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     x = x + self.attn(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m             ^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 686, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     out = self._run_packed_attention(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1446, in _fn
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return fn(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 622, in _run_packed_attention
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self.attention(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 385, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self._forward_impl(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 489, in _forward_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     out = self._run_local_attention(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 561, in _run_local_attention
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self.attention.forward(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/abstract.py", line 291, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     return self.forward_cuda(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/cudnn_attn.py", line 118, in forward_cuda
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m     raise ValueError(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1318][0m ValueError: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m Error processing RPC: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m Traceback (most recent call last):
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1400, in _worker_busy_loop
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     result, should_reply = self._execute_rpc(msg)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                            ^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1316, in _execute_rpc
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     result = self.worker.execute_method(method, *args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1742, in execute_method
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     raise e
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1737, in execute_method
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return func(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 671, in execute_model
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     output = self.model_runner.execute_model(req, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 869, in execute_model
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     runner_output = self._execute_request_list(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 787, in _execute_request_list
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     raw_outputs = self.pipeline.forward(batch)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return func(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 2194, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     video_latent, audio_latent = self.diffuse(**{**denoise_kwargs, "seed": output_seed})
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 1691, in diffuse
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     video_rows, audio_rows = minimax_h3_denoise_loop(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                              ^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/denoise_loop.py", line 335, in minimax_h3_denoise_loop
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     v_video, v_audio = model(**fk)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                        ^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1593, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     decoder_input, t_emb = self._embed(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                            ^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1480, in _embed
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     text_embed = self.token_refiner(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                  ^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return forward_call(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m Error processing RPC: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m Traceback (most recent call last):
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 869, in forward
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1400, in _worker_busy_loop
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     x = block(x, cu_seqlens=cu_seqlens, max_seqlen=max_seqlen, num_requests=num_requests)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     result, should_reply = self._execute_rpc(msg)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                            ^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1316, in _execute_rpc
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._call_impl(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     result = self.worker.execute_method(method, *args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1742, in execute_method
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return forward_call(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     raise e
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 1737, in execute_method
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 141, in __call__
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return func(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return registry.dispatch(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_worker.py", line 671, in execute_model
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 315, in dispatch
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     output = self.model_runner.execute_model(req, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     output = self.module._omni_original_forward(*args, **kwargs)  # type: ignore[attr-defined]
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 869, in execute_model
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 828, in forward
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     runner_output = self._execute_request_list(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     x = x + self.attn(
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m             ^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/worker/diffusion_model_runner.py", line 787, in _execute_request_list
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     raw_outputs = self.pipeline.forward(batch)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._call_impl(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return func(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return forward_call(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 2194, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 686, in forward
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     video_latent, audio_latent = self.diffuse(**{**denoise_kwargs, "seed": output_seed})
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     out = self._run_packed_attention(
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py", line 1691, in diffuse
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1446, in _fn
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     video_rows, audio_rows = minimax_h3_denoise_loop(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return fn(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                              ^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/denoise_loop.py", line 335, in minimax_h3_denoise_loop
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 622, in _run_packed_attention
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     v_video, v_audio = model(**fk)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self.attention(
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                        ^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._call_impl(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return forward_call(*args, **kwargs)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1593, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 385, in forward
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     decoder_input, t_emb = self._embed(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._forward_impl(query, key, value, attn_metadata)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                            ^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 1480, in _embed
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 489, in _forward_impl
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     text_embed = self.token_refiner(
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     out = self._run_local_attention(query, key, value, attn_metadata)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m                  ^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 561, in _run_local_attention
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self.attention.forward(query, key, value, attn_metadata)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/abstract.py", line 291, in forward
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self.forward_cuda(query, key, value, attn_metadata)
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 869, in forward
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/cudnn_attn.py", line 118, in forward_cuda
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     x = block(x, cu_seqlens=cu_seqlens, max_seqlen=max_seqlen, num_requests=num_requests)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     raise ValueError(
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m ValueError: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 141, in __call__
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return registry.dispatch(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/hooks/base.py", line 315, in dispatch
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     output = self.module._omni_original_forward(*args, **kwargs)  # type: ignore[attr-defined]
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 828, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     x = x + self.attn(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m             ^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 686, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     out = self._run_packed_attention(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1446, in _fn
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return fn(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py", line 622, in _run_packed_attention
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self.attention(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._call_impl(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return forward_call(*args, **kwargs)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 385, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self._forward_impl(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 489, in _forward_impl
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     out = self._run_local_attention(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/layer.py", line 561, in _run_local_attention
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self.attention.forward(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/abstract.py", line 291, in forward
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     return self.forward_cuda(query, key, value, attn_metadata)
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/attention/backends/cudnn_attn.py", line 118, in forward_cuda
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m     raise ValueError(
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [31mERROR[0m [90m09-22 20:58:26[0m [90m[diffusion_worker.py:1404][0m ValueError: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [inline_stage_diffusion_client.py:188] Diffusion request video_gen_6c78f8026a464746b3587341733ead40-b5a19240 failed: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [inline_stage_diffusion_client.py:188] Traceback (most recent call last):
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [inline_stage_diffusion_client.py:188]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/inline_stage_diffusion_client.py", line 163, in _dispatch_request
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [inline_stage_diffusion_client.py:188]     async for results in self._engine.step_streaming(request):
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [inline_stage_diffusion_client.py:188]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 467, in step_streaming
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [inline_stage_diffusion_client.py:188]     formatted_outputs = self.postprocess_output(request, output)
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [inline_stage_diffusion_client.py:188]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [inline_stage_diffusion_client.py:188]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/diffusion/diffusion_engine.py", line 537, in postprocess_output
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [inline_stage_diffusion_client.py:188]     raise RuntimeError(output.error)
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [inline_stage_diffusion_client.py:188] RuntimeError: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [async_omni_base.py:257] [AsyncOmni] Orchestrator error for req=video_gen_6c78f8026a464746b3587341733ead40-b5a19240 stage-0: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:26 [orchestrator.py:595] [Orchestrator] Aborted request(s) ['video_gen_6c78f8026a464746b3587341733ead40-b5a19240']
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:26 [async_omni_base.py:506] [AsyncOmni] Aborted request(s) video_gen_6c78f8026a464746b3587341733ead40-b5a19240
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:26 [async_omni.py:311] [AsyncOmni] Request video_gen_6c78f8026a464746b3587341733ead40-b5a19240 failed (input error): CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:26 [stats.py:811] 
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:26 [stats.py:811] [Overall Summary]
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:26 [stats.py:811] +--------------------------+-------+
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:26 [stats.py:811] | Field                    | Value |
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:26 [stats.py:811] +--------------------------+-------+
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:26 [stats.py:811] | e2e_stage_0_wall_time_ms | 3.927 |
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 20:58:26 [stats.py:811] +--------------------------+-------+
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386] Video generation failed for id=video_gen_6c78f8026a464746b3587341733ead40
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386] Traceback (most recent call last):
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/openai/video/generation/helpers.py", line 337, in _run_video_generation_job
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]     await handler.generate_video_bytes(
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/openai/serving_video.py", line 546, in generate_video_bytes
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]     artifacts = await self._run_and_extract(
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/openai/serving_video.py", line 454, in _run_and_extract
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]     result = await self._run_generation(
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/openai/serving_video.py", line 689, in _run_generation
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]     async for output in engine_client.generate(
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/async_omni.py", line 292, in generate
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]     async for output in self._process_orchestrator_results(
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/async_omni_base.py", line 268, in _process_orchestrator_results
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]     self._raise_nonfatal_error_message(result)
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/entrypoints/omni_base.py", line 547, in _raise_nonfatal_error_message
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]     raise_client_error_or(
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]   File "/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/errors.py", line 81, in raise_client_error_or
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386]     raise fallback(message)
+[0;36m(APIServer pid=17907)[0;0m ERROR 09-22 20:58:26 [helpers.py:386] RuntimeError: CUDNN_ATTN was explicitly selected but cuDNN FMHA does not support key/value sequence length 1. Select TORCH_SDPA or another backend for this shape.
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:38628 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:53238 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:53244 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:53254 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:53258 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:39564 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:39574 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:39580 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:39582 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:37328 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:37334 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:37348 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:37354 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:58774 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:58776 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:58780 - "GET /v1/videos/video_gen_df8a305d8c9e4a1db49a333a0a1589e2 HTTP/1.1" 404 Not Found
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:58794 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:60858 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:60874 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:54496 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:54506 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:48054 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:48068 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:35756 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:35762 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:56668 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:56676 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:58964 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:58972 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:38348 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:38354 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:47314 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:47330 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:55678 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:55684 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:51896 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:51906 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:41484 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:41496 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:42068 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:42082 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:50706 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:50710 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO:     127.0.0.1:41944 - "GET /v1/videos/video_gen_6c78f8026a464746b3587341733ead40 HTTP/1.1" 500 Internal Server Error
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 21:01:31 [launcher.py:124] [shutdown] API server: shutdown triggered
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 21:01:31 [launcher.py:140] [shutdown] API server: stopping engine client mode=abort timeout=0.0s
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 21:01:31 [omni_base.py:771] [AsyncOmni] Shutting down
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 21:01:31 [omni_engine_base.py:1144] [OmniEngine] Shutting down Orchestrator
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 21:01:31 [orchestrator.py:508] [Orchestrator] Received shutdown signal
+[0;36m(APIServer pid=17907)[0;0m INFO 09-22 21:01:31 [orchestrator.py:2610] [Orchestrator] Shutting down all 1 client(s)
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 21:01:31[0m [90m[diffusion_worker.py:1456][0m Worker 0: Received shutdown message
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 21:01:31[0m [90m[diffusion_worker.py:1478][0m event loop terminated.
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 21:01:31[0m [90m[diffusion_worker.py:1456][0m Worker 1: Received shutdown message
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 21:01:31[0m [90m[diffusion_worker.py:1478][0m event loop terminated.
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 21:01:35[0m [90m[distributed_layerwise_backend.py:2045][0m Distributed layer-wise offloading disabled
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 21:01:35[0m [90m[distributed_layerwise_backend.py:2045][0m Distributed layer-wise offloading disabled
+[0;36m(DiffusionWorker_TP0 pid=18812)[0;0m [32mINFO[0m [90m09-22 21:01:37[0m [90m[diffusion_worker.py:1546][0m Worker 0: Shutdown complete.
+[0;36m(DiffusionWorker_TP1 pid=18813)[0;0m [32mINFO[0m [90m09-22 21:01:37[0m [90m[diffusion_worker.py:1546][0m Worker 1: Shutdown complete.
+/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 10 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

@@ -1,0 +1,410 @@
+/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/version.py:55: RuntimeWarning: vLLM and vLLM-Omni appear to have mismatched major/minor versions:
+ --> vLLM-Omni version 0.1.dev1+g538eddd74
+ --> vLLM version 0.29.0
+This will likely cause compatibility issues.
+  warn_if_misaligned_vllm_version()
+INFO 09-22 20:26:51 [patch.py:252] NVFP4 W4A4 weight_scale NaN-clamp: installed.
+INFO 09-22 20:26:51 [patch.py:503] inductor factorable-divisibility patch: installed.
+INFO 09-22 20:26:51 [patch.py:568] [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+INFO 09-22 20:27:02 [main.py:54] Delegating entrypoint handling to vllm-omni
+/apdcephfs_hzlf/share_1227201/mershi/envs/omni-h3/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py:205: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.
+  warnings.warn(
+INFO 09-22 20:27:02 [logo.py:52]        [97m█     █     █▄   ▄█[0m    [34m   ▄▀▀[38;5;208m▀▀▄ [0m[97m█▄   ▄█ █▄    █ ▀█▀ [0m
+INFO 09-22 20:27:02 [logo.py:52]  [38;5;208m▄▄[0m [34m▄█[0m [97m█     █     █ ▀▄▀ █[0m[97m  ▄▄▄ [0m[34m █    [38;5;208m█ [0m[97m█ ▀▄▀ █ █ ▀▄  █  █  [0m
+INFO 09-22 20:27:02 [logo.py:52]   [38;5;208m█[0m[34m▄█▀[0m [97m█     █     █     █[0m[97m      [0m[34m █    [38;5;208m█ [0m[97m█     █ █   ▀▄█  █  [0m
+INFO 09-22 20:27:02 [logo.py:52]    [34m▀▀[0m  [97m▀▀▀▀▀ ▀▀▀▀▀ ▀     ▀[0m      [35m  ▀▀▀▀  [0m[97m▀     ▀ ▀     ▀ ▀▀▀ [0m
+INFO 09-22 20:27:02 [logo.py:52] 
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:02 [api_utils.py:347] vLLM server version 0.29.0, serving model Qwen/Qwen2.5-Omni-7B
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:02 [api_utils.py:286] non-default args: {'model_tag': 'Qwen/Qwen2.5-Omni-7B', 'port': 8091, 'model': 'Qwen/Qwen2.5-Omni-7B'}
+[0;36m(APIServer pid=3379)[0;0m [transformers] Model config: tts_text_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151860. This may result in unexpected behavior.
+[0;36m(APIServer pid=3379)[0;0m [transformers] Model config: tts_text_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151861. This may result in unexpected behavior.
+[0;36m(APIServer pid=3379)[0;0m [transformers] Model config: tts_text_pad_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151859. This may result in unexpected behavior.
+[0;36m(APIServer pid=3379)[0;0m [transformers] Model config: vision_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151652. This may result in unexpected behavior.
+[0;36m(APIServer pid=3379)[0;0m [transformers] Model config: vision_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151653. This may result in unexpected behavior.
+[0;36m(APIServer pid=3379)[0;0m [transformers] Model config: audio_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151647. This may result in unexpected behavior.
+[0;36m(APIServer pid=3379)[0;0m [transformers] Model config: audio_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151648. This may result in unexpected behavior.
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:02 [weight_utils.py:58] Using model weights format ['*']
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:02 [omni_base.py:208] [AsyncOmni] Initializing with model Qwen/Qwen2.5-Omni-7B
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:02 [omni_engine_base.py:163] [OmniEngine] Initializing with model Qwen/Qwen2.5-Omni-7B
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:02 [omni_engine_base.py:312] [OmniEngine] Launching Orchestrator thread with 3 stages
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:02 [initialization.py:434] Loaded OmniTransferConfig with 0 connector configurations
+[0;36m(APIServer pid=3379)[0;0m WARNING 09-22 20:27:02 [utils.py:250] Dropping unknown OmniEngineArgs field 'enable_broadcast_weight_load' (not declared on the dataclass)
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:02 [arg_utils.py:866] HF_HUB_OFFLINE is True, replace model_id [Qwen/Qwen2.5-Omni-7B] to model_path [/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00]
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:38 [model.py:684] Resolved architecture: Qwen2_5OmniForConditionalGeneration
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:38 [model.py:2021] Using max model len 32768
+[0;36m(APIServer pid=3379)[0;0m WARNING 09-22 20:27:38 [model.py:981] Model does not support mm_device_do_normalize, forcing mm_device_do_normalize = False.
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [scheduler.py:277] Chunked prefill is enabled with max_num_batched_tokens=32768.
+[0;36m(APIServer pid=3379)[0;0m WARNING 09-22 20:27:39 [vllm.py:1371] Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+[0;36m(APIServer pid=3379)[0;0m WARNING 09-22 20:27:39 [vllm.py:1406] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [kernel.py:369] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [vllm.py:1585] Cudagraph is disabled under eager mode
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+[0;36m(APIServer pid=3379)[0;0m WARNING 09-22 20:27:39 [utils.py:250] Dropping unknown OmniEngineArgs field 'enable_broadcast_weight_load' (not declared on the dataclass)
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [arg_utils.py:866] HF_HUB_OFFLINE is True, replace model_id [Qwen/Qwen2.5-Omni-7B] to model_path [/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00]
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [model.py:684] Resolved architecture: Qwen2_5OmniForConditionalGeneration
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [model.py:2021] Using max model len 32768
+[0;36m(APIServer pid=3379)[0;0m WARNING 09-22 20:27:39 [model.py:981] Model does not support mm_device_do_normalize, forcing mm_device_do_normalize = False.
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [model.py:2021] Using max model len 32768
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [kernel.py:369] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(APIServer pid=3379)[0;0m WARNING 09-22 20:27:39 [utils.py:250] Dropping unknown OmniEngineArgs field 'enable_broadcast_weight_load' (not declared on the dataclass)
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [arg_utils.py:866] HF_HUB_OFFLINE is True, replace model_id [Qwen/Qwen2.5-Omni-7B] to model_path [/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00]
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [model.py:684] Resolved architecture: Qwen2_5OmniForConditionalGeneration
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [model.py:2021] Using max model len 32768
+[0;36m(APIServer pid=3379)[0;0m WARNING 09-22 20:27:39 [model.py:981] Model does not support mm_device_do_normalize, forcing mm_device_do_normalize = False.
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:27:39 [kernel.py:369] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/version.py:55: RuntimeWarning: vLLM and vLLM-Omni appear to have mismatched major/minor versions:
+ --> vLLM-Omni version 0.1.dev1+g538eddd74
+ --> vLLM version 0.29.0
+This will likely cause compatibility issues.
+  warn_if_misaligned_vllm_version()
+/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/version.py:55: RuntimeWarning: vLLM and vLLM-Omni appear to have mismatched major/minor versions:
+ --> vLLM-Omni version 0.1.dev1+g538eddd74
+ --> vLLM version 0.29.0
+This will likely cause compatibility issues.
+  warn_if_misaligned_vllm_version()
+[32mINFO[0m [90m09-22 20:28:13[0m [90m[patch.py:252][0m NVFP4 W4A4 weight_scale NaN-clamp: installed.
+[32mINFO[0m [90m09-22 20:28:13[0m [90m[patch.py:252][0m NVFP4 W4A4 weight_scale NaN-clamp: installed.
+[32mINFO[0m [90m09-22 20:28:13[0m [90m[patch.py:503][0m inductor factorable-divisibility patch: installed.
+[32mINFO[0m [90m09-22 20:28:13[0m [90m[patch.py:503][0m inductor factorable-divisibility patch: installed.
+[32mINFO[0m [90m09-22 20:28:13[0m [90m[patch.py:568][0m [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+[32mINFO[0m [90m09-22 20:28:13[0m [90m[patch.py:568][0m [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:24[0m [90m[core.py:123][0m Initializing a V1 LLM engine (v0.29.0) with config: model='/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00', speculative_config=None, tokenizer='/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [32768], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:24[0m [90m[core.py:123][0m Initializing a V1 LLM engine (v0.29.0) with config: model='/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00', speculative_config=None, tokenizer='/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [32768], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_jit_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [transformers] Model config: tts_text_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151860. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [transformers] Model config: tts_text_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151861. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [transformers] Model config: tts_text_pad_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151859. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [transformers] Model config: vision_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151652. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [transformers] Model config: vision_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151653. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [transformers] Model config: audio_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151647. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [transformers] Model config: audio_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151648. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [transformers] Model config: tts_text_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151860. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [transformers] Model config: tts_text_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151861. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [transformers] Model config: tts_text_pad_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151859. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [transformers] Model config: vision_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151652. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [transformers] Model config: vision_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151653. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [transformers] Model config: audio_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151647. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [transformers] Model config: audio_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151648. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:26[0m [90m[parallel_state.py:1775][0m world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_5b1f2229fb87411597555483ef518b9b backend=nccl
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:26[0m [90m[parallel_state.py:1775][0m world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_ca76ff919bd64179883f8a4eb2fe2f12 backend=nccl
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:26[0m [90m[parallel_state.py:2119][0m rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:26[0m [90m[parallel_state.py:2119][0m rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [33mWARNING[0m [90m09-22 20:28:27[0m [90m[gpu_ar_worker.py:118][0m OMNI GPUARWorker forces v1 model runner for omni hooks.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [33mWARNING[0m [90m09-22 20:28:27[0m [90m[gpu_ar_worker.py:118][0m OMNI GPUARWorker forces v1 model runner for omni hooks.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:28[0m [90m[topk_topp_sampler.py:62][0m Using FlashInfer for top-p & top-k sampling.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:28[0m [90m[topk_topp_sampler.py:62][0m Using FlashInfer for top-p & top-k sampling.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:32[0m [90m[factory.py:46][0m Created connector: SharedMemoryConnector
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:32[0m [90m[factory.py:46][0m Created connector: SharedMemoryConnector
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [33mWARNING[0m [90m09-22 20:28:32[0m [90m[base.py:173][0m [LLM Worker 0] Sleep Mode DISABLED.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [33mWARNING[0m [90m09-22 20:28:32[0m [90m[base.py:173][0m [LLM Worker 0] Sleep Mode DISABLED.
+[33mWARNING[0m [90m09-22 20:28:32[0m [90m[base.py:173][0m [LLM Worker 0] Sleep Mode DISABLED.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [33mWARNING[0m [90m09-22 20:28:32[0m [90m[base.py:173][0m [LLM Worker 0] Sleep Mode DISABLED.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:32[0m [90m[gpu_model_runner.py:5379][0m Starting to load model /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00...
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:32[0m [90m[gpu_model_runner.py:5379][0m Starting to load model /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00...
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [33mWARNING[0m [90m09-22 20:28:33[0m [90m[vllm.py:1371][0m Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [33mWARNING[0m [90m09-22 20:28:33[0m [90m[vllm.py:1406][0m Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[vllm.py:1585][0m Cudagraph is disabled under eager mode
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [33mWARNING[0m [90m09-22 20:28:33[0m [90m[vllm.py:1371][0m Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [33mWARNING[0m [90m09-22 20:28:33[0m [90m[vllm.py:1406][0m Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[vllm.py:1585][0m Cudagraph is disabled under eager mode
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[compilation.py:329][0m Enabled custom fusions: norm_quant, act_quant
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [33mWARNING[0m [90m09-22 20:28:33[0m [90m[qwen2_5_omni_thinker.py:1053][0m flash_attn is not available, the model may not yield the exactly same result as the transformers implementation in the audio tower part.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[compilation.py:329][0m Enabled custom fusions: norm_quant, act_quant
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[cuda.py:551][0m Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[mm_encoder_attention.py:372][0m Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[cuda.py:492][0m Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[flash_attn.py:897][0m Using FlashAttention version 3
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:33[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:34[0m [90m[cuda.py:492][0m Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:34[0m [90m[flash_attn.py:897][0m Using FlashAttention version 3
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:34[0m [90m[weight_utils.py:863][0m Filesystem type for checkpoints: FUSE.DOP-FUSE. Checkpoint size: 20.83 GiB. Available RAM: 2155.01 GiB.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:34[0m [90m[weight_utils.py:886][0m Auto-prefetch is disabled because the filesystem (FUSE.DOP-FUSE) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/5 [00:00<?, ?it/s]
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:34[0m [90m[weight_utils.py:863][0m Filesystem type for checkpoints: FUSE.DOP-FUSE. Checkpoint size: 20.83 GiB. Available RAM: 2155.00 GiB.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:34[0m [90m[weight_utils.py:886][0m Auto-prefetch is disabled because the filesystem (FUSE.DOP-FUSE) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/5 [00:00<?, ?it/s]
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m Loading safetensors checkpoint shards:  20% Completed | 1/5 [00:00<00:02,  1.37it/s]
+Loading safetensors checkpoint shards:  20% Completed | 1/5 [00:00<00:02,  1.68it/s]
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m Loading safetensors checkpoint shards:  40% Completed | 2/5 [00:00<00:00,  3.09it/s]
+Loading safetensors checkpoint shards:  40% Completed | 2/5 [00:00<00:01,  2.64it/s]
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m Loading safetensors checkpoint shards:  60% Completed | 3/5 [00:00<00:00,  3.84it/s]
+Loading safetensors checkpoint shards:  60% Completed | 3/5 [00:00<00:00,  4.34it/s]
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m Loading safetensors checkpoint shards:  80% Completed | 4/5 [00:01<00:00,  4.28it/s]
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m Loading safetensors checkpoint shards:  80% Completed | 4/5 [00:01<00:00,  3.97it/s]
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:01<00:00,  3.07it/s]
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:01<00:00,  3.18it/s]
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:01<00:00,  2.98it/s]
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m 
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:01<00:00,  3.24it/s]
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m 
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:42[0m [90m[qwen2_5_omni_talker.py:157][0m [Model Loaded] name=Qwen2_5OmniTalkerForConditionalGeneration, success=True, size=2577.52 MB, device=cuda:0
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:42[0m [90m[default_loader.py:430][0m Loading weights took 8.83 seconds
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:44[0m [90m[gpu_model_runner.py:5471][0m Model loading took 3.63 GiB memory and 9.539832 seconds
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:44[0m [90m[utils.py:306][0m Using LBNHC KV cache layout.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:28:45[0m [90m[gpu_model_runner.py:6519][0m Skipping memory profiling for multimodal encoder and encoder cache.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:28:59[0m [90m[default_loader.py:430][0m Loading weights took 25.11 seconds
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:29:00[0m [90m[gpu_model_runner.py:5471][0m Model loading took 16.78 GiB memory and 26.043161 seconds
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:29:00[0m [90m[utils.py:306][0m Using LBNHC KV cache layout.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:29:01[0m [90m[gpu_model_runner.py:6546][0m Encoder cache will be initialized with a budget of 32768 tokens, and profiled with 1 video items of the maximum feature size.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:29:57[0m [90m[base.py:148][0m Available KV cache memory: 20.96 GiB (device-level profiling)
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:29:57[0m [90m[kv_cache_utils.py:2032][0m GPU KV cache size: 457,904 tokens, Maximum concurrency for 32,768 tokens per request: 13.97x
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [33mWARNING[0m [90m09-22 20:29:57[0m [90m[base.py:173][0m [LLM Worker 0] Sleep Mode DISABLED.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m <frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m <frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:29:57[0m [90m[kernel_warmup.py:124][0m JIT kernel warmup starting.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m JIT kernel warmup (1 compile keys):   0%|          | 0/1 [00:00<?, ?kernel/s][0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:29:57[0m [90m[base.py:148][0m Available KV cache memory: 26.35 GiB (device-level profiling)
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:29:57[0m [90m[kv_cache_utils.py:2032][0m GPU KV cache size: 493,376 tokens, Maximum concurrency for 32,768 tokens per request: 15.06x
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [33mWARNING[0m [90m09-22 20:29:57[0m [90m[base.py:173][0m [LLM Worker 0] Sleep Mode DISABLED.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m <frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m <frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:29:57[0m [90m[kernel_warmup.py:124][0m JIT kernel warmup starting.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m JIT kernel warmup (1 compile keys):   0%|          | 0/1 [00:00<?, ?kernel/s]JIT kernel warmup (1 compile keys): 100%|██████████| 1/1 [00:00<00:00,  1.34kernel/s, ComputeSlotMappingKernel (1 keys)]JIT kernel warmup (1 compile keys): 100%|██████████| 1/1 [00:00<00:00,  1.34kernel/s, ComputeSlotMappingKernel (1 keys)]
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:29:57[0m [90m[kernel_warmup.py:134][0m JIT kernel warmup finished in 0.75s.
+JIT kernel warmup (1 compile keys): 100%|██████████| 1/1 [00:00<00:00,  1.32kernel/s, ComputeSlotMappingKernel (1 keys)]JIT kernel warmup (1 compile keys): 100%|██████████| 1/1 [00:00<00:00,  1.32kernel/s, ComputeSlotMappingKernel (1 keys)]
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:29:58[0m [90m[kernel_warmup.py:134][0m JIT kernel warmup finished in 0.76s.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:30:05[0m [90m[kernel_warmup.py:309][0m Using FlashInfer autotune cache file: /root/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/90a/700f5f68628de7cb26fee9086120ef1fc6f8c85ca65f099377d5b798b3cc0033/autotune_configs.json
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m 2026-09-22 20:30:05,698 - INFO - autotuner.py:829 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:30:05[0m [90m[kernel_warmup.py:309][0m Using FlashInfer autotune cache file: /root/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/90a/bfda4f6b483c45aa6c71e3fd154ebed26bb8ae3d7d99ad0ca7f0083fd37bffc0/autotune_configs.json
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:30:05[0m [90m[kernel_warmup.py:266][0m Running FlashInfer autotune with 32768 tokens.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m 2026-09-22 20:30:05,698 - INFO - autotuner.py:829 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:30:05[0m [90m[kernel_warmup.py:266][0m Running FlashInfer autotune with 32768 tokens.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m 2026-09-22 20:30:05,987 - INFO - autotuner.py:852 - flashinfer.jit: [Autotuner]: Autotuning process ends
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m 2026-09-22 20:30:05,990 - INFO - autotuner.py:852 - flashinfer.jit: [Autotuner]: Autotuning process ends
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m 2026-09-22 20:30:06,014 - INFO - autotuner.py:2269 - flashinfer.jit: [Autotuner]: Saved 0 configs to /root/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/90a/bfda4f6b483c45aa6c71e3fd154ebed26bb8ae3d7d99ad0ca7f0083fd37bffc0/autotune_configs.json (0 new, 0 from previous config)
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m 2026-09-22 20:30:06,014 - INFO - autotuner.py:2269 - flashinfer.jit: [Autotuner]: Saved 0 configs to /root/.cache/vllm/flashinfer_autotune_cache/0.6.16.post3/90a/700f5f68628de7cb26fee9086120ef1fc6f8c85ca65f099377d5b798b3cc0033/autotune_configs.json (0 new, 0 from previous config)
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:30:06[0m [90m[gpu_worker.py:860][0m Free memory on device (94.69/95.0 GiB) on startup. Desired GPU memory utilization is (0.3, 28.5 GiB). Actual usage is 4.1 GiB for consumed memory (weights + non-torch), 3.72 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=22050943796` (20.54 GiB) to fit into requested memory, or `--kv-cache-memory=93117612032` (86.72 GiB) to fully utilize gpu memory. Current kv cache memory in use is 20.96 GiB.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:30:06[0m [90m[gpu_worker.py:860][0m Free memory on device (94.69/95.0 GiB) on startup. Desired GPU memory utilization is (0.5, 47.5 GiB). Actual usage is 17.43 GiB for consumed memory (weights + non-torch), 4.18 GiB for peak activation, and 0.0 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=27643922432` (25.75 GiB) to fit into requested memory, or `--kv-cache-memory=78308460544` (72.93 GiB) to fully utilize gpu memory. Current kv cache memory in use is 26.35 GiB.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:30:10[0m [90m[jit_monitor.py:85][0m Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:30:11[0m [90m[torch_utils.py:277][0m Reducing Torch threads from 192 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:30:11[0m [90m[core.py:368][0m init engine (profile, create kv cache, warmup model) took 86.52 s
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [33mWARNING[0m [90m09-22 20:30:11[0m [90m[scheduler.py:213][0m Using custom scheduler class vllm_omni.core.sched.omni_ar_scheduler.OmniARAsyncScheduler. This scheduler interface is not public and compatibility may not be maintained. If you have subclassed Scheduler instead of AsyncScheduler, you will see degraded performance due to async scheduling being disabled.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [33mWARNING[0m [90m09-22 20:30:11[0m [90m[omni_scheduler_mixin.py:118][0m OMNI scheduler forces v1 model runner for omni hooks.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [32mINFO[0m [90m09-22 20:30:11[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:30:11 [stage_engine_core_client.py:162] [StageEngineCoreClient] stage-1 [rep-0] initializing EngineCore
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:30:11[0m [90m[jit_monitor.py:85][0m Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:30:11 [stage_engine_core_client.py:219] [StageEngineCoreClient] stage-1 [rep-0] EngineCore running
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:30:11[0m [90m[torch_utils.py:277][0m Reducing Torch threads from 192 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:30:11[0m [90m[core.py:368][0m init engine (profile, create kv cache, warmup model) took 71.24 s
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [33mWARNING[0m [90m09-22 20:30:11[0m [90m[scheduler.py:213][0m Using custom scheduler class vllm_omni.core.sched.omni_ar_scheduler.OmniARAsyncScheduler. This scheduler interface is not public and compatibility may not be maintained. If you have subclassed Scheduler instead of AsyncScheduler, you will see degraded performance due to async scheduling being disabled.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [33mWARNING[0m [90m09-22 20:30:12[0m [90m[omni_scheduler_mixin.py:118][0m OMNI scheduler forces v1 model runner for omni hooks.
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [32mINFO[0m [90m09-22 20:30:12[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:30:12 [stage_engine_core_client.py:162] [StageEngineCoreClient] stage-0 [rep-0] initializing EngineCore
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:30:12 [stage_engine_core_client.py:219] [StageEngineCoreClient] stage-0 [rep-0] EngineCore running
+/apdcephfs_hzlf/share_1227201/mershi/github-open-source/vllm-omni/vllm_omni/version.py:55: RuntimeWarning: vLLM and vLLM-Omni appear to have mismatched major/minor versions:
+ --> vLLM-Omni version 0.1.dev1+g538eddd74
+ --> vLLM version 0.29.0
+This will likely cause compatibility issues.
+  warn_if_misaligned_vllm_version()
+[32mINFO[0m [90m09-22 20:30:45[0m [90m[patch.py:252][0m NVFP4 W4A4 weight_scale NaN-clamp: installed.
+[32mINFO[0m [90m09-22 20:30:45[0m [90m[patch.py:503][0m inductor factorable-divisibility patch: installed.
+[32mINFO[0m [90m09-22 20:30:45[0m [90m[patch.py:568][0m [cumem-cuda] CuMemAllocator._python_free_callback patched: asleep guard extended to all platforms.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:30:54[0m [90m[core.py:123][0m Initializing a V1 LLM engine (v0.29.0) with config: model='/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00', speculative_config=None, tokenizer='/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=True, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=0, served_model_name=/apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [32768], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native']), enable_flashinfer_autotune=False, enable_cutedsl_warmup=True, enable_jit_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [transformers] Model config: tts_text_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151860. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [transformers] Model config: tts_text_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151861. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [transformers] Model config: tts_text_pad_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151859. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [transformers] Model config: vision_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151652. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [transformers] Model config: vision_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151653. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [transformers] Model config: audio_start_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151647. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [transformers] Model config: audio_end_token_id must be `None` or an integer within the vocabulary (between 0 and 8447), got 151648. This may result in unexpected behavior.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:30:56[0m [90m[parallel_state.py:1775][0m world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_77d760bede4d43c886a6234ac90cc40a backend=nccl
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:30:56[0m [90m[parallel_state.py:2119][0m rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:30:56[0m [90m[gpu_generation_worker.py:101][0m OMNI GPUGenerationWorker forces v1 model runner for omni hooks.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:30:57[0m [90m[topk_topp_sampler.py:62][0m Using FlashInfer for top-p & top-k sampling.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:01[0m [90m[factory.py:46][0m Created connector: SharedMemoryConnector
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:31:01[0m [90m[base.py:173][0m [LLM Worker 0] Sleep Mode DISABLED.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:31:01[0m [90m[base.py:173][0m [LLM Worker 0] Sleep Mode DISABLED.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:01[0m [90m[gpu_model_runner.py:5379][0m Starting to load model /apdcephfs_hzlf/share_1227201/mershi/.cache/huggingface/hub/models--Qwen--Qwen2.5-Omni-7B/snapshots/ae9e1690543ffd5c0221dc27f79834d0294cba00...
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:31:01[0m [90m[vllm.py:1371][0m Enforce eager set, disabling torch.compile and CUDAGraphs. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:31:01[0m [90m[vllm.py:1406][0m Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:01[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:01[0m [90m[vllm.py:1585][0m Cudagraph is disabled under eager mode
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:01[0m [90m[compilation.py:329][0m Enabled custom fusions: norm_quant, act_quant
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:01[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:31:01[0m [90m[utils.py:72][0m Trying to guess the arguments for old-style model class <class 'vllm_omni.model_executor.models.qwen2_5_omni.qwen2_5_omni_token2wav.Qwen2_5OmniToken2WavModel'>
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:02[0m [90m[weight_utils.py:863][0m Filesystem type for checkpoints: FUSE.DOP-FUSE. Checkpoint size: 20.83 GiB. Available RAM: 2152.74 GiB.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:02[0m [90m[weight_utils.py:886][0m Auto-prefetch is disabled because the filesystem (FUSE.DOP-FUSE) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m Loading safetensors checkpoint shards:   0% Completed | 0/5 [00:00<?, ?it/s]
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m Loading safetensors checkpoint shards: 100% Completed | 5/5 [00:00<00:00, 126.07it/s]
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m 
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:05[0m [90m[qwen2_5_omni_token2wav.py:1500][0m [Model Loaded] name=Qwen2_5OmniToken2WavForConditionalGenerationVLLM, success=True, size=1492.80 MB, device=cuda:0
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:05[0m [90m[default_loader.py:430][0m Loading weights took 3.14 seconds
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:06[0m [90m[gpu_model_runner.py:5471][0m Model loading took 1.46 GiB memory and 4.404444 seconds
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:06[0m [90m[cuda.py:492][0m Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:06[0m [90m[utils.py:306][0m Using LBNHC KV cache layout.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:31:06[0m [90m[base.py:173][0m [LLM Worker 0] Sleep Mode DISABLED.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m <frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m <frozen importlib._bootstrap_external>:1301: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:07[0m [90m[kernel_warmup.py:124][0m JIT kernel warmup starting.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m JIT kernel warmup (1 compile keys):   0%|          | 0/1 [00:00<?, ?kernel/s]JIT kernel warmup (1 compile keys): 100%|██████████| 1/1 [00:00<00:00,  2.22kernel/s, ComputeSlotMappingKernel (1 keys)]JIT kernel warmup (1 compile keys): 100%|██████████| 1/1 [00:00<00:00,  2.22kernel/s, ComputeSlotMappingKernel (1 keys)]
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:07[0m [90m[kernel_warmup.py:134][0m JIT kernel warmup finished in 0.45s.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:08[0m [90m[kernel_warmup.py:194][0m Skipping FlashInfer autotune because it is disabled.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:08[0m [90m[qwen2_5_omni.py:944][0m Currently, we do not use the chunked process, we only use the token2wav.process_chunk for the whole sequence. The stream mode will be implemented in the future.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:31:15[0m [90m[gpu_generation_model_runner.py:559][0m Dummy sampler run is not implemented for generation model
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:16[0m [90m[jit_monitor.py:85][0m Kernel JIT monitor activated; monitored JIT compilations during inference will use mode=warn.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:17[0m [90m[torch_utils.py:277][0m Reducing Torch threads from 192 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:17[0m [90m[core.py:368][0m init engine (profile, create kv cache, warmup model) took 10.37 s
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:31:17[0m [90m[scheduler.py:213][0m Using custom scheduler class vllm_omni.core.sched.omni_generation_scheduler.OmniGenerationScheduler. This scheduler interface is not public and compatibility may not be maintained. If you have subclassed Scheduler instead of AsyncScheduler, you will see degraded performance due to async scheduling being disabled.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:31:17[0m [90m[core.py:155][0m Disabling chunked prefill for model without KVCache
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:31:17[0m [90m[omni_scheduler_mixin.py:118][0m OMNI scheduler forces v1 model runner for omni hooks.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:31:17[0m [90m[kernel.py:369][0m Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'])
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:17 [stage_engine_core_client.py:162] [StageEngineCoreClient] stage-2 [rep-0] initializing EngineCore
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:17 [stage_engine_core_client.py:219] [StageEngineCoreClient] stage-2 [rep-0] EngineCore running
+[0;36m(APIServer pid=3379)[0;0m [transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:26 [orchestrator.py:416] [Orchestrator] Starting event loop
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:26 [omni_engine_base.py:344] [OmniEngine] Orchestrator ready with 3 stages
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:26 [omni_base.py:227] [AsyncOmni] AsyncOmniEngine initialized in 263.71 seconds
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:26 [omni_base.py:246] [AsyncOmni] Initialized with 3 stages for model Qwen/Qwen2.5-Omni-7B
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:26 [api_server.py:871] Supported tasks: {'speech', 'generate'}
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:26 [hf.py:547] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [base.py:244] Multi-modal warmup completed in 1.103s
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [speaker_cache.py:239] Speaker cache ready (max_bytes=536870912)
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [serving_speech.py:264] Speaker storage: dir=/root/.cache/vllm-omni/speakers, max_speakers=1000, restored=0
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [serving_speech.py:414] Loaded 0 supported speakers: []
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [serving.py:45] OpenAIServingRealtime initialized for task: realtime
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [serving_video.py:170] Video response frame conversion pool configured: workers=8
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [api_server.py:382] Starting vLLM API server 0 on http://0.0.0.0:8091
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:61] Available routes are:
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /openapi.json, Methods: GET, HEAD
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /docs, Methods: GET, HEAD
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /docs/oauth2-redirect, Methods: GET, HEAD
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /redoc, Methods: GET, HEAD
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /load, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /version, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /metrics, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /tokenize, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /detokenize, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /ping, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /ping, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /invocations, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/responses, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/responses/{response_id}, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/responses/{response_id}/cancel, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/completions, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/messages, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/messages/count_tokens, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /generative_scoring, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /scale_elastic_ep, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /is_scaling_elastic_ep, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/chat/completions/render, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/messages/render, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/completions/render, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/chat/completions/derender, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/completions/derender, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /inference/v1/generate, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/chat/completions, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/chat/completions/batch, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/audio/speech, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/audio/speech/batch, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/audio/generate, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/audio/voices, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/audio/voices, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/audio/voices/{name}, Methods: DELETE
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/realtime/sessions, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/realtime/sessions/{session_id}/step, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/realtime/sessions/{session_id}/reset, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/realtime/sessions/{session_id}/close, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/realtime/sessions/{session_id}/status, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /health, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/models, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/images/generations, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/images/edits, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/videos, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/videos/sync, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/videos, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/videos/{video_id}, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/videos/{video_id}, Methods: DELETE
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/videos/{video_id}/content, Methods: GET
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/omni/sleep, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:70] Route: /v1/omni/wakeup, Methods: POST
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:81] Route: /v1/audio/speech/stream, Endpoint: streaming_speech
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:81] Route: /v1/video/chat/stream, Endpoint: streaming_video_chat
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:81] Route: /v1/realtime/video, Endpoint: streaming_video_output
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:81] Route: /v1/realtime, Endpoint: realtime_websocket
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:81] Route: /v1/duplex, Endpoint: duplex_websocket
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:31:28 [launcher.py:81] Route: /v1/realtime/robot/openpi, Endpoint: realtime_robot_openpi
+[0;36m(APIServer pid=3379)[0;0m INFO:     Started server process [3379]
+[0;36m(APIServer pid=3379)[0;0m INFO:     Waiting for application startup.
+[0;36m(APIServer pid=3379)[0;0m INFO:     Application startup complete.
+[0;36m(APIServer pid=3379)[0;0m INFO:     127.0.0.1:53516 - "GET /v1/models HTTP/1.1" 200 OK
+[0;36m(APIServer pid=3379)[0;0m INFO:     127.0.0.1:53524 - "GET /v1/models HTTP/1.1" 200 OK
+[0;36m(StageEngineCoreProc_stage0_replica0 pid=4242)[0;0m [33mWARNING[0m [90m09-22 20:32:17[0m [90m[jit_monitor.py:141][0m Triton kernel JIT compilation during inference: _triton_mrope_forward. This causes a latency spike; consider extending warmup to cover this shape/config.
+[0;36m(StageEngineCoreProc_stage1_replica0 pid=4245)[0;0m [33mWARNING[0m [90m09-22 20:32:19[0m [90m[jit_monitor.py:141][0m Triton kernel JIT compilation during inference: _triton_mrope_forward. This causes a latency spike; consider extending warmup to cover this shape/config.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [32mINFO[0m [90m09-22 20:32:19[0m [90m[qwen2_5_omni.py:944][0m Currently, we do not use the chunked process, we only use the token2wav.process_chunk for the whole sequence. The stream mode will be implemented in the future.
+[0;36m(StageEngineCoreProc_stage2_replica0 pid=6627)[0;0m [33mWARNING[0m [90m09-22 20:32:21[0m [90m[jit_monitor.py:141][0m Triton kernel JIT compilation during inference: SnakeBeta._init_triton.<locals>._kernel. This causes a latency spike; consider extending warmup to cover this shape/config.
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] 
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] [Overall Summary]
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] +-----------------------------+-----------+
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] | Field                       |     Value |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] +-----------------------------+-----------+
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] | e2e_requests                |         1 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] | e2e_wall_time_ms            | 8,218.705 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] | e2e_total_tokens            |       476 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] | e2e_avg_time_per_request_ms | 8,218.705 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] | e2e_avg_tokens_per_s        |    57.917 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] | input_preprocess_time_ms    |    99.792 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] | e2e_stage_0_wall_time_ms    | 1,424.395 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] | e2e_stage_1_wall_time_ms    | 1,782.487 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] | e2e_stage_2_wall_time_ms    | 4,746.242 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:811] +-----------------------------+-----------+
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:837] 
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:837] [RequestE2EStats [request_id=chatcmpl-bd0920b2594f48ca-952a7a50]]
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:837] +------------------+-----------+
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:837] | Field            |     Value |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:837] +------------------+-----------+
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:837] | e2e_total_ms     | 7,951.850 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:837] | e2e_total_tokens |       476 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:837] +------------------+-----------+
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:878] [OmniTiming] req=chatcmpl-bd0920b2594f48ca-952a7a50 total=7.95s preprocess=0.10s engine=7.85s stages=[0:1.42s,1:1.78s,2:4.75s] transfers=[0->1=0.00ms,1->2=0.00ms]
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] 
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] [StageRequestStats [request_id=chatcmpl-bd0920b2594f48ca-952a7a50]]
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] +---------------------------------+---------------+---------------+-----------+
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | Field                           |             0 |             1 |         2 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] +---------------------------------+---------------+---------------+-----------+
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | audio_generated_frames          |             0 |             0 |    15,840 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | batch_id                        |             1 |             1 |         1 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | batch_size                      |             1 |             1 |         1 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | inter_output_latencies_ms       |               |               |           |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | num_tokens_in                   |           428 |             0 |         0 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | num_tokens_out                  |            15 |            33 |         0 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | output_unit_count               |            15 |            33 |    15,840 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | output_unit_type                |          text |        stream |     audio |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | serving_time_to_first_output_ms |     1,689.938 |     3,471.900 | 8,218.113 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | stage_gen_time_ms               |     1,423.419 |     1,780.632 | 4,745.838 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | time_per_output_unit_ms         |         0.050 |         0.005 |     0.000 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | vllm_itl_ms                     |        14.305 |        12.565 |     0.000 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | vllm_itls_ms                    | 14.305 (n=14) | 12.565 (n=32) |           |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | vllm_tpot_ms                    |        14.305 |        12.565 |     0.000 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] | vllm_ttft_ms                    |     1,482.063 |     1,378.021 | 4,745.579 |
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:24 [stats.py:920] +---------------------------------+---------------+---------------+-----------+
+[0;36m(APIServer pid=3379)[0;0m INFO:     127.0.0.1:33716 - "POST /v1/chat/completions HTTP/1.1" 200 OK
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:35 [launcher.py:124] [shutdown] API server: shutdown triggered
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:35 [launcher.py:140] [shutdown] API server: stopping engine client mode=abort timeout=0s
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:35 [omni_base.py:771] [AsyncOmni] Shutting down
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:35 [omni_engine_base.py:1144] [OmniEngine] Shutting down Orchestrator
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:35 [orchestrator.py:508] [Orchestrator] Received shutdown signal
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:35 [orchestrator.py:2615] [Orchestrator] Shutting down all 3 client(s)
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:35 [core_client.py:689] [shutdown] MPClient: start timeout=default
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:35 [core_client.py:691] [shutdown] MPClient: stopping engine manager
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:35 [utils.py:620] [shutdown] Process manager: send sigterm to process StageEngineCoreProc_stage0_replica0
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:39 [core_client.py:693] [shutdown] MPClient: engine manager stopped
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:39 [core_client.py:694] [shutdown] MPClient: cleaning up background resources
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:39 [core_client.py:696] [shutdown] MPClient: complete
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:39 [stage_pool.py:1338] [StagePool] Stage 0 replica 0 shut down
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:39 [core_client.py:689] [shutdown] MPClient: start timeout=default
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:39 [utils.py:620] [shutdown] Process manager: send sigterm to process StageEngineCoreProc_stage1_replica0
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:44 [stage_pool.py:1338] [StagePool] Stage 1 replica 0 shut down
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:44 [core_client.py:689] [shutdown] MPClient: start timeout=default
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:44 [utils.py:620] [shutdown] Process manager: send sigterm to process StageEngineCoreProc_stage2_replica0
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:47 [stage_pool.py:1338] [StagePool] Stage 2 replica 0 shut down
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:47 [launcher.py:149] [shutdown] API server: engine client stopped
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:47 [launcher.py:152] [shutdown] API server: signalling HTTP server shutdown
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:47 [launcher.py:173] [shutdown] API server: shutting down FastAPI HTTP server
+[0;36m(APIServer pid=3379)[0;0m INFO:     Shutting down
+[0;36m(APIServer pid=3379)[0;0m INFO:     Waiting for application shutdown.
+[0;36m(APIServer pid=3379)[0;0m INFO:     Application shutdown complete.
+[0;36m(APIServer pid=3379)[0;0m INFO 09-22 20:32:47 [omni_base.py:771] [AsyncOmni] Shutting down
