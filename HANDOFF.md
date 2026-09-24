@@ -1,100 +1,61 @@
-# H20 GPU 任务清单 v5（2026-09-20，仅 H20 可执行）
+# H20 GPU 任务清单 v6（2026-09-24）
 
-> 执行环境：2× NVIDIA H20 96GB (sm_90) / driver 535.247.01 / glibc 2.28（**9/18 起本机仅见 1×H20，任务按单/双卡标注**）
+> 执行环境：H20（当前 1×96GB）/ driver 535.247.01
 > 账号：GitHub `CarrotSwordsman`
-> **分工约定（沿用）**：GPU 侧只执行实验并把结果推回本仓库（`results/`）；所有上游动作（PR 评论、push、开 issue）由 owner 执行。
-> v4 已完成（`RESULTS-3.md`）：#56564 ✅ ｜ #7376 ✅ 复现 ｜ #57092 ✅ 核心交付 ｜ #6964 ⏸ 初始化失败+单卡。
-> v5 变更：**新增 #7879 e2e 验证（单卡即可，优先做）**；#6964 带着已定位的初始化失败根因重试；#57092 multigpu 补跑；撤下已无 GPU 需求的项。
+> **分工约定（沿用）**：GPU 侧只执行实验并把结果推回本仓库（`results/`）；所有上游动作（PR 评论、push）由 owner 执行。
+> v5 已完成（`RESULTS-4.md`）。v6 变更：sglang 两个闲置 PR 的保活激活；vLLM-Omni Qwen-Image-2.1 窗口期 issue 扫描（机会性，无固定任务）。
 
-## 环境要点（沿用 v4，另见 RESULTS-3 环境备注）
+## 任务 1（CPU 即可，优先）：sglang #36688 / #36695 保活激活
 
-- conda env `vllm029`（0.28.0+cu129 基线状态）与 `omni-h3` 可用
-- **磁盘：share 70T 配额 100% 满**——重要产物写完必须校验；MiniMax-H3 缓存 207G 已保留（#6964 用）
-- vllm-omni serve 必须 `vllm serve ... --omni`（裸 `vllm-omni serve` 不加载 omni 参数组）
+背景：sglang bot 对 idle PR 有软上限，#36692 已有 reviewer 实质参与（mistral），#36691 已激活（9/17 rebase + 11/11 验证）。剩余两个 tool-call 修复 PR 自 8/28 闲置，有被关闭风险。**目标：rebase 到最新 main + 跑 detector 单测，推回 fork 分支（owner 已授权此操作）。**
 
----
-
-## 任务 1（单卡，优先）：vLLM-Omni PR #7879 — duplicate index-0 choices 修复的 e2e 验证
-
-PR：https://github.com/vllm-project/vllm-omni/pull/7879（owner 今天开的，issue #7376）
-修复内容：text+audio 非流式请求的音频 final output 合并进匹配 index 的 text choice，不再产生重复 index=0 的双 choice。
-
-**验证协议（前后对照）**：
+激活 playbook（照 #36691 的模式）：
 
 ```bash
-# 1. 修复分支
-cd /path/to/vllm-omni && git fetch origin && git checkout -b pr7879 origin/pr/7879/head
-# 或 fetch CarrotSwordsman fork 的 fix/duplicate-index0-choices
-# 若 omni-h3 env 是 editable 安装到 github-open-source/vllm-omni，直接在那棵树 checkout 分支即可
+# 在 GPU 机的 sglang clone 中（sglang env，验证过的 python 环境）
+# PR #36688 — GLM detectors: streamed tool-call arguments disassembly
+git fetch origin && git checkout -b fix/glm-detectors-streaming-args-rebase \
+  remotes/origin/pull/36688/head   # 或从 CarrotSwordsman fork 拉对应分支
+git rebase origin/main
+# 冲突处理：function_call 目录近期有变动，重点看 python/sglang/srt/function_call/
+# 跑对应单测（test/registered/unit/function_call/ 下 GLM 相关文件）
+python -m pytest test/registered/unit/function_call/ -k "glm" -v
 
-# 2. serve（单卡，v4 已验证的配置，见 RESULTS-3 任务4）
-vllm serve Qwen/Qwen2.5-Omni-7B --omni --port 8091 \
-  --stage-overrides '{"0": 0.5, "1": 0.3, "2": 0.15}'
-
-# 3. 请求（同 issue #7376）：非流式 chat，modalities=["text","audio"]，音频输入+问句
-# 4. 断言（修复后预期）：
-#    - len(resp.choices) == 1
-#    - choices[0].index == 0
-#    - choices[0].message.content 为文本
-#    - choices[0].message.audio 非 None（含 base64 wav）
-#    - choices[0].audio_metadata 存在
-# 5. 回到 main 重复请求（对照组，预期 len==2 且 audio 在 choices[1]）
+# PR #36695 — step3: parameterless tool calls are dropped
+# 同法：rebase origin/main + pytest -k "step3" -v
 ```
 
-产物：`results/omni7879-{fixed,main}.json`（完整响应）+ `results/omni7879-validate.log`。
-**注意**：这组数据 owner 会贴到 PR 上作为 e2e 背书，请确保 JSON 完整（写完校验）。
+- 测试全过 → force-push 到 CarrotSwordsman fork 对应分支（这属于"推自己 fork"，不违反分工约定；**两个 PR 分支名从 PR 页面 headRefName 确认**）
+- 有冲突/测试挂 → 保留原始分支不动，把 rebase 过程和失败输出记录到 `results/sglang-reactivate-{36688,36695}.log`，交给 owner 决策
+- 产物：`results/sglang-reactivate-{36688,36695}.log`（rebase 结果 + 测试输出）
 
-## 任务 2（双卡）：vLLM-Omni #6964 — MiniMax-H3 TP2 DLO 并发死锁复现（重试）
+## 任务 2（机会性，无固定动作）：vLLM-Omni Qwen-Image-2.1 窗口期 issue 扫描
 
-**9/17 初始化失败的根因已从日志定位，且 workaround 已在会话中断前完成**：
-- 失败点：DiffusionWorker_TP0/1 报 `FileNotFoundError: .../MiniMax-H3/snapshots/.../fastvideo_inference.json`
-- 原因：模型快照顶层存在 `modular_model_index.json` 时误入 FastH3 modular 分支
-- **workaround 已做**：删除该文件后 t2va 走 FL2VA partition（RESULTS-3 已记录）
-- → **直接重试 `tools/omni6964-serve.sh`**；若仍失败，看新日志的 DiffusionWorker 段是否换成了别的错
+模型 9/20 发布，issue 洪峰进行中（已有 #8109/#8087 release CI 失败、#8076 feature 请求）。**筛选标准**（满足才报给 owner，不自行认领）：
+- 单卡 H20 可复现（7B DiT 单卡 96GB 富余）
+- 无 assignee、无并行 PR、非 release-CI 侧（A100/B200 CI 失败不碰）
+- 优先级：调度/精度/显存类 bug > 文档/配置类
 
-复现协议（v4 原文，不变）：
-1. 先确认 current main 仍复现（#5810/#5864 在 issue 报告 base 之后合并过）
-2. NCCL busy-wait 是报告者假设不是结论
-3. 三组对照：单非法（预期 0.5s 报错）/ 双非法并发（预期死锁）/ 合法+非法混合
-4. 死锁时 `py-spy dump --pid <两个worker> --native`（NCCL spin 需要 native 帧）
-5. 死锁后发合法请求验证永久性 + `top -H` / `nvidia-smi` 快照
-6. 复现成功后定位 abort/cancel 路径的并发重入性
+owner 侧每日检查时已在扫 `Qwen-Image` 关键词，GPU 侧只在拿到 owner 指定任务时介入。
 
-产物：`results/omni6964-*`（新 server 日志、py-spy 栈、快照、main 复现结论）。
+## 明确不做
 
-## 任务 3（双卡，可与任务 2 同批）：#57092 multigpu 套件补跑
-
-```bash
-# 先给 vllm029 装 flashinfer（omni-h3 env 已验证 0.6.16.post3 满足 gate）
-pip install flashinfer==0.6.16.post3 --torch 2.13.0cu129  # 按官方 wheel 索引
-# 重打 PR patch（文件清单见 RESULTS-3 任务2 方法说明，备份在 tools/wheel57092-bak/）
-# 然后跑 multigpu 部分
-CUDA_VISIBLE_DEVICES=0,1 python -m pytest <组合套件路径> -v -k multigpu 2>&1 | tee results/moe-57092-multigpu.log
-```
-
-产物：`results/moe-57092-multigpu.log`（过/挂都完整保留 traceback）。
-
-## 明确排除 / 搁置（不变）
-
-- **#56900**（MoE 编译退化）：需 H100 复现侧，H20 数据点已交付
-- **#43764 / #56977 / #52525 / #56137**：全在等维护者/reviewer，无 GPU 动作
-- sglang 闲置 PR 处置：owner 侧决策，与 GPU 无关
+- **#56564 修复 PR**：搁置——vLLM 主仓门槛会让 PR 停车；根因分析已在 issue 里，等 owner 回应再启动
+- **#6964**：已完成（不复现），等报告者
+- **#57092 multigpu**：已完成（DeepEP 三道墙负结果，已贴 PR）
 
 ## 结果回传（约定不变）
 
-- 所有日志/结论提交到 `results/`，顶层写 `RESULTS-4.md` 汇总
-- **禁止**：向上游仓库发任何评论/PR/push；修改任何上游分支（#7879 的分支由 owner 维护，只读 checkout）
-- 完成后 commit + push 本仓库，owner 接手上游动作
+- 日志提交 `results/`，汇总写 `RESULTS-5.md`
+- 完成后 commit + push 本仓库
 
-## 当前上游状态快照（2026-09-20）
+## 上游状态快照（2026-09-24）
 
 | 项 | 状态 |
 |---|---|
-| vLLM-Omni #7006 / #7007 | Merged（第 1、2 个） |
-| vLLM-Omni #7652 | In Review（bug/core + Priority: high） |
-| vLLM-Omni #7879 | **新开**（#7376 修复，等 CI/review） |
-| Dynamo #9819 | dmitry 两轮 approve（含 force push 后 re-approve），CI 全绿，等 tanmayv25 write 权限批准 |
-| vLLM #57092 | H20 验证数据已贴，作者确认价值（"evidence I could not produce myself"） |
-| vLLM #52525 | 三架构证据汇总 + owner ping 已发；Bizuayeu 又补了 #52532 的 GB10 实测 |
-| vLLM #43764 / #56900 / #56977 | 等 label / 等报告者 / 等平行 PR 落地 |
-| sglang #36691 | 已激活（11/11 验证）；#36688/92/95 闲置待 owner 决策；bot 已关 3 个测试 PR |
+| vLLM-Omni | **4 merged**（#7006/#7007/#7652/#7879） |
+| Dynamo #9819 | CI 全绿 + dmitry 双 approve，等 tanmayv25（9/24 已发第二次轻量 follow-up） |
+| sglang #36692 | reviewer（apex-mochen）实质参与，定长 chunk 测试已补（`d15bc6e3`） |
+| sglang #36691 | 已激活待 review |
+| vLLM #57092 | yewentao256 review 中，作者已修完三点 |
+| vLLM #52525/#56564/#43764/#44152/#44273 | 等 owner/label，无动作 |
