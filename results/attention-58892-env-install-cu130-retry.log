@@ -1,0 +1,8 @@
++ (retry, same cmd) VLLM_MAIN_CUDA_VERSION=13.0 VLLM_USE_PRECOMPILED=1 VLLM_PRECOMPILED_WHEEL_COMMIT=9367d8b9693c3d2fb6c3f99d8ccb4aa7673c0981 uv pip install --python .venv/bin/python -e . --torch-backend=cu130
+Resolved 198 packages in 8.78s
+   Building vllm @ file:///tmp/vllm-58892-check
+   Building llguidance==1.7.6
+      Built vllm @ file:///tmp/vllm-58892-check
+/bin/bash: line 1: 24436 Terminated              VLLM_MAIN_CUDA_VERSION=13.0 VLLM_USE_PRECOMPILED=1 VLLM_PRECOMPILED_WHEEL_COMMIT=9367d8b9693c3d2fb6c3f99d8ccb4aa7673c0981 uv pip install --python .venv/bin/python -e . --torch-backend=cu130 2>&1
+install_exit=143
+install_exit=killed_after_30min_limit (llguidance==1.7.6 sdist maturin build hung ~20min)

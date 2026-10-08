@@ -1,0 +1,15 @@
+0a4c700103d047adda7c2faff710cf7c2cc66ead
+check=git exit_code=0
+check=git exit_code=0
+name, memory.total [MiB], memory.free [MiB], driver_version
+NVIDIA H20, 97871 MiB, 97284 MiB, 535.247.01
+NVIDIA H20, 97871 MiB, 97284 MiB, 535.247.01
+check=nvidia-smi exit_code=0
+Python 3.12.15
+check=.venv/bin/python exit_code=0
+warning: Package(s) not found for: flashinfer-python, pytest, torch, vllm
+check=uv exit_code=1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'torch'
+check=.venv/bin/python exit_code=1

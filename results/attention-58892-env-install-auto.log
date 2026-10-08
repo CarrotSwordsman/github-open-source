@@ -1,0 +1,101 @@
++ VLLM_USE_PRECOMPILED=1 VLLM_PRECOMPILED_WHEEL_COMMIT=9367d8b9693c3d2fb6c3f99d8ccb4aa7673c0981 uv pip install --python .venv/bin/python -e . --torch-backend=auto
+Resolved 196 packages in 5m 26s
+   Building vllm @ file:///tmp/vllm-58892-check
+Downloading pillow (6.6MiB)
+Downloading hf-xet (4.0MiB)
+Downloading tokenizers (3.2MiB)
+Downloading openai (2.1MiB)
+Downloading fastsafetensors (2.0MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading aiohttp (1.8MiB)
+Downloading anthropic (1.8MiB)
+Downloading pygments (1.2MiB)
+Downloading pycountry (7.7MiB)
+Downloading z3-solver (27.9MiB)
+Downloading nvidia-cutlass-dsl-libs-base (2.9MiB)
+Downloading nvidia-cutlass-dsl-libs-cu12 (87.5MiB)
+Downloading nvidia-cutlass-dsl-libs-core (1.6MiB)
+Downloading instanttensor (6.2MiB)
+Downloading grpcio (6.8MiB)
+Downloading oss-harmony (3.4MiB)
+Downloading cryptography (4.5MiB)
+Downloading opencv-python-headless (58.4MiB)
+Downloading llvmlite (53.7MiB)
+Downloading nccl4py (3.5MiB)
+Downloading numpy (15.8MiB)
+Downloading tokenspeed-triton (95.3MiB)
+Downloading nvidia-cudnn-frontend (8.4MiB)
+Downloading mistral-common (6.3MiB)
+Downloading pynvvideocodec (41.2MiB)
+Downloading numba (3.6MiB)
+Downloading nccl-extensions (21.5MiB)
+Downloading cuda-core (6.3MiB)
+Downloading apache-tvm-ffi (2.6MiB)
+Downloading xgrammar (1.3MiB)
+Downloading sentencepiece (1.3MiB)
+Downloading torchaudio (1.5MiB)
+Downloading nvidia-cuda-nvcc-cu12 (38.7MiB)
+Downloading transformers (12.0MiB)
+Downloading flashinfer-python (32.1MiB)
+Downloading nvidia-cuda-cccl-cu12 (3.0MiB)
+Downloading nvidia-cutlass-dsl-libs-cu13 (87.7MiB)
+Downloading uvloop (4.3MiB)
+Downloading outlines-core (2.2MiB)
+Downloading tilelang (48.2MiB)
+Downloading tiktoken (1.1MiB)
+Downloading torchvision (8.9MiB)
+Downloading torchcodec (10.5MiB)
+ Downloaded torchaudio
+ Downloaded torchvision
+ Downloaded torchcodec
+error: Failed to build `vllm @ file:///tmp/vllm-58892-check`
+  cause: The build backend returned an error
+  cause: Call to `setuptools.build_meta.build_editable` failed (exit status: 1)
+
+         [stdout]
+         Detected CUDA 12.9, using variant cu129
+         Using precompiled wheel commit 9367d8b9693c3d2fb6c3f99d8ccb4aa7673c0981 with variant cu129
+         Trying to fetch nightly build metadata from https://wheels.vllm.ai/9367d8b9693c3d2fb6c3f99d8ccb4aa7673c0981/cu129/vllm/metadata.json
+
+         [stderr]
+         /tmp/uv-cache/builds-v0/.tmpQICXfa/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+           cpu = _conversion_method_template(device=torch.device("cpu"))
+         Traceback (most recent call last):
+           File "<string>", line 939, in determine_wheel_url
+           File "<string>", line 547, in fetch_metadata_for_variant
+           File "/tmp/uv-python/cpython-3.12.15-linux-x86_64-gnu/lib/python3.12/urllib/request.py", line 215, in urlopen
+             return opener.open(url, data, timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           File "/tmp/uv-python/cpython-3.12.15-linux-x86_64-gnu/lib/python3.12/urllib/request.py", line 521, in open
+             response = meth(req, response)
+                        ^^^^^^^^^^^^^^^^^^^
+           File "/tmp/uv-python/cpython-3.12.15-linux-x86_64-gnu/lib/python3.12/urllib/request.py", line 630, in http_response
+             response = self.parent.error(
+                        ^^^^^^^^^^^^^^^^^^
+           File "/tmp/uv-python/cpython-3.12.15-linux-x86_64-gnu/lib/python3.12/urllib/request.py", line 559, in error
+             return self._call_chain(*args)
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+           File "/tmp/uv-python/cpython-3.12.15-linux-x86_64-gnu/lib/python3.12/urllib/request.py", line 492, in _call_chain
+             result = func(*args)
+                      ^^^^^^^^^^^
+           File "/tmp/uv-python/cpython-3.12.15-linux-x86_64-gnu/lib/python3.12/urllib/request.py", line 639, in http_error_default
+             raise HTTPError(req.full_url, code, msg, hdrs, fp)
+         urllib.error.HTTPError: HTTP Error 404: Not Found
+
+         The above exception was the direct cause of the following exception:
+
+         Traceback (most recent call last):
+           File "<string>", line 11, in <module>
+           File "/tmp/uv-cache/builds-v0/.tmpQICXfa/lib/python3.12/site-packages/setuptools/build_meta.py", line 472, in build_editable
+             return self._build_with_temp_dir(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+           File "/tmp/uv-cache/builds-v0/.tmpQICXfa/lib/python3.12/site-packages/setuptools/build_meta.py", line 408, in _build_with_temp_dir
+             self.run_setup()
+           File "/tmp/uv-cache/builds-v0/.tmpQICXfa/lib/python3.12/site-packages/setuptools/build_meta.py", line 317, in run_setup
+             exec(code, locals())
+           File "<string>", line 1480, in <module>
+           File "<string>", line 943, in determine_wheel_url
+         RuntimeError: Failed to fetch precompiled wheel metadata for CUDA variant 'cu129' at commit 9367d8b9693c3d2fb6c3f99d8ccb4aa7673c0981. The root/default variant is not used as a fallback because its CUDA compatibility with the selected variant cannot be verified. Provide a compatible wheel with VLLM_PRECOMPILED_WHEEL_LOCATION or disable VLLM_USE_PRECOMPILED to build from source.
+
+hint: Build failures usually indicate a problem with the package or the build environment
+install_exit=1

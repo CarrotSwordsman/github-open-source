@@ -1,0 +1,3 @@
+cudaDriverGetVersion rc= 0 driver_cuda= 12020
+cudaRuntimeGetVersion rc= 0 runtime= 13000
+cudaGetDeviceCount rc= 35 cudaErrorInsufficientDriver count= 13000

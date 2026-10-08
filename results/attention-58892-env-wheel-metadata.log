@@ -1,0 +1,16 @@
++ remote read of wheel METADATA/.so via HTTP Range (no full download)
+URL: https://wheels.vllm.ai/9367d8b9693c3d2fb6c3f99d8ccb4aa7673c0981/vllm-0.31.1rc1.dev43%2Bg9367d8b96-cp38-abi3-manylinux_2_28_x86_64.whl
+index: /<commit>/ lists only cu130/ vllm/ xpu/ ; /<commit>/cu129/ and /cu128/ are empty; root and cu130 point to the same file
+Version: 0.31.1rc1.dev43+g9367d8b96
+Requires-Dist: torch==2.13.0
+Requires-Dist: torchaudio==2.11.0
+Requires-Dist: torchvision==0.28.0
+Requires-Dist: torchcodec>=0.14
+Requires-Dist: flashinfer-python==0.7.0.post1
+Requires-Dist: nvidia-cudnn-frontend>=1.19.1
+Requires-Dist: nvidia-cutlass-dsl[cu13]==4.8.0
+Requires-Dist: nvidia-deepstream-videodecode-cu13>=9.0.2; extra == "deepstream"
+top-level .so: ['vllm/_C_stable_libtorch.abi3.so', 'vllm/_deepselect_C.abi3.so', 'vllm/_flashkda_C.abi3.so', 'vllm/_flashmla_C.abi3.so', 'vllm/_flashmla_extension_C.abi3.so', 'vllm/_moe_C_stable_libtorch.abi3.so', 'vllm/_qutlass_C.abi3.so', 'vllm/cumem_allocator.abi3.so', 'vllm/fs_io_C.abi3.so', 'vllm/spinloop.abi3.so']
+stable ext: ['vllm/_C_stable_libtorch.abi3.so', 'vllm/_moe_C_stable_libtorch.abi3.so'] [78799624, 45448928]
+cuda libs referenced: [b'libcuda.so.1', b'libcudart.so.13']
+exit=0

@@ -6,8 +6,20 @@
 > 运行前记录实际 GPU 数量、驱动、torch/vLLM/FlashInfer 版本与源码 SHA；本任务不下载模型，模型 revision 记为 N/A。旧环境信息不是当前机器保证。
 > 2026-10-08 owner 会话检查：本机无 `nvidia-smi`，BCS 的 `ieg-gztechtke-aigc-h20-nj` 命名空间未发现名称含 `mershi` 的 Pod；这不代表另一会话没有资源。计算资源侧确认自己的测试环境，不占用或停止其他人的服务。
 > SGLang #36691 的当前 main 兼容性检查不需要 GPU，留给 owner；Dynamo #9819 和 SGLang 的官方 CI 授权由维护者处理，不作为本地 GPU 实验派发。
+> **[计算资源侧回传 2026-10-08 20:35] 第 0 节状态：BLOCKED（环境层，pytest 未运行，不是 PASS/FAIL）**。详见 `RESULTS-5.md`。
 
 ## 0. 现在开工：vLLM PR #58892 完整测试（单卡，最高优先）
+
+### ⛔ 执行结果（计算资源侧回传，2026-10-08）：BLOCKED
+
+- 固定 checkout 核对通过：HEAD `0a4c700103d047adda7c2faff710cf7c2cc66ead`，`HEAD^2` = `9367d8b96`；独立 `uv` 0.12.23 + `.venv`（CPython 3.12.15），未触碰 `vllm029` / `omni-h3`；2×H20 在位，driver 535.247.01（CUDA 12.2）。
+- 阻断根因：`wheels.vllm.ai/9367d8b9…/` 只发布 **cu130** variant（无 cu129/cu128）；wheel pin `torch==2.13.0`，`_C_stable_libtorch.abi3.so` 依赖 `libcudart.so.13`。本机实测 libcudart 13 → `cudaErrorInsufficientDriver`；`torch 2.13.0+cu130` → `cuda.is_available()=False`（"driver too old, found version 12020"）。
+- 安装尝试：标准命令 `--torch-backend=auto` 选中 cu129 → 404，setup.py 拒绝回退 root variant；显式 cu130 安装另卡 `llguidance==1.7.6` sdist 构建并超时终止（即便装完也过不了 CUDA 初始化）。
+- v10 preflight 原样执行：`preflight_exit_code=1`（torch 未装成）→ 按规定未进入第三步。
+- 覆盖情况：`test_sm90_sparse_backend_selection` 4 组合 **未运行**；`test_sm90_nope_fp8_ds_mla_resolves_to_flashmla` **未运行**；两文件完整 pytest、基线复核均未运行；GPU 数值/吞吐不在范围。
+- 时长：19:31–20:35，超出 30 分钟限时（两次 cu130 安装尝试耗时）。
+- 解锁条件（owner 判断）：① driver ≥ 580 的机器按原方案执行；② 上游为该 commit 发布 cu129 variant 后在本机重试（未验证）；③ 放宽约束允许 cu129 toolchain 源码编译（超出本轮授权）。
+- 产物：`RESULTS-5.md`、`results/attention-58892-env*`（8 个）、`tools/remote_whl_inspect.py`。
 
 ### 目标与固定版本
 
@@ -175,5 +187,6 @@ printf 'pytest_exit_code=%s log_exit_code=%s\n' "${KEY_STATUS[0]}" "${KEY_STATUS
 - 新实验日志放 `results/`，汇总注明源码 SHA、环境、完整命令、测试退出码、通过/失败/跳过及未覆盖项。
 - 本轮四个同步分支均已提交并推送，工作树干净；AutoRound 未提交候选仍需保留，不要重置覆盖。
 - 计算资源侧现在执行第 0 节 #58892 完整 CUDA pytest；当前尚无 `RESULTS-5.md`，不代表已经开跑或完成。其他条目不新增 GPU 实验，按暂停、等待或已结束状态处理。
+  - **[2026-10-08 回传] 已执行至 preflight → BLOCKED（driver 535 不支持 cu130-only 预编译 wheel），`RESULTS-5.md` 已提交。本机无法完成第 0 节，需 owner 决定解锁方案。**
 - 用户已于 2026-10-08 授权发布本版清单。另一会话从 GitHub 拉取交接仓库后，先确认 `HANDOFF.md` 标题为 v10，再执行第 0 节；清单已发布不代表 GPU 测试已开始或完成。
 - 未取得逐项确认前，不 commit/push、改 PR 正文、发评论、解决 thread；先展示完整 diff 或准确文本。
