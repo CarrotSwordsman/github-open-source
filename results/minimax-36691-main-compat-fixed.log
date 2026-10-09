@@ -1,0 +1,13 @@
+/data/workspace/sglang-36691/python/sglang/srt/layers/quantization/awq/awq.py:53: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/data/workspace/sglang-36691/python/sglang/srt/layers/quantization/gguf.py:69: UserWarning: Only CUDA, MUSA and NPU support GGUF quantization currently.
+  warnings.warn(f"Only CUDA, MUSA and NPU support GGUF quantization currently.")
+..........Model attempted to call undefined function: not_registered
+Invalid function name: not_registered
+Invalid function name: not_registered
+Invalid function name: not_registered
+.
+----------------------------------------------------------------------
+Ran 11 tests in 0.004s
+
+OK

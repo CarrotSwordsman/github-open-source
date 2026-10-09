@@ -1,0 +1,366 @@
+counterfactual: replace ONLY minimax_m2 module with origin/main c44a42e6d3 in this process; dependencies and tests unchanged
+FFFFFF.FFFF                                                              [100%]
+=================================== FAILURES ===================================
+__________ TestMinimaxM2DetectorStreaming.test_call_with_no_arguments __________
+test/registered/unit/function_call/test_minimax_m2_detector.py:110: in test_call_with_no_arguments
+    self.assert_stream_matches_final(
+test/registered/unit/function_call/test_minimax_m2_detector.py:83: in assert_stream_matches_final
+    self.assertEqual(
+E   AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"></invoke></minimax:tool_call>'
+
+During handling of the above exception, another exception occurred:
+python/sglang/test/test_utils.py:2423: in _callTestMethod
+    retry(
+python/sglang/srt/utils/common.py:3861: in retry
+    raise Exception(f"retry() exceed maximum number of retries.")
+E   Exception: retry() exceed maximum number of retries.
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/data/workspace/sglang-36691/python/sglang/srt/utils/common.py", line 3846, in retry
+    return fn()
+           ^^^^
+  File "/data/workspace/sglang-36691/python/sglang/test/test_utils.py", line 2424, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 110, in test_call_with_no_arguments
+    self.assert_stream_matches_final(
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 83, in assert_stream_matches_final
+    self.assertEqual(
+  File "/usr/lib64/python3.11/unittest/case.py", line 873, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib64/python3.11/unittest/case.py", line 866, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"></invoke></minimax:tool_call>'
+___ TestMinimaxM2DetectorStreaming.test_call_with_no_arguments_empty_schema ____
+test/registered/unit/function_call/test_minimax_m2_detector.py:115: in test_call_with_no_arguments_empty_schema
+    self.assert_stream_matches_final(
+test/registered/unit/function_call/test_minimax_m2_detector.py:83: in assert_stream_matches_final
+    self.assertEqual(
+E   AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="noop"></invoke></minimax:tool_call>'
+
+During handling of the above exception, another exception occurred:
+python/sglang/test/test_utils.py:2423: in _callTestMethod
+    retry(
+python/sglang/srt/utils/common.py:3861: in retry
+    raise Exception(f"retry() exceed maximum number of retries.")
+E   Exception: retry() exceed maximum number of retries.
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/data/workspace/sglang-36691/python/sglang/srt/utils/common.py", line 3846, in retry
+    return fn()
+           ^^^^
+  File "/data/workspace/sglang-36691/python/sglang/test/test_utils.py", line 2424, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 115, in test_call_with_no_arguments_empty_schema
+    self.assert_stream_matches_final(
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 83, in assert_stream_matches_final
+    self.assertEqual(
+  File "/usr/lib64/python3.11/unittest/case.py", line 873, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib64/python3.11/unittest/case.py", line 866, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="noop"></invoke></minimax:tool_call>'
+_______ TestMinimaxM2DetectorStreaming.test_integer_argument_keeps_type ________
+test/registered/unit/function_call/test_minimax_m2_detector.py:133: in test_integer_argument_keeps_type
+    self.assert_stream_matches_final(
+test/registered/unit/function_call/test_minimax_m2_detector.py:83: in assert_stream_matches_final
+    self.assertEqual(
+E   AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"><parameter name="days">7</parameter></invoke></minimax:tool_call>'
+
+During handling of the above exception, another exception occurred:
+python/sglang/test/test_utils.py:2423: in _callTestMethod
+    retry(
+python/sglang/srt/utils/common.py:3861: in retry
+    raise Exception(f"retry() exceed maximum number of retries.")
+E   Exception: retry() exceed maximum number of retries.
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/data/workspace/sglang-36691/python/sglang/srt/utils/common.py", line 3846, in retry
+    return fn()
+           ^^^^
+  File "/data/workspace/sglang-36691/python/sglang/test/test_utils.py", line 2424, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 133, in test_integer_argument_keeps_type
+    self.assert_stream_matches_final(
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 83, in assert_stream_matches_final
+    self.assertEqual(
+  File "/usr/lib64/python3.11/unittest/case.py", line 873, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib64/python3.11/unittest/case.py", line 866, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"><parameter name="days">7</parameter></invoke></minimax:tool_call>'
+____________ TestMinimaxM2DetectorStreaming.test_multiple_arguments ____________
+test/registered/unit/function_call/test_minimax_m2_detector.py:126: in test_multiple_arguments
+    self.assert_stream_matches_final(
+test/registered/unit/function_call/test_minimax_m2_detector.py:83: in assert_stream_matches_final
+    self.assertEqual(
+E   AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"><parameter name="city">Beijing</parameter><parameter name="days">3</parameter></invoke></minimax:tool_call>'
+
+During handling of the above exception, another exception occurred:
+python/sglang/test/test_utils.py:2423: in _callTestMethod
+    retry(
+python/sglang/srt/utils/common.py:3861: in retry
+    raise Exception(f"retry() exceed maximum number of retries.")
+E   Exception: retry() exceed maximum number of retries.
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/data/workspace/sglang-36691/python/sglang/srt/utils/common.py", line 3846, in retry
+    return fn()
+           ^^^^
+  File "/data/workspace/sglang-36691/python/sglang/test/test_utils.py", line 2424, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 126, in test_multiple_arguments
+    self.assert_stream_matches_final(
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 83, in assert_stream_matches_final
+    self.assertEqual(
+  File "/usr/lib64/python3.11/unittest/case.py", line 873, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib64/python3.11/unittest/case.py", line 866, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"><parameter name="city">Beijing</parameter><parameter name="days">3</parameter></invoke></minimax:tool_call>'
+_______ TestMinimaxM2DetectorStreaming.test_normal_text_after_tool_call ________
+test/registered/unit/function_call/test_minimax_m2_detector.py:159: in test_normal_text_after_tool_call
+    self.assert_stream_matches_final(
+test/registered/unit/function_call/test_minimax_m2_detector.py:83: in assert_stream_matches_final
+    self.assertEqual(
+E   AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"></invoke></minimax:tool_call> Done.'
+
+During handling of the above exception, another exception occurred:
+python/sglang/test/test_utils.py:2423: in _callTestMethod
+    retry(
+python/sglang/srt/utils/common.py:3861: in retry
+    raise Exception(f"retry() exceed maximum number of retries.")
+E   Exception: retry() exceed maximum number of retries.
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/data/workspace/sglang-36691/python/sglang/srt/utils/common.py", line 3846, in retry
+    return fn()
+           ^^^^
+  File "/data/workspace/sglang-36691/python/sglang/test/test_utils.py", line 2424, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 159, in test_normal_text_after_tool_call
+    self.assert_stream_matches_final(
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 83, in assert_stream_matches_final
+    self.assertEqual(
+  File "/usr/lib64/python3.11/unittest/case.py", line 873, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib64/python3.11/unittest/case.py", line 866, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"></invoke></minimax:tool_call> Done.'
+_______ TestMinimaxM2DetectorStreaming.test_normal_text_before_tool_call _______
+test/registered/unit/function_call/test_minimax_m2_detector.py:151: in test_normal_text_before_tool_call
+    self.assert_stream_matches_final(
+test/registered/unit/function_call/test_minimax_m2_detector.py:83: in assert_stream_matches_final
+    self.assertEqual(
+E   AssertionError: 0 != 1 : [char] call count differs for 'Let me check. <minimax:tool_call><invoke name="get_weather"></invoke></minimax:tool_call>'
+
+During handling of the above exception, another exception occurred:
+python/sglang/test/test_utils.py:2423: in _callTestMethod
+    retry(
+python/sglang/srt/utils/common.py:3861: in retry
+    raise Exception(f"retry() exceed maximum number of retries.")
+E   Exception: retry() exceed maximum number of retries.
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/data/workspace/sglang-36691/python/sglang/srt/utils/common.py", line 3846, in retry
+    return fn()
+           ^^^^
+  File "/data/workspace/sglang-36691/python/sglang/test/test_utils.py", line 2424, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 151, in test_normal_text_before_tool_call
+    self.assert_stream_matches_final(
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 83, in assert_stream_matches_final
+    self.assertEqual(
+  File "/usr/lib64/python3.11/unittest/case.py", line 873, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib64/python3.11/unittest/case.py", line 866, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1 : [char] call count differs for 'Let me check. <minimax:tool_call><invoke name="get_weather"></invoke></minimax:tool_call>'
+__________ TestMinimaxM2DetectorStreaming.test_single_string_argument __________
+test/registered/unit/function_call/test_minimax_m2_detector.py:120: in test_single_string_argument
+    self.assert_stream_matches_final(
+test/registered/unit/function_call/test_minimax_m2_detector.py:83: in assert_stream_matches_final
+    self.assertEqual(
+E   AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"><parameter name="city">Beijing</parameter></invoke></minimax:tool_call>'
+
+During handling of the above exception, another exception occurred:
+python/sglang/test/test_utils.py:2423: in _callTestMethod
+    retry(
+python/sglang/srt/utils/common.py:3861: in retry
+    raise Exception(f"retry() exceed maximum number of retries.")
+E   Exception: retry() exceed maximum number of retries.
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/data/workspace/sglang-36691/python/sglang/srt/utils/common.py", line 3846, in retry
+    return fn()
+           ^^^^
+  File "/data/workspace/sglang-36691/python/sglang/test/test_utils.py", line 2424, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 120, in test_single_string_argument
+    self.assert_stream_matches_final(
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 83, in assert_stream_matches_final
+    self.assertEqual(
+  File "/usr/lib64/python3.11/unittest/case.py", line 873, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib64/python3.11/unittest/case.py", line 866, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"><parameter name="city">Beijing</parameter></invoke></minimax:tool_call>'
+__________ TestMinimaxM2DetectorStreaming.test_two_calls_in_one_block __________
+test/registered/unit/function_call/test_minimax_m2_detector.py:145: in test_two_calls_in_one_block
+    self.assert_stream_matches_final(
+test/registered/unit/function_call/test_minimax_m2_detector.py:83: in assert_stream_matches_final
+    self.assertEqual(
+E   AssertionError: 0 != 2 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"></invoke><invoke name="noop"></invoke></minimax:tool_call>'
+
+During handling of the above exception, another exception occurred:
+python/sglang/test/test_utils.py:2423: in _callTestMethod
+    retry(
+python/sglang/srt/utils/common.py:3861: in retry
+    raise Exception(f"retry() exceed maximum number of retries.")
+E   Exception: retry() exceed maximum number of retries.
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/data/workspace/sglang-36691/python/sglang/srt/utils/common.py", line 3846, in retry
+    return fn()
+           ^^^^
+  File "/data/workspace/sglang-36691/python/sglang/test/test_utils.py", line 2424, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 145, in test_two_calls_in_one_block
+    self.assert_stream_matches_final(
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 83, in assert_stream_matches_final
+    self.assertEqual(
+  File "/usr/lib64/python3.11/unittest/case.py", line 873, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib64/python3.11/unittest/case.py", line 866, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 2 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"></invoke><invoke name="noop"></invoke></minimax:tool_call>'
+_____________ TestMinimaxM2DetectorStreaming.test_unicode_argument _____________
+test/registered/unit/function_call/test_minimax_m2_detector.py:139: in test_unicode_argument
+    self.assert_stream_matches_final(
+test/registered/unit/function_call/test_minimax_m2_detector.py:83: in assert_stream_matches_final
+    self.assertEqual(
+E   AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"><parameter name="city">北京</parameter></invoke></minimax:tool_call>'
+
+During handling of the above exception, another exception occurred:
+python/sglang/test/test_utils.py:2423: in _callTestMethod
+    retry(
+python/sglang/srt/utils/common.py:3861: in retry
+    raise Exception(f"retry() exceed maximum number of retries.")
+E   Exception: retry() exceed maximum number of retries.
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/data/workspace/sglang-36691/python/sglang/srt/utils/common.py", line 3846, in retry
+    return fn()
+           ^^^^
+  File "/data/workspace/sglang-36691/python/sglang/test/test_utils.py", line 2424, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 139, in test_unicode_argument
+    self.assert_stream_matches_final(
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 83, in assert_stream_matches_final
+    self.assertEqual(
+  File "/usr/lib64/python3.11/unittest/case.py", line 873, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib64/python3.11/unittest/case.py", line 866, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 0 != 1 : [char] call count differs for '<minimax:tool_call><invoke name="get_weather"><parameter name="city">北京</parameter></invoke></minimax:tool_call>'
+____ TestMinimaxM2DetectorStreaming.test_unknown_tool_is_dropped_not_leaked ____
+test/registered/unit/function_call/test_minimax_m2_detector.py:170: in test_unknown_tool_is_dropped_not_leaked
+    self.assert_stream_matches_final(
+test/registered/unit/function_call/test_minimax_m2_detector.py:96: in assert_stream_matches_final
+    self.assertNotIn(
+E   AssertionError: '<minimax:tool_call>' unexpectedly found in '<minimax:tool_call><invoke name="not_registered"></invoke></minimax:tool_call>' : [char] '<minimax:tool_call>' leaked into content
+
+During handling of the above exception, another exception occurred:
+python/sglang/test/test_utils.py:2423: in _callTestMethod
+    retry(
+python/sglang/srt/utils/common.py:3861: in retry
+    raise Exception(f"retry() exceed maximum number of retries.")
+E   Exception: retry() exceed maximum number of retries.
+----------------------------- Captured stderr call -----------------------------
+Traceback (most recent call last):
+  File "/data/workspace/sglang-36691/python/sglang/srt/utils/common.py", line 3846, in retry
+    return fn()
+           ^^^^
+  File "/data/workspace/sglang-36691/python/sglang/test/test_utils.py", line 2424, in <lambda>
+    lambda: super(CustomTestCase, self)._callTestMethod(method),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/unittest/case.py", line 579, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 170, in test_unknown_tool_is_dropped_not_leaked
+    self.assert_stream_matches_final(
+  File "/data/workspace/sglang-36691/test/registered/unit/function_call/test_minimax_m2_detector.py", line 96, in assert_stream_matches_final
+    self.assertNotIn(
+  File "/usr/lib64/python3.11/unittest/case.py", line 1147, in assertNotIn
+    self.fail(self._formatMessage(msg, standardMsg))
+  File "/usr/lib64/python3.11/unittest/case.py", line 703, in fail
+    raise self.failureException(msg)
+AssertionError: '<minimax:tool_call>' unexpectedly found in '<minimax:tool_call><invoke name="not_registered"></invoke></minimax:tool_call>' : [char] '<minimax:tool_call>' leaked into content
+------------------------------ Captured log call -------------------------------
+WARNING  sglang.srt.function_call.base_format_detector:base_format_detector.py:86 Model attempted to call undefined function: not_registered
+=============================== warnings summary ===============================
+../../home/mershi/.local/lib/python3.11/site-packages/_pytest/config/__init__.py:1303
+  /data/home/mershi/.local/lib/python3.11/site-packages/_pytest/config/__init__.py:1303: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; anyio
+    self._mark_plugins_for_rewrite(hook, disable_autoload)
+
+../../home/mershi/.local/lib/python3.11/site-packages/torch/jit/_script.py:365: 14 warnings
+  /data/home/mershi/.local/lib/python3.11/site-packages/torch/jit/_script.py:365: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+python/sglang/srt/layers/quantization/awq/awq.py:53
+  /data/workspace/sglang-36691/python/sglang/srt/layers/quantization/awq/awq.py:53: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+    warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+
+python/sglang/srt/layers/quantization/gguf.py:69
+  /data/workspace/sglang-36691/python/sglang/srt/layers/quantization/gguf.py:69: UserWarning: Only CUDA, MUSA and NPU support GGUF quantization currently.
+    warnings.warn(f"Only CUDA, MUSA and NPU support GGUF quantization currently.")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED test/registered/unit/function_call/test_minimax_m2_detector.py::TestMinimaxM2DetectorStreaming::test_call_with_no_arguments
+FAILED test/registered/unit/function_call/test_minimax_m2_detector.py::TestMinimaxM2DetectorStreaming::test_call_with_no_arguments_empty_schema
+FAILED test/registered/unit/function_call/test_minimax_m2_detector.py::TestMinimaxM2DetectorStreaming::test_integer_argument_keeps_type
+FAILED test/registered/unit/function_call/test_minimax_m2_detector.py::TestMinimaxM2DetectorStreaming::test_multiple_arguments
+FAILED test/registered/unit/function_call/test_minimax_m2_detector.py::TestMinimaxM2DetectorStreaming::test_normal_text_after_tool_call
+FAILED test/registered/unit/function_call/test_minimax_m2_detector.py::TestMinimaxM2DetectorStreaming::test_normal_text_before_tool_call
+FAILED test/registered/unit/function_call/test_minimax_m2_detector.py::TestMinimaxM2DetectorStreaming::test_single_string_argument
+FAILED test/registered/unit/function_call/test_minimax_m2_detector.py::TestMinimaxM2DetectorStreaming::test_two_calls_in_one_block
+FAILED test/registered/unit/function_call/test_minimax_m2_detector.py::TestMinimaxM2DetectorStreaming::test_unicode_argument
+FAILED test/registered/unit/function_call/test_minimax_m2_detector.py::TestMinimaxM2DetectorStreaming::test_unknown_tool_is_dropped_not_leaked
+10 failed, 1 passed, 17 warnings in 3.50s
+baseline_pytest_exit_code 1

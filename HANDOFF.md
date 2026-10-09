@@ -1,16 +1,16 @@
-# 开源任务交接清单 v10（2026-10-08，计算资源侧开工版）
+# 开源任务交接清单 v11（2026-10-09，结果回收与待解锁版）
 
-> 本轮唯一待启动的 GPU 任务是第 0 节 #58892 完整 CUDA pytest，状态为 READY FOR RESOURCE SIDE（尚未执行，不是 PASS）。四个 PR 的同步更新已提交并推送，但本交接清单的发布状态需单独核实。
+> #58892 资源侧已回传 BLOCKED：固定 cu130 wheel 与 driver 535 不兼容，完整 pytest 未执行。不要在原环境重复安装；下方命令仅供解锁后执行。v10 清单及 RESULTS-5 已发布；用户已于 2026-10-09 确认发布 v11 清单及 MiniMax 验证产物。
 > 用户安排另一计算资源会话执行；单张 H20 即可，第二张不必占用。不要按旧清单启动 CosyVoice 或重复死锁实验。
 > GPU/CPU 侧负责实验和日志回传。修改上游或 fork 分支、提交、推送、发评论、修改 PR 正文、关闭 thread 均由 owner 列明内容并取得用户确认后执行。
 > 运行前记录实际 GPU 数量、驱动、torch/vLLM/FlashInfer 版本与源码 SHA；本任务不下载模型，模型 revision 记为 N/A。旧环境信息不是当前机器保证。
 > 2026-10-08 owner 会话检查：本机无 `nvidia-smi`，BCS 的 `ieg-gztechtke-aigc-h20-nj` 命名空间未发现名称含 `mershi` 的 Pod；这不代表另一会话没有资源。计算资源侧确认自己的测试环境，不占用或停止其他人的服务。
-> SGLang #36691 的当前 main 兼容性检查不需要 GPU，留给 owner；Dynamo #9819 和 SGLang 的官方 CI 授权由维护者处理，不作为本地 GPU 实验派发。
+> SGLang #36691 已合并 main `c44a42e6d3`，提交并普通推送 `464f1dc8b2`；CPU 验证 11 passed，同环境仅恢复 main 的 MiniMax 模块后 10 failed / 1 passed。不是 upstream CI；官方授权仍由维护者处理。
 > **[计算资源侧回传 2026-10-08 20:35] 第 0 节状态：BLOCKED（环境层，pytest 未运行，不是 PASS/FAIL）**。详见 `RESULTS-5.md`。
 
-## 0. 现在开工：vLLM PR #58892 完整测试（单卡，最高优先）
+## 0. 待解锁：vLLM PR #58892 完整测试（原 driver 535 环境暂停）
 
-### ⛔ 执行结果（计算资源侧回传，2026-10-08）：BLOCKED
+### 执行结果（计算资源侧回传，2026-10-08）：BLOCKED
 
 - 固定 checkout 核对通过：HEAD `0a4c700103d047adda7c2faff710cf7c2cc66ead`，`HEAD^2` = `9367d8b96`；独立 `uv` 0.12.23 + `.venv`（CPython 3.12.15），未触碰 `vllm029` / `omni-h3`；2×H20 在位，driver 535.247.01（CUDA 12.2）。
 - 阻断根因：`wheels.vllm.ai/9367d8b9…/` 只发布 **cu130** variant（无 cu129/cu128）；wheel pin `torch==2.13.0`，`_C_stable_libtorch.abi3.so` 依赖 `libcudart.so.13`。本机实测 libcudart 13 → `cudaErrorInsufficientDriver`；`torch 2.13.0+cu130` → `cuda.is_available()=False`（"driver too old, found version 12020"）。
@@ -169,11 +169,12 @@ printf 'pytest_exit_code=%s log_exit_code=%s\n' "${KEY_STATUS[0]}" "${KEY_STATUS
 
 ## 3. 等待维护者或其他作者
 
-- Dynamo #9819：仍 OPEN。现有轻量检查成功不等于可信 GPU CI 完成。10/1 triage 要求 tanmayv25 对当前 head `cf10bdc5b7` 重新 `/ok to test`，并取得 TRT-LLM code owner 批准。不要自行触发受信任 CI。
-- vLLM #57092：APPROVED + ready；当前 head 的轻量检查成功，未见对应最新 head 的 Buildkite 结果。由 PR 作者/维护者继续运行 CI。
+- Dynamo #9819：仍 OPEN / REVIEW_REQUIRED，head `cf10bdc5b7` 未变。triage 于 2026-10-08 23:52（北京时间）更新：已重新请求 TRT-LLM code-owner 团队及 tanmayv25 评审，明确作者目前无待修改事项；仍缺当前 head 的可信 CI 授权和 code-owner 批准。轻量检查成功不等于官方 GPU suite 已跑。另有 4 条历史 thread 仍未 resolved，不能再称全部线程已关闭；处理 thread 需要单独确认。
+- vLLM #57092：仍 OPEN / APPROVED + ready，head `c00a8a9a66`。已分页核对当前 head 的 check-runs 与 commit statuses：轻量检查成功，未见对应 Buildkite 状态。10/5 的 Buildkite #92947 触发评论明确针对旧提交 `8d4b9bc4310a`，不能算当前 head 的 CI。由 PR 作者/维护者继续推进。
 - AutoRound #41835：已有 charan-rathore 的 PR #41877。我们的 `/data/workspace/sglang-41835` 两文件补丁未提交；不要开竞争 PR。
-- #43764 / #44152 / #44273：旧 PR 仍等评审/贡献者 gate；已存在的 RTD 红叉未定位，不能直接归入贡献者门槛。
-- sglang #36691：此前 CPU 验证结果不替代现在 main 的兼容性与 upstream CI；未在本轮同步。
+- #43764 / #44152 / #44273：仍 OPEN / REVIEW_REQUIRED，无新评审；独立 RTD 红叉分别为 build 32928731 / 32928472 / 32947365，页面未提供可抓取的实际错误日志，本机直取返回 403；旧 Actions gate 日志返回 410（过期）。不能把所有红叉归为贡献者门槛，RTD 原因仍未定位。
+- SGLang #36688 / #36691 / #36692 / #36695：仍 OPEN / REVIEW_REQUIRED。已分页核对 CI，四者 gate 日志均明确 `Missing required label 'run-ci'`，无当前 commit statuses；未发现新 review thread。#36692 的 apex-mochen 致谢已在正文，不再重复处理。
+- SGLang #36691：独立工作树 `/data/workspace/sglang-36691`，沿用 `fix/minimax-m2-streaming-empty-args-rebase` 分支；已合并 main `c44a42e6d3`，无冲突；2026-10-09 经用户确认提交 `464f1dc8b2`，普通推送至 `CarrotSwordsman/sglang:fix/minimax-m2-streaming-empty-args`，GitHub PR head 已核实更新，工作树干净。pytest 11 passed，注册 unittest 11 passed；同进程依赖下仅替换为 main 的 MiniMax 模块，10 failed / 1 passed，退出码 1。Ruff check / format、diff check 及当前 main 配置的两文件 pre-commit 检查通过；注册测试校验、isort、codespell 等相关 hook 均通过，不适用项 skip，检查未修改文件。相对 main 仍仅两文件差异。Python 3.11.6 / torch 2.13.0+cpu，以 PYTHONPATH 导入源码，无安装包 metadata，不是完整安装或 upstream CI。日志、JUnit、环境及退出码见 `results/minimax-36691-main-compat-*`。新 head `464f1dc8b2` 的 CI 已分页核实：23 success / 16 failure / 82 skipped，无未完成检查、无 commit statuses；gate job 113722966745 实际报 `Missing required label 'run-ci'`。仍未取得正式测试授权，不是完整 CI 全绿；本次未发评论或修改 PR 正文。
 
 ## 4. 已结束的实验（不重复启动）
 
@@ -186,7 +187,7 @@ printf 'pytest_exit_code=%s log_exit_code=%s\n' "${KEY_STATUS[0]}" "${KEY_STATUS
 
 - 新实验日志放 `results/`，汇总注明源码 SHA、环境、完整命令、测试退出码、通过/失败/跳过及未覆盖项。
 - 本轮四个同步分支均已提交并推送，工作树干净；AutoRound 未提交候选仍需保留，不要重置覆盖。
-- 计算资源侧现在执行第 0 节 #58892 完整 CUDA pytest；当前尚无 `RESULTS-5.md`，不代表已经开跑或完成。其他条目不新增 GPU 实验，按暂停、等待或已结束状态处理。
-  - **[2026-10-08 回传] 已执行至 preflight → BLOCKED（driver 535 不支持 cu130-only 预编译 wheel），`RESULTS-5.md` 已提交。本机无法完成第 0 节，需 owner 决定解锁方案。**
-- 用户已于 2026-10-08 授权发布本版清单。另一会话从 GitHub 拉取交接仓库后，先确认 `HANDOFF.md` 标题为 v10，再执行第 0 节；清单已发布不代表 GPU 测试已开始或完成。
+- 第 0 节已执行至 preflight → BLOCKED；`RESULTS-5.md` 和环境日志已由计算资源侧提交推送（`64d5519`），owner 已快进同步。原 driver 535 环境暂停，不重复安装；没有新增可立即启动的 GPU 实验。
+- 原 v10 发布授权已执行；用户已于 2026-10-09 确认提交推送 v11 清单和六个 MiniMax 验证产物，仅发布这些文件，不包含 `dynamo-9819/`。另一个会话收到 v11 后，应按待解锁状态处理第 0 节，而不是立即重跑。
+- 下一步优先使用已有 CUDA 13 兼容驱动环境完成 #58892；不能擅自升级共享驱动、无期限源码编译或混装旧 wheel。#36691 同步已推送，仍需维护者授权 CI 和评审；其他 PR 等维护者授权或评审。
 - 未取得逐项确认前，不 commit/push、改 PR 正文、发评论、解决 thread；先展示完整 diff 或准确文本。

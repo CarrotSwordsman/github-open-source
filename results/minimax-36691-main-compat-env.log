@@ -1,0 +1,20 @@
+2026-10-09T07:02:18Z
+worktree=/data/workspace/sglang-36691
+13f890f615d3ba4c1f887891870f1c4e4b3a694e
+c44a42e6d36f76937fe30f29e763be42ade125ed
+fix/minimax-m2-streaming-empty-args-rebase
+ python/sglang/srt/function_call/minimax_m2.py      |  56 ++++++-
+ .../unit/function_call/test_minimax_m2_detector.py | 178 +++++++++++++++++++++
+ 2 files changed, 227 insertions(+), 7 deletions(-)
+python 3.11.6 (main, Nov 18 2025, 16:20:34) [GCC 12.3.1 20230912 (TencentOS 12.3.1.6-2)]
+torch 2.13.0+cpu
+pytest 9.0.2
+sglang_source=/data/workspace/sglang-36691/python/sglang/__init__.py
+sglang_install_mode=source import through PYTHONPATH; no installed distribution metadata; package-version query raised PackageNotFoundError
+pytest_exit_code=0; registered_test_exit_code=0; baseline_pytest_exit_code=1 (10 failed, 1 passed)
+ruff_check=PASS; ruff_format_check=PASS; git_diff_check=PASS
+pre_commit_command=pre-commit run --files python/sglang/srt/function_call/minimax_m2.py test/registered/unit/function_call/test_minimax_m2_detector.py
+pre_commit_exit_code=0; applicable hooks passed, non-applicable hooks skipped; no file modifications
+test_time_merge_status=uncommitted; baseline probe substituted only minimax_m2 module from origin/main in isolated process
+publication_status=merge committed and normally pushed on 2026-10-09 after user confirmation; PR head verified as 464f1dc8b2; worktree clean
+publication_target=CarrotSwordsman/sglang:fix/minimax-m2-streaming-empty-args
